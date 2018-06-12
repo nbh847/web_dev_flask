@@ -11,6 +11,6 @@ while True:
     request = connection.recv(1023)
 
     print('ip and request, {}\n{}'.format(address, request.decode('utf-8')))
-    response = b'<html lang="en"><body class="hold"><h1>hello world</h1></body></html>'
+    response = b'HTTP/1.1 200 ok\r\n\r\n<h1>hello world</h1>'
     connection.sendall(response)
     connection.close()

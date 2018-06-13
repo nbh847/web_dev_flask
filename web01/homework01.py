@@ -1,6 +1,7 @@
 # coding: utf-8
 
 import socket
+import ssl
 
 """
 2017/02/16
@@ -118,7 +119,69 @@ def parsed_url(url):
     'http://g.cn/'
     返回一个 tuple, 内容如下 (protocol, host, port, path)
     '''
-    return (protocol_of_url(url), host_of_url(url), port_of_url(url), path_of_url(url))
+    # 检查协议
+    protocol = 'http'
+    if url[:7] == 'http://':
+        u = url.split('://')[1]
+    elif url[:8] == 'https://':
+        u = url.split('://')[1]
+        protocol = 'https'
+    else:
+        u = url
+
+    # path
+    if '/' in u:
+        path = '/' + u.split('/')[1]
+        host = u.split(path)[0]
+    else:
+        path = '/'
+        host = u
+
+    port_dict = {
+        'http': 80,
+        'https': 443,
+    }
+
+    # port
+    port = port_dict[protocol]
+    if ':' in host:
+        my_host = host.split(':')
+        host = my_host[0]
+        port = my_host[1]
+
+    return protocol, host, int(port), path
+
+
+def socket_by_protocol(protocol):
+    if protocol == 'http':
+        s = socket.socket()
+    else:
+        s = ssl.wrap_socket(socket.socket())
+    return s
+
+
+def response_by_socket(s):
+    response = b''
+    buffer_size = 1024
+    # while True:
+    r = s.recv(buffer_size)
+    # if len(r) == 0:
+    #     break
+    response += r
+    return response
+
+
+def parsed_response(r):
+    header, body = r.split('\r\n\r\n', 1)
+    header_split = header.split('\r\n')
+    status_code = int(header_split[0].split()[1])
+    headers = header_split[1:]
+    dict_headers = {}
+    for h in headers:
+        s = h.split(':')
+        dict_headers[s[0]] = s[1].strip()
+
+    return status_code, headers, body
 
 
 # 6
@@ -130,23 +193,75 @@ def get(url):
     获取服务器返回的数据并返回
     注意, 返回的数据类型为 bytes
     '''
-    s = socket.socket()
-    host = host_of_url(url)
-    port = int(port_of_url(url))
+    protocol, host, port, path = parsed_url(url)
+    s = socket_by_protocol(protocol)
     s.connect((host, port))
-    http_request = 'GET / HTTP/1.1\r\nhost:{}\r\n\r\n'.format(host)
+
+    http_request = 'GET {} HTTP/1.1\r\nhost:{}\r\nConnection: close\r\n\r\n'.format(path, host)
     request = http_request.encode('utf-8')
     s.send(request)
-    response = s.recv(1024)
-    return response.decode('utf-8')
+
+    response = response_by_socket(s)
+    status_code, headers, body = parsed_response(response.decode('utf-8'))
+    return status_code, headers, body
 
 
 # 使用
 def main():
     url = 'http://movie.douban.com/top250'
-    r = get(url)
-    print(r)
+    status_code, headers, body = get(url)
+    print(status_code, headers, body)
+
+
+# 单元测试，test开头
+def test_parsed_url():
+    http = 'http'
+    https = 'https'
+    host = 'g.cn'
+    path = '/'
+    test_items = [
+        ('http://g.cn', (http, host, 80, path)),
+        ('http://g.cn/', (http, host, 80, path)),
+        ('http://g.cn:90', (http, host, 90, path)),
+        ('http://g.cn:90/', (http, host, 90, path)),
+        ('https://g.cn', (https, host, 443, path)),
+        ('https://g.cn:233/', (https, host, 233, path)),
+    ]
+    for t in test_items:
+        url, expected = t
+        # print('test url: {}'.format(url))
+        u = parsed_url(url)
+        e = "parsed_url Error, ({}) ({}) ({})".format(url, u, expected)
+        assert u == expected, e
+
+
+def test_parsed_response():
+    response = 'HTTP/1.1 301 Moved Permanently\r\n' \
+               'Content-Type: text/html\r\n' \
+               'Location: https://movie.douban.com/top250\r\n' \
+               'Content-Length: 178\r\n\r\n' \
+               'test body'
+    status_code, header, body = parsed_response(response)
+    assert status_code == 301
+    assert len(list(header.keys())) == 3
+    assert body == 'test body'
+
+
+def test_get():
+    urls = [
+        'http:movie.douban.com/top250',
+        'https:movie.douban.com/top250',
+    ]
+    for u in urls:
+        get(u)
+
+
+def test():
+    test_parsed_url()
+    test_get()
+    test_parsed_response()
 
 
 if __name__ == '__main__':
+    test_parsed_url()
     main()

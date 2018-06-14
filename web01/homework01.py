@@ -187,7 +187,7 @@ def parsed_response(r):
 # 6
 # 把向服务器发送 HTTP 请求并且获得数据这个过程封装成函数
 # 定义如下
-def get(url):
+def get(url, query):
     '''
     本函数使用上课代码 client.py 中的方式使用 socket 连接服务器
     获取服务器返回的数据并返回
@@ -196,8 +196,13 @@ def get(url):
     protocol, host, port, path = parsed_url(url)
     s = socket_by_protocol(protocol)
     s.connect((host, port))
+    query_str = ''
+    for q in query:
+        value = str(q) + '=' + str(query[q]) + '&'
+        query_str += value
+    query_str = path + '?' + query_str[:-1]
 
-    http_request = 'GET {} HTTP/1.1\r\nhost:{}\r\nConnection: close\r\n\r\n'.format(path, host)
+    http_request = 'GET {} HTTP/1.1\r\nhost:{}\r\nConnection: close\r\n\r\n'.format(query_str, host)
     request = http_request.encode('utf-8')
     s.send(request)
 

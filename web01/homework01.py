@@ -163,11 +163,11 @@ def socket_by_protocol(protocol):
 def response_by_socket(s):
     response = b''
     buffer_size = 1024
-    # while True:
-    r = s.recv(buffer_size)
-    # if len(r) == 0:
-    #     break
-    response += r
+    while True:
+        r = s.recv(buffer_size)
+        if len(r) == 0:
+            break
+        response += r
     return response
 
 
@@ -178,10 +178,10 @@ def parsed_response(r):
     headers = header_split[1:]
     dict_headers = {}
     for h in headers:
-        s = h.split(':')
+        s = h.split(':', 1)
         dict_headers[s[0]] = s[1].strip()
 
-    return status_code, headers, body
+    return status_code, dict_headers, body
 
 
 # 6
@@ -210,6 +210,9 @@ def get(url):
 def main():
     url = 'http://movie.douban.com/top250'
     status_code, headers, body = get(url)
+    if status_code == 301:
+        url = headers['Location']
+        status_code, headers, body = get(url)
     print(status_code, headers, body)
 
 
@@ -263,5 +266,5 @@ def test():
 
 
 if __name__ == '__main__':
-    test_parsed_url()
+    # test_parsed_url()
     main()

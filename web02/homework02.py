@@ -5,6 +5,9 @@
 #
 # 请直接在我的代码中更改/添加, 不要新建别的文件
 
+import re
+from web01.homework01 import get
+
 
 # 定义我们的 log 函数
 def log(*args, **kwargs):
@@ -30,17 +33,17 @@ def path_with_query(path, query):
     return path + '?' + query_str[:-1]
 
 
-def test_path_with_query():
-    path = '/'
-    query = {
-        'name': 'gua',
-        'height': 169,
-    }
-    expected = [
-        '/?name=gua&height=169',
-        '/?height=169&name=gua',
-    ]
-    assert path_with_query(path, query) in expected
+# def test_path_with_query():
+#     path = '/'
+#     query = {
+#         'name': 'gua',
+#         'height': 169,
+#     }
+#     expected = [
+#         '/?name=gua&height=169',
+#         '/?height=169&name=gua',
+#     ]
+#     assert path_with_query(path, query) in expected
 
 
 # 作业 2.2
@@ -74,15 +77,15 @@ def header_from_dict(headers):
 # 作业 2.4
 #
 # 为作业 2.3 写测试
-def test_header_from_dict():
-    headers = {
-        'Connection': 'Keep-Alive', 'Content-Type': 'text/html',
-    }
-    respected = [
-        'Connection: Keep-Alive\r\nContent-Type: text/html\r\n',
-        'Content-Type: text/html\r\nConnection: Keep-Alive\r\n',
-    ]
-    assert header_from_dict(headers) in respected
+# def test_header_from_dict():
+#     headers = {
+#         'Connection': 'Keep-Alive', 'Content-Type': 'text/html',
+#     }
+#     respected = [
+#         'Connection: Keep-Alive\r\nContent-Type: text/html\r\n',
+#         'Content-Type: text/html\r\nConnection: Keep-Alive\r\n',
+#     ]
+#     assert header_from_dict(headers) in respected
 
 
 # 作业 2.5
@@ -107,7 +110,43 @@ https://movie.douban.com/top250
 
 def crawl_douban():
     url = 'https://movie.douban.com/top250'
+    query = {}
+    status_code, headers, body = get(url, query)
+
+    pattern = re.compile('<li>(.*?)</li>', re.S)
+    all_items = pattern.findall(body)
+    for i in all_items:
+        # 电影名
+        titles = ''
+        # 电影评分
+        score = ''
+        # 评价人数
+        people_count = ''
+        # 引用语
+        comments = ''
+        try:
+            title_item = i.split('span')
+            for t in title_item:
+                titles += t.split('class="title">')[1].split('<')[0].strip().replace('&nbsp;', '').replace('/',
+                                                                                                           '') + ';' if 'title' in t else ''
+                titles += t.split('class="other">')[1].split('<')[0].strip().replace('&nbsp;', '').replace('/','') + ';' if 'other' in t else ''
+                if 'rating_num' in t:
+                    score = t.split('property="v:average">')[1].split('<')[0].strip()
+                if '人评价' in t:
+                    people_count = t.split('>')[1].split('<')[0].strip()[:-3]
+                if 'inq' in t:
+                    comments = t.split('>')[1].split('<')[0].strip()
+
+
+        except Exception as e:
+            print('no title, {}'.format(e))
+        if titles:
+            print('titles: {}'.format(titles))
+            print('score: {} 分'.format(score))
+            print('people_count: {} 人评价'.format(people_count))
+            print('comments: {}'.format(comments))
+            print ('\n')
 
 
 if __name__ == '__main__':
-    test_header_from_dict()
+    crawl_douban()

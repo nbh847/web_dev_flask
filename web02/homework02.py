@@ -7,6 +7,7 @@
 
 import re
 from web01.homework01 import get
+import time
 
 
 # 定义我们的 log 函数
@@ -108,9 +109,7 @@ https://movie.douban.com/top250
 """
 
 
-def crawl_douban():
-    url = 'https://movie.douban.com/top250'
-    query = {}
+def crawl_douban(url, query):
     status_code, headers, body = get(url, query)
 
     pattern = re.compile('<li>(.*?)</li>', re.S)
@@ -174,5 +173,18 @@ https://movie.douban.com/top250?start=25
 解析方式可以用任意手段，如果你没有想法，用字符串查找匹配比较好(find 特征字符串加切片)
 """
 
+
+def crawl_top250_douban():
+    for i in range(10):
+        log('打印第{}页的电影信息'.format(i))
+        query = {
+            'start': i*25
+        }
+        url = 'https://movie.douban.com/top250'
+        crawl_douban(url, query)
+        log('打印第{}页的电影信息完成，5s后继续'.format(i+1))
+        time.sleep(5)
+
+
 if __name__ == '__main__':
-    crawl_douban()
+    crawl_top250_douban()

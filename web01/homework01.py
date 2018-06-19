@@ -200,7 +200,7 @@ def get(url, query):
     for q in query:
         value = str(q) + '=' + str(query[q]) + '&'
         query_str += value
-    query_str = path + '?' + query_str[:-1]
+    query_str = path + '?' + query_str[:-1] if query_str[:-1] else path
 
     http_request = 'GET {} HTTP/1.1\r\nhost:{}\r\nConnection: close\r\n\r\n'.format(query_str, host)
     request = http_request.encode('utf-8')

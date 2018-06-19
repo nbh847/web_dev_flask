@@ -129,7 +129,8 @@ def crawl_douban():
             for t in title_item:
                 titles += t.split('class="title">')[1].split('<')[0].strip().replace('&nbsp;', '').replace('/',
                                                                                                            '') + ';' if 'title' in t else ''
-                titles += t.split('class="other">')[1].split('<')[0].strip().replace('&nbsp;', '').replace('/','') + ';' if 'other' in t else ''
+                titles += t.split('class="other">')[1].split('<')[0].strip().replace('&nbsp;', '').replace('/',
+                                                                                                           '') + ';' if 'other' in t else ''
                 if 'rating_num' in t:
                     score = t.split('property="v:average">')[1].split('<')[0].strip()
                 if '人评价' in t:
@@ -145,8 +146,33 @@ def crawl_douban():
             print('score: {} 分'.format(score))
             print('people_count: {} 人评价'.format(people_count))
             print('comments: {}'.format(comments))
-            print ('\n')
+            print('\n')
 
+
+# 作业 2.6
+#
+"""
+通过在浏览器页面中访问 豆瓣电影 top250 可以发现
+1, 每页 25 个条目
+2, 下一页的 URL 如下
+https://movie.douban.com/top250?start=25
+
+因此可以用循环爬出豆瓣 top250 的所有网页
+
+于是就有了豆瓣电影 top250 的所有网页
+
+由于这 10 个页面都是一样的结构，所以我们只要能解析其中一个页面就能循环得到所有信息
+
+所以现在的程序就只剩下了解析 HTML
+
+请观察规律，解析出
+1，电影名
+2，分数
+3，评价人数
+4，引用语（比如第一部肖申克的救赎中的「希望让人自由。」）
+
+解析方式可以用任意手段，如果你没有想法，用字符串查找匹配比较好(find 特征字符串加切片)
+"""
 
 if __name__ == '__main__':
     crawl_douban()

@@ -31,8 +31,8 @@ def route_index():
     主页的处理函数，返回主页的响应
     :return:
     '''
-    header = 'HTTP/1.x 200 ok\r\nContent-Type: text/html\r\n'
-    body = '<h1>Hello world</h1><img src="dog.gif"/>'
+    header = 'HTTP/1.1 200 ok\r\nContent-Type: text/html\r\n'
+    body = '<h1>Hello world</h1><img src="doge.gif"/>'
     r = header + '\r\n' + body
     return r.encode('utf-8')
 
@@ -60,7 +60,7 @@ def route_image():
     '''
     current_path = os.getcwd()
     with open(current_path + '/doge.gif', 'rb') as f:
-        header = b'HTTP/1.x 200 ok\r\nContent-Type: image/gif\r\n\r\n'
+        header = b'HTTP/1.1 200 ok\r\nContent-Type: image/gif\r\n\r\n'
         img = header + f.read()
         return img
 

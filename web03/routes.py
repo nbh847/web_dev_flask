@@ -2,6 +2,8 @@ from utils import log
 from models import Message
 from models import User
 
+import os
+
 message_list = []
 
 
@@ -11,7 +13,7 @@ def template(name):
     :param name:
     :return:
     '''
-    path = 'templates/' + name
+    path = os.getcwd() + '/templates/' + name
     with open(path, 'r', encoding='utf-8') as f:
         return f.read()
 
@@ -30,6 +32,7 @@ def route_login(request):
     header = 'HTTP/1.1 210 VERY OK\r\nContent-Type: text/html\r\n'
     if request.method == 'POST':
         form = request.form()
+        log("form in routes", form)
         u = User.new(form)
         if u.validate_login():
             result = '登录成功'
@@ -84,7 +87,7 @@ def route_static(request):
     静态资源的处理函数, 读取图片并生成响应返回
     '''
     filename = request.query.get('file', 'doge.gif')
-    path = 'static/' + filename
+    path = os.getcwd() + '/static/' + filename
     with open(path, 'rb') as f:
         header = b'HTTP1.1 200 OK\r\nContent-Type: image/gif\r\n\r\n'
         img = header + f.read()

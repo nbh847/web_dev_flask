@@ -178,11 +178,11 @@ def crawl_top250_douban():
     for i in range(10):
         log('打印第{}页的电影信息'.format(i))
         query = {
-            'start': i*25
+            'start': i * 25
         }
         url = 'https://movie.douban.com/top250'
         crawl_douban(url, query)
-        log('打印第{}页的电影信息完成，5s后继续'.format(i+1))
+        log('打印第{}页的电影信息完成，5s后继续'.format(i + 1))
         time.sleep(5)
 
 

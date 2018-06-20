@@ -42,6 +42,12 @@ class Model(object):
         return path
 
     @classmethod
+    def new(cls, form):
+        # 下面一句相当于 User(form) 或者 Msg(form)
+        m = cls(form)
+        return m
+
+    @classmethod
     def all(cls):
         '''
         得到一个类的所有储存的实例
@@ -49,7 +55,7 @@ class Model(object):
         '''
         path = cls.db_path()
         models = load(path)
-        ms = [cls.__new__(m) for m in models]
+        ms = [cls.new(m) for m in models]
         return ms
 
     def save(self):
@@ -69,24 +75,3 @@ class Model(object):
         s = '\n'.join(properties)
         return '< {}\n{} >\n'.format(classname, s)
 
-
-# 以下两个类用于实际的数据处理
-# 因为继承了 Model
-# 所以可以直接 save load
-class User(Model):
-    def new(self, form):
-        self.username = form.get('username', '')
-        self.password = form.get('password', '')
-
-    def validate_login(self):
-        return self.username == 'gua' and self.password == '123'
-
-    def validate_register(self):
-        return len(self.username) > 2 and len(self.password) > 2
-
-
-# 定义一个 class 用于保存 message
-class Message(Model):
-    def new(self, form):
-        self.author = form.get('author', '')
-        self.message = form.get('message', '')

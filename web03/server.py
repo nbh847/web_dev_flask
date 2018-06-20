@@ -30,6 +30,7 @@ class Request(object):
         for arg in args:
             k, v = arg.split('=')
             f[k] = v
+        log('form return data', f)
         return f
 
 

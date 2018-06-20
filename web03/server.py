@@ -9,10 +9,10 @@ QUERY a=b&c=d&e=1
 import socket
 import urllib.parse
 
-from web03.utils import log
+from utils import log
 
-from web03.routes import route_static
-from web03.routes import route_dict
+from routes import route_static
+from routes import route_dict
 
 
 # 定义一个 class 用于保存请求的数据

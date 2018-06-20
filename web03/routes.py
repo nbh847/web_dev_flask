@@ -52,7 +52,7 @@ def route_register(request):
             u.save()
             result = '注册成功<br> <pre>{}</pre>'.format(User.all())
         else:
-            request = '用户名或者密码长度必须大于2'
+            result = '用户名或者密码长度必须大于2'
     else:
         result = ''
     body = template('register.html')
@@ -91,7 +91,7 @@ def route_static(request):
         return img
 
 
-route_list = {
+route_dict = {
     '/': route_index,
     '/login': route_login,
     '/register': route_register,

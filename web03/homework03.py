@@ -30,7 +30,6 @@ u = User.find_by(username='gua')
 注意, 这里参数的名字是可以变化的, 所以应该使用 **kwargs 功能
 """
 
-
 # 作业 3.4
 #
 # 为 Model 添加一个类方法 find_all
@@ -42,7 +41,6 @@ us = User.find_all(password='123')
 
 注意, 这里参数的名字是可以变化的, 所以应该使用 **kwargs 功能
 """
-
 
 # 作业 3.5
 #
@@ -70,9 +68,8 @@ u.save()
 # 所以 save 的时候被赋予了一个 id
 """
 
-
 # 作业 3.6
 #
 # 该看资料中提及的那本《head first html and css》了
 # 另外请大致阅读下面这篇文章的内容(读读就好 不要求完全掌握)
-http://www.ituring.com.cn/tupubarticle/1204
+# http://www.ituring.com.cn/tupubarticle/1204

@@ -1,6 +1,6 @@
 from utils import log
-from models import Message
-from models import User
+from models.message import Message
+from models.user import User
 
 import os
 

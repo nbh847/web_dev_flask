@@ -24,8 +24,10 @@ class Request(object):
         self.body = ''
 
     def form(self):
+        log('form before', self.body)
         body = urllib.parse.unquote(self.body)
-        args = body.split('&')
+        log('form after', body)
+        args = body.split('&') if self.body else ''
         f = {}
         for arg in args:
             k, v = arg.split('=')

@@ -1,6 +1,7 @@
 import json
 
 from utils import log
+import os
 
 
 def save(data, path):
@@ -24,9 +25,10 @@ def load(path):
     path 是保存文件的路径
     '''
     with open(path, 'r', encoding='utf-8') as f:
-        s = f.read()
+        s = f.read().strip()
+        log('path type', type(s))
         log('load', s)
-        return json.loads(s)
+        return json.loads(s) if s else ''
 
 
 # Model 是用于储存数据的基类
@@ -38,7 +40,7 @@ class Model(object):
         # classmethod 有一个参数是 class
         # 所以我们可以得到 class 的名字
         classname = cls.__name__
-        path = '{}.txt'.format(classname)
+        path = '{}{}.txt'.format(os.getcwd()+'/web03/db/', classname)
         return path
 
     @classmethod

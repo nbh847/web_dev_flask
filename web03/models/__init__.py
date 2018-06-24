@@ -40,7 +40,7 @@ class Model(object):
         # classmethod 有一个参数是 class
         # 所以我们可以得到 class 的名字
         classname = cls.__name__
-        path = '{}{}.txt'.format(os.getcwd()+'/web03/db/', classname)
+        path = '{}{}.txt'.format(os.getcwd()+'/db/', classname)
         return path
 
     @classmethod

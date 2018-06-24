@@ -22,6 +22,7 @@ class Request(object):
         self.path = ''
         self.query = {}
         self.body = ''
+        self.headers = {}
 
     def form(self):
         log('form before', self.body)
@@ -102,9 +103,12 @@ def run(host='', port=3000):
             # 所以这里判断一下防止程序崩溃
             if len(r.split()) < 2:
                 continue
+            log('r content', r)
             path = r.split()[1]
             request.method = r.split()[0]
             request.body = r.split('\r\n\r\n', 1)[1]
+            r_headers = r.split('\r\n\r\n', 1)[0].split('\r\n')[1:]
+            request.headers = {_.split(':', 1)[0]:_.split(':', 1)[1] for _ in r_headers}
             response = response_for_path(path)
             connection.sendall(response)
             connection.close()

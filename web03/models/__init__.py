@@ -40,7 +40,7 @@ class Model(object):
         # classmethod 有一个参数是 class
         # 所以我们可以得到 class 的名字
         classname = cls.__name__
-        path = '{}{}.txt'.format(os.getcwd()+'/db/', classname)
+        path = '{}{}.txt'.format(os.getcwd() + '/db/', classname)
         return path
 
     @classmethod
@@ -60,6 +60,53 @@ class Model(object):
         ms = [cls.new(m) for m in models]
         return ms
 
+    @classmethod
+    def find_by(cls, **kwargs):
+        """
+        u = User.find_by(username='gua')
+
+        上面这句可以返回一个 username 属性为 'gua' 的 User 实例
+        如果有多条这样的数据, 返回第一个
+        如果没这样的数据, 返回 None
+
+        注意, 这里参数的名字是可以变化的, 所以应该使用 **kwargs 功能
+        """
+        path = cls.db_path()
+        data = load(path)
+        items = json.load(data) if data else ''
+        for key, value in kwargs.items():
+            for item in items:
+                if key == item['username']:
+                    my_form = {
+                        'username': key,
+                        'password': value,
+                    }
+                    return cls.new(my_form)
+        return None
+
+    @classmethod
+    def find_all(cls, **kwargs):
+        """
+        us = User.find_all(password='123')
+        上面这句可以以 list 的形式返回所有 password 属性为 '123' 的 User 实例
+        如果没这样的数据, 返回 []
+
+        注意, 这里参数的名字是可以变化的, 所以应该使用 **kwargs 功能
+        """
+        path = cls.db_path()
+        data = load(path)
+        aim_dict = []
+        items = json.load(data) if data else ''
+        for key, value in kwargs.items():
+            for item in items:
+                if value == item['password']:
+                    my_form = {
+                        'username': key,
+                        'password': value,
+                    }
+                    aim_dict.append(cls.new(my_form))
+        return aim_dict
+
     def save(self):
         '''
         save 函数用于把一个 Model 的实例保存到文件中
@@ -76,4 +123,3 @@ class Model(object):
         properties = ['{}: ({})'.format(k, v) for k, v in self.__dict__.items()]
         s = '\n'.join(properties)
         return '< {}\n{} >\n'.format(classname, s)
-

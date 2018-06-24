@@ -8,6 +8,7 @@ class User(Model):
     def __init__(self, form):
         self.username = form.get('username', '')
         self.password = form.get('password', '')
+        self.id = self.get_id()
 
     def validate_login(self):
         log('login', self.username, self.password)
@@ -49,6 +50,15 @@ class User(Model):
             w.write(json.dumps(data))
         log('the user is valid', self.load(path))
         return True
+
+    def get_id(self):
+        path = os.getcwd() + '/db/User.txt'
+        data = self.load(path)
+        if data:
+            flag = json.loads(data)[0]
+            return flag['id'] if 'id' in flag else None
+        else:
+            return None
 
     def load(self, path):
         with open(path, 'r', encoding='utf-8') as f:

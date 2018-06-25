@@ -13,6 +13,12 @@ def save(data, path):
     # json 是一个序列化/反序列化(上课会讲这两个名词) list/dict 的库
     # indent 是缩进
     # ensure_ascii=False 用于保存中文
+    log('save data', data)
+    for d in data:
+        if 'id' in d:
+            d['id'] += 1
+        else:
+            d['id'] = 0
     s = json.dumps(data, indent=2, ensure_ascii=False)
     with open(path, 'w+', encoding='utf-8') as f:
         log('save', path, s, data)

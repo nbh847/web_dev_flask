@@ -8,7 +8,6 @@ class User(Model):
     def __init__(self, form):
         self.username = form.get('username', '')
         self.password = form.get('password', '')
-        self.id = self.get_id()
 
     def validate_login(self):
         log('login', self.username, self.password)

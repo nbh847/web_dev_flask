@@ -26,6 +26,7 @@ class Request(object):
 
     def form(self):
         log('form before', self.body)
+        # unquote 将编码前的body进行编码，比如 a+%4D => a?
         body = urllib.parse.unquote(self.body)
         log('form after', body)
         args = body.split('&') if self.body else ''
@@ -108,7 +109,7 @@ def run(host='', port=3000):
             request.method = r.split()[0]
             request.body = r.split('\r\n\r\n', 1)[1]
             r_headers = r.split('\r\n\r\n', 1)[0].split('\r\n')[1:]
-            request.headers = {_.split(':', 1)[0]:_.split(':', 1)[1] for _ in r_headers}
+            request.headers = {_.split(':', 1)[0]: _.split(':', 1)[1] for _ in r_headers}
             response = response_for_path(path)
             connection.sendall(response)
             connection.close()

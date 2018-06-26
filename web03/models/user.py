@@ -26,29 +26,30 @@ class User(Model):
         return False
 
     def validate_register(self):
-        log('register', self.username, self.password)
-        path = os.getcwd() + '/db/User.txt'
-        pwd_form = {
-            'username': self.username,
-            'password': self.password,
-        }
-        data = self.load(path)
-        if data:
-            data = json.loads(data)
-            for m in data:
-                if self.username == m['username']:
-                    return False
-        else:
-            data = []
-        data.append(pwd_form)
-        log('read file closed', data)
-        log('write file started')
-        log('log data', data)
-        log('log type of data', type(data))
-        with open(path, 'w+', encoding='utf-8') as w:
-            w.write(json.dumps(data))
-        log('the user is valid', self.load(path))
-        return True
+        return len(self.username) > 2 and len(self.password) > 2
+        # log('register', self.username, self.password)
+        # path = os.getcwd() + '/db/User.txt'
+        # pwd_form = {
+        #     'username': self.username,
+        #     'password': self.password,
+        # }
+        # data = self.load(path)
+        # if data:
+        #     data = json.loads(data)
+        #     for m in data:
+        #         if self.username == m['username']:
+        #             return False
+        # else:
+        #     data = []
+        # data.append(pwd_form)
+        # log('read file closed', data)
+        # log('write file started')
+        # log('log data', data)
+        # log('log type of data', type(data))
+        # with open(path, 'w+', encoding='utf-8') as w:
+        #     w.write(json.dumps(data))
+        # log('the user is valid', self.load(path))
+        # return True
 
     def get_id(self):
         path = os.getcwd() + '/db/User.txt'

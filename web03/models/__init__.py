@@ -52,6 +52,7 @@ class Model(object):
     @classmethod
     def new(cls, form):
         # 下面一句相当于 User(form) 或者 Msg(form)
+        # 会初始化这个函数，调用self.__init__函数
         m = cls(form)
         return m
 
@@ -119,6 +120,7 @@ class Model(object):
         '''
         models = self.all()
         log('models', models)
+        models.append(self)
         # __dict__ 是包含了对象所有属性和值的字典
         l = [m.__dict__ for m in models]
         path = self.db_path()

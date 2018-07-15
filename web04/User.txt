@@ -1,19 +1,27 @@
-
 [
   {
     "username": "gua",
-    "password": "123"
+    "password": "123",
+    "note": ""
   },
   {
     "username": "gua1",
-    "password": "123"
+    "password": "123",
+    "note": ""
   },
   {
     "username": "gua",
-    "password": "gua"
+    "password": "gua",
+    "note": ""
   },
   {
     "username": "gua",
-    "password": "gua"
+    "password": "gua",
+    "note": ""
+  },
+  {
+    "username": "xixi",
+    "password": "haha",
+    "note": "xihalili"
   }
 ]

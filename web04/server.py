@@ -133,7 +133,9 @@ def run(host='', port=3000):
             path = r.split()[1]
             # 设置 request 的 method
             request.method = r.split()[0]
-            request.add_headers(r.split('\r\n\r\n', 1)[0].split('\r\n')[1:])
+            header = r.split('\r\n\r\n', 1)[0].split('\r\n')[1:]
+            log('request header: {}'.format(header))
+            request.add_headers(header)
             # 把 body 放入 request 中
             request.body = r.split('\r\n\r\n', 1)[1]
             # 用 response_for_path 函数来得到 path 对应的响应内容
@@ -148,7 +150,7 @@ if __name__ == '__main__':
     # 生成配置并且运行程序
     config = dict(
         host='',
-        port=3000,
+        port=3001,
     )
     # 如果不了解 **kwargs 的用法, 上过基础课的请复习函数, 新同学自行搜索
     run(**config)

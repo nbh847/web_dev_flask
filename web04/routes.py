@@ -51,6 +51,24 @@ def response_with_headers(headers):
     return header
 
 
+def route_profile(request):
+    '''
+    个人资料路由
+    '''
+    username = current_user(request)
+    if username == '游客':
+        log('你是游客,重定向到登录页面.')
+        header = 'HTTP/1.x 302 VERY OK\r\nContent-Type: text/html\r\nLocation: login\r\n'
+        r = header + '\r\n' + ''
+        return r.encode('utf-8')
+    else:
+        u = User.find_by(username=username)
+        note = u.note
+        header = 'HTTP/1.x 210 VERY OK\r\nContent-Type: text/html\r\n'
+        r = header + '\r\n' + 'username: {}\r\nnote: {}\r\n'.format(username, note)
+        return r.encode('utf-8')
+
+
 def route_login(request):
     """
     登录页面的路由函数
@@ -144,4 +162,5 @@ route_dict = {
     '/login': route_login,
     '/register': route_register,
     '/messages': route_message,
+    '/profile': route_profile,
 }

@@ -70,6 +70,24 @@ class Model(object):
                     return item
         return None
 
+    @classmethod
+    def find_all(cls, **kwargs):
+        """
+        用法如下，kwargs 是只有一个元素的 dict
+        u = User.find_by(username='gua')
+        """
+        log('kwargs, ', kwargs)
+        k, v = '', ''
+        for key, value in kwargs.items():
+            k, v = key, value
+        all = cls.all()
+        data = []
+        for m in all:
+            # getattr(m, k) 等价于 m.__dict__[k]
+            if v == m.__dict__[k]:
+                data.append(m)
+        return data
+
     def __repr__(self):
         """
         __repr__ 是一个魔法方法
@@ -89,11 +107,53 @@ class Model(object):
         log('debug save')
         models = self.all()
         log('models', models)
-        models.append(self)
+        first_index = 0
+        if self.__dict__.get('id') is None:
+            # append id
+            if len(models) > 0:
+                log('用 log 可以查看代码执行的走向')
+                # 不是第一个数据
+                self.id = models[-1].id + 1
+            else:
+                # 是第一个数据
+                log('first index', first_index)
+                self.id = first_index
+            models.append(self)
+        else:
+            # 有 id 说明已经是存在于数据文件中的数据
+            # 那么就找到这条数据并替换之
+            index = -1
+            for i, m in enumerate(models):
+                if m.id == self.id:
+                    index = i
+                    break
+            # 看看是否找到下标
+            # 如果找到，就替换掉这条数据
+            if index > -1:
+                models[index] = self
+        # 保存
         l = [m.__dict__ for m in models]
         path = self.db_path()
         save(l, path)
 
+    def remove(self):
+        models = self.all()
+        if self.__dict__.get('id') is not None:
+            # 有 id 说明已经是存在于数据文件中的数据
+            # 那么就找到这条数据并替换之
+            index = -1
+            for i, m in enumerate(models):
+                if m.id == self.id:
+                    index = i
+                    break
+            # 看看是否找到下标
+            # 如果找到，就替换掉这条数据
+            if index > -1:
+                del models[index]
+        # 保存
+        l = [m.__dict__ for m in models]
+        path = self.db_path()
+        save(l, path)
 
 class User(Model):
     """
@@ -102,6 +162,9 @@ class User(Model):
     """
 
     def __init__(self, form):
+        self.id = form.get('id', None)
+        if self.id is not None:
+            self.id = int(self.id)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
         self.note = form.get('note', '')

@@ -45,7 +45,7 @@ def route_index(request):
     return r.encode('utf-8')
 
 
-def response_with_headers(headers, status_code):
+def response_with_headers(headers, status_code=200):
     header = 'HTTP/1.x {} VERY OK\r\n'.format(status_code)
     header += ''.join(['{}: {}\r\n'.format(k, v) for k, v in headers.items()])
     return header

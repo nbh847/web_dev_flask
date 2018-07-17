@@ -38,7 +38,7 @@ class Model(object):
         所以我们可以得到 class 的名字
         """
         classname = cls.__name__
-        path = '{}.txt'.format(classname)
+        path = 'data/{}.txt'.format(classname)
         return path
 
     @classmethod

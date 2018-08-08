@@ -48,6 +48,7 @@ class Model(object):
         """
         path = cls.db_path()
         models = load(path)
+        log('all models: {}'.format(models))
         ms = [cls.new(m) for m in models]
         return ms
 
@@ -76,7 +77,7 @@ class Model(object):
         用法如下，kwargs 是只有一个元素的 dict
         u = User.find_by(username='gua')
         """
-        log('kwargs, ', kwargs)
+        log('find all kwargs, ', kwargs)
         k, v = '', ''
         for key, value in kwargs.items():
             k, v = key, value
@@ -86,6 +87,7 @@ class Model(object):
             # getattr(m, k) 等价于 m.__dict__[k]
             if v == m.__dict__[k]:
                 data.append(m)
+        log('find all return data: ({})'.format(data))
         return data
 
     def __repr__(self):
@@ -154,6 +156,7 @@ class Model(object):
         l = [m.__dict__ for m in models]
         path = self.db_path()
         save(l, path)
+
 
 class User(Model):
     """

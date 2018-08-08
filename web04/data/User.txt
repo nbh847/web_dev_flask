@@ -1,27 +1,8 @@
 [
   {
-    "username": "gua",
+    "id": 1,
+    "username": "weasny",
     "password": "123",
-    "note": ""
-  },
-  {
-    "username": "gua1",
-    "password": "123",
-    "note": ""
-  },
-  {
-    "username": "gua",
-    "password": "gua",
-    "note": ""
-  },
-  {
-    "username": "gua",
-    "password": "gua",
-    "note": ""
-  },
-  {
-    "username": "xixi",
-    "password": "haha",
-    "note": "xihalili"
+    "note": "ni"
   }
 ]

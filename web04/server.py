@@ -3,11 +3,13 @@ import urllib.parse
 
 from utils import log
 
-from routes import route_static
-from routes import route_dict
+from routes_static import route_static
+
+from routes_simpletodo import route_dict as simpletodo_routes
+from routes_user import route_dict as user_routes
 
 # 注意要用 from import as 来避免重名
-from routes_todo import route_dict as todo_route
+from routes_simpletodo import route_dict as todo_route
 
 
 # 定义一个 class 用于保存请求的数据
@@ -107,8 +109,9 @@ def response_for_path(path):
         # '/login': route_login,
         # '/messages': route_message,
     }
-    r.update(route_dict)
-    r.update(todo_route)
+    # 注册外部的路由
+    r.update(simpletodo_routes)
+    r.update(user_routes)
     response = r.get(path, error)
     return response(request)
 

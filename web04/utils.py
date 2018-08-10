@@ -11,8 +11,8 @@ def log(*args, **kwargs):
     value = time.localtime(int(time.time()))
     dt = time.strftime(format, value)
     with open('log.gua.txt', 'a', encoding='utf-8') as f:
-        f.write(f.read())
         print(dt, *args, file=f, **kwargs)
+        print(dt, *args, **kwargs)
 
 
 # __file__ 就是本文件的名字

@@ -11,10 +11,7 @@ def log(*args, **kwargs):
     value = time.localtime(int(time.time()))
     dt = time.strftime(format, value)
     with open('log.gua.txt', 'a', encoding='utf-8') as f:
-<<<<<<< HEAD
         # f.write(*args, **kwargs)
-=======
->>>>>>> origin/web_dev_nbh
         print(dt, *args, file=f, **kwargs)
         print(dt, *args, **kwargs)
 

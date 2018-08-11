@@ -1,7 +1,7 @@
 from utils import log
 from todo import Todo
 from models import User
-from routes import current_user
+from routes_static import current_user
 
 
 def template(name):
@@ -20,7 +20,7 @@ def response_with_headers(headers, code=200):
     """
     header = 'HTTP/1.1 {} VERY OK\r\n'.format(code)
     header += ''.join(['{}: {}\r\n'.format(k, v)
-                           for k, v in headers.items()])
+                       for k, v in headers.items()])
     return header
 
 
@@ -46,6 +46,7 @@ def login_required(route_function):
         if u is None:
             return redirect('/login')
         return route_function(request)
+
     return f
 
 

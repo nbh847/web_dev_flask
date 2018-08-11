@@ -11,8 +11,12 @@ def log(*args, **kwargs):
     value = time.localtime(int(time.time()))
     dt = time.strftime(format, value)
     with open('log.gua.txt', 'a', encoding='utf-8') as f:
+<<<<<<< HEAD
         # f.write(*args, **kwargs)
+=======
+>>>>>>> origin/web_dev_nbh
         print(dt, *args, file=f, **kwargs)
+        print(dt, *args, **kwargs)
 
 
 # __file__ 就是本文件的名字
@@ -32,3 +36,33 @@ def template(path, **kwargs):
     """
     t = env.get_template(path)
     return t.render(**kwargs)
+
+
+def response_with_headers(headers, status_code=200):
+    header = 'HTTP/1.1 {} OK \r\n'.format(status_code)
+    header += ''.join(['{}: {}\r\n'.format(k, v) for k, v in headers.items()])
+    return header
+
+
+def redirect(location, headers=None):
+    h = {
+        'Content-Type': 'text/html',
+    }
+    if headers is not None:
+        h.update(headers)
+    h['Location'] = location
+    # 302 状态码的含义, Location 的作用
+    header = response_with_headers(h, 302)
+    r = header + '\r\n' + ''
+    return r.encode(encoding='utf-8')
+
+
+def http_response(body, headers=None):
+    '''
+    headers 是可选的字典格式的 HTTP 头
+    '''
+    header = 'HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n'
+    if headers is not None:
+        header += ''.join(['{}: {}\r\n'.format(k, v) for k, v in headers.items()])
+    r = header + '\r\n' + body
+    return r.encode(encoding='utf-8')

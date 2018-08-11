@@ -59,6 +59,7 @@ def index(request):
     }
     # 找到当前登录的用户, 如果没登录, 就 redirect 到 /login
     uname = current_user(request)
+    log('当前用户名: {}'.format(uname))
     u = User.find_by(username=uname)
     if u is None:
         return redirect('/login')

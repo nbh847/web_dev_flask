@@ -97,7 +97,6 @@ def route_login(request):
     username = current_user(request)
     if request.method == 'POST':
         form = request.form()
-        log('login form: {}'.format(form))
         u = User.new(form)
         if u.validate_login():
             session_id = random_str()

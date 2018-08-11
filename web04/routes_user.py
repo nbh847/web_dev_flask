@@ -38,6 +38,7 @@ def route_login(request):
         u = User(form)
         if u.validate_login():
             user = User.find_by(username=u.username)
+            log('成功登录: {}'.format(u.username))
             # 设置 session
             session_id = random_str()
             session[session_id] = user.id
@@ -55,14 +56,17 @@ def route_register(request):
     注册页面的路由函数
     """
     if request.method == 'POST':
+        log('post ')
         form = request.form()
         u = User(form)
-        if u.validate_login():
+        if u.validate_register():
             u.save()
             # 注册成功后 定向到登录页面
+            log('成功注册: {}'.format(form.get('username', 'None')))
             return redirect('/login')
         else:
             # 注册失败 定向到注册页面
+            log('注册失败: {}'.format(form.get('username', 'None')))
             return redirect('/register')
     # 显示注册页面
     body = template('register.html')

@@ -1,5 +1,8 @@
 from jinja2 import Environment, FileSystemLoader
+from utils import log
+
 import os.path
+
 
 
 # __file__ 就是本文件的名字
@@ -27,3 +30,4 @@ us = [
     },
 ]
 print(template.render(name='gua', numbers=ns, users=us))
+log('print demo html success')

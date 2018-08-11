@@ -11,7 +11,7 @@ def log(*args, **kwargs):
     value = time.localtime(int(time.time()))
     dt = time.strftime(format, value)
     with open('log.gua.txt', 'a', encoding='utf-8') as f:
-        f.write(f.read())
+        # f.write(*args, **kwargs)
         print(dt, *args, file=f, **kwargs)
 
 

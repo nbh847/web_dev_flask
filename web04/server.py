@@ -105,7 +105,7 @@ def response_for_path(path):
     """
     r = {
         '/static': route_static,
-        # '/': route_index,
+        '/': route_static,
         # '/login': route_login,
         # '/messages': route_message,
     }
@@ -157,7 +157,7 @@ if __name__ == '__main__':
     # 生成配置并且运行程序
     config = dict(
         host='',
-        port=3000,
+        port=3001,
     )
     # 如果不了解 **kwargs 的用法, 上过基础课的请复习函数, 新同学自行搜索
     run(**config)

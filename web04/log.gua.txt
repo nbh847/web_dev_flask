@@ -1,2 +1,441 @@
 2018/08/10 18:05:37 start at :3000
 2018/08/10 18:06:27 start at :3000
+2018/08/10 18:08:21 ip and request, ('127.0.0.1', 64489)
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:08:21 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:08:21 cookie ['']
+2018/08/10 18:08:21 path and query / {}
+2018/08/10 18:08:21 ip and request, ('127.0.0.1', 64490)
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3000/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:08:21 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: image/webp,image/apng,image/*,*/*;q=0.8', 'Referer: http://localhost:3000/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:08:21 cookie ['']
+2018/08/10 18:08:21 path and query /favicon.ico {}
+2018/08/10 18:09:13 start at :3000
+2018/08/10 18:09:19 ip and request, ('127.0.0.1', 64502)
+GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:09:19 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:09:19 cookie ['']
+2018/08/10 18:09:19 path and query / {}
+2018/08/10 18:09:31 ip and request, ('127.0.0.1', 64503)
+
+2018/08/10 18:09:31 ip and request, ('127.0.0.1', 64504)
+
+2018/08/10 18:09:31 ip and request, ('127.0.0.1', 64505)
+
+2018/08/10 18:09:56 ip and request, ('127.0.0.1', 64515)
+GET /static HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:09:56 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:09:56 cookie ['']
+2018/08/10 18:09:56 path and query /static {}
+2018/08/10 18:10:09 start at :3000
+2018/08/10 18:10:12 start at :3000
+2018/08/10 18:10:13 start at :3000
+2018/08/10 18:10:17 start at :3000
+2018/08/10 18:10:22 start at :3000
+2018/08/10 18:11:17 start at :3001
+2018/08/10 18:11:33 ip and request, ('127.0.0.1', 64530)
+GET /todo HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:11:33 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:11:33 cookie ['']
+2018/08/10 18:11:33 path and query /todo {}
+2018/08/10 18:11:33 kwargs,  {'username': '游客'}
+2018/08/10 18:11:33 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}]
+2018/08/10 18:11:33 ip and request, ('127.0.0.1', 64532)
+GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:11:33 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:11:33 cookie ['']
+2018/08/10 18:11:33 path and query /login {}
+2018/08/10 18:11:33 login, cookies {}
+2018/08/10 18:11:33 ip and request, ('127.0.0.1', 64534)
+GET /favicon.ico HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:11:33 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: image/webp,image/apng,image/*,*/*;q=0.8', 'Referer: http://localhost:3001/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:11:33 cookie ['']
+2018/08/10 18:11:33 path and query /favicon.ico {}
+2018/08/10 18:11:40 ip and request, ('127.0.0.1', 64538)
+POST /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=gua&password=123
+2018/08/10 18:11:40 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Content-Length: 25', 'Cache-Control: max-age=0', 'Origin: http://localhost:3001', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:11:40 cookie ['']
+2018/08/10 18:11:40 path and query /login {}
+2018/08/10 18:11:40 login, cookies {}
+2018/08/10 18:11:40 kwargs,  {'username': 'gua'}
+2018/08/10 18:11:40 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}]
+2018/08/10 18:13:50 start at :3001
+2018/08/10 18:13:54 ip and request, ('127.0.0.1', 64563)
+GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:13:54 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:13:54 cookie ['']
+2018/08/10 18:13:54 path and query /login {}
+2018/08/10 18:13:54 login, cookies {}
+2018/08/10 18:14:01 start at :3001
+2018/08/10 18:14:11 start at :3000
+2018/08/10 18:14:19 ip and request, ('127.0.0.1', 64594)
+GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:14:19 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:14:19 cookie ['']
+2018/08/10 18:14:19 path and query /login {}
+2018/08/10 18:14:19 login, cookies {}
+2018/08/10 18:14:32 ip and request, ('127.0.0.1', 64595)
+
+2018/08/10 18:14:32 ip and request, ('127.0.0.1', 64596)
+
+2018/08/10 18:14:57 ip and request, ('127.0.0.1', 64601)
+GET /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:14:57 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:14:57 cookie ['']
+2018/08/10 18:14:57 path and query /register {}
+2018/08/10 18:15:05 ip and request, ('127.0.0.1', 64605)
+POST /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 36
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=gu%C4%81&password=123&note=
+2018/08/10 18:15:05 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Content-Length: 36', 'Cache-Control: max-age=0', 'Origin: http://localhost:3000', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:15:05 cookie ['']
+2018/08/10 18:15:05 path and query /register {}
+2018/08/10 18:15:05 kwargs,  {'username': 'guā'}
+2018/08/10 18:15:05 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}]
+2018/08/10 18:15:05 ip and request, ('127.0.0.1', 64607)
+GET /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:15:05 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:15:05 cookie ['']
+2018/08/10 18:15:05 path and query /register {}
+2018/08/10 18:15:24 ip and request, ('127.0.0.1', 64613)
+GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:15:24 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:15:24 cookie ['']
+2018/08/10 18:15:24 path and query /login {}
+2018/08/10 18:15:24 login, cookies {}
+2018/08/10 18:15:36 ip and request, ('127.0.0.1', 64615)
+GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:15:36 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:15:36 cookie ['']
+2018/08/10 18:15:36 path and query /login {}
+2018/08/10 18:15:36 login, cookies {}
+2018/08/10 18:15:46 ip and request, ('127.0.0.1', 64620)
+POST /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=gua&password=123
+2018/08/10 18:15:46 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Content-Length: 25', 'Cache-Control: max-age=0', 'Origin: http://localhost:3000', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:15:46 cookie ['']
+2018/08/10 18:15:46 path and query /login {}
+2018/08/10 18:15:46 login, cookies {}
+2018/08/10 18:15:46 kwargs,  {'username': 'gua'}
+2018/08/10 18:15:47 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}]
+2018/08/10 18:15:51 ip and request, ('127.0.0.1', 64622)
+GET /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:15:51 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:15:51 cookie ['']
+2018/08/10 18:15:51 path and query /register {}
+2018/08/10 18:15:55 start at :3000
+2018/08/10 18:15:58 start at :3000
+2018/08/10 18:16:03 start at :3001
+2018/08/10 18:16:27 ip and request, ('127.0.0.1', 64629)
+GET /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:16:27 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:16:27 cookie ['']
+2018/08/10 18:16:27 path and query /register {}
+2018/08/10 18:16:36 ip and request, ('127.0.0.1', 64631)
+POST /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 38
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=gua&password=123&note=xiaogua
+2018/08/10 18:16:36 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Content-Length: 38', 'Cache-Control: max-age=0', 'Origin: http://localhost:3001', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:16:36 cookie ['']
+2018/08/10 18:16:36 path and query /register {}
+2018/08/10 18:16:36 kwargs,  {'username': 'gua'}
+2018/08/10 18:16:36 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}]
+2018/08/10 18:16:36 ip and request, ('127.0.0.1', 64633)
+GET /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:16:36 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:16:36 cookie ['']
+2018/08/10 18:16:36 path and query /register {}
+2018/08/10 18:23:26 ip and request, ('127.0.0.1', 64692)
+GET /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:23:26 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:23:26 cookie ['']
+2018/08/10 18:23:26 path and query /register {}
+2018/08/10 18:23:31 ip and request, ('127.0.0.1', 64694)
+GET /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:23:31 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:23:31 cookie ['']
+2018/08/10 18:23:31 path and query /register {}
+2018/08/10 18:30:48 ip and request, ('127.0.0.1', 64753)
+POST /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 39
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=gua&password=213123&note=guamy
+2018/08/10 18:30:48 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Content-Length: 39', 'Cache-Control: max-age=0', 'Origin: http://localhost:3001', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:30:48 cookie ['']
+2018/08/10 18:30:48 path and query /register {}
+2018/08/10 18:30:48 kwargs,  {'username': 'gua'}
+2018/08/10 18:30:48 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}]
+2018/08/10 18:30:48 ip and request, ('127.0.0.1', 64755)
+GET /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/10 18:30:48 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/10 18:30:48 cookie ['']
+2018/08/10 18:30:48 path and query /register {}

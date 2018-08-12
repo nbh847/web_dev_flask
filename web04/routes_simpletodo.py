@@ -1,16 +1,8 @@
 from utils import log
 from todo import Todo
 from models import User
-from routes_static import current_user
-
-
-def template(name):
-    """
-    根据名字读取 templates 文件夹里的一个文件并返回
-    """
-    path = 'templates/' + name
-    with open(path, 'r', encoding='utf-8') as f:
-        return f.read()
+from routes_user import current_user
+from utils import template
 
 
 def response_with_headers(headers, code=200):
@@ -54,32 +46,9 @@ def index(request):
     """
     todo 首页的路由函数
     """
-    headers = {
-        'Content-Type': 'text/html',
-    }
-    # 找到当前登录的用户, 如果没登录, 就 redirect 到 /login
-    uname = current_user(request)
-    log('当前用户名: {}'.format(uname))
-    u = User.find_by(username=uname)
-    if u is None:
-        return redirect('/login')
-    todo_list = Todo.find_all(user_id=u.id)
-    # 下面这行生成一个 html 字符串
-    # todo_html = ''.join(['<h3>{} : {} </h3>'.format(t.id, t.title)
-    #                      for t in todo_list])
-    # 上面一行列表推倒的代码相当于下面几行
-    todos = []
-    for t in todo_list:
-        edit_link = '<a href="/todo/edit?id={}">编辑</a>'.format(t.id)
-        delete_link = '<a href="/todo/delete?id={}">删除</a>'.format(t.id)
-        s = '<h3>{} : {} {} {}</h3>'.format(t.id, t.title, edit_link, delete_link)
-        todos.append(s)
-    todo_html = ''.join(todos)
-    # 替换模板文件中的标记字符串
-    body = template('todo_index.html')
-    body = body.replace('{{todos}}', todo_html)
-    # 下面 3 行可以改写为一条函数, 还把 headers 也放进函数中
-    header = response_with_headers(headers)
+    header = 'HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n'
+    todo_list = Todo.all()
+    body = template('simple_todo_index.html', todos=todo_list)
     r = header + '\r\n' + body
     return r.encode(encoding='utf-8')
 

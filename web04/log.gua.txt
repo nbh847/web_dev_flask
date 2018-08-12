@@ -1068,3 +1068,337 @@ AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
 2018/08/11 16:07:55 cookie ['user=l2fdd4def32selaf']
 2018/08/11 16:07:55 path and query /login {}
 2018/08/11 16:07:55 login, cookies {'user': 'l2fdd4def32selaf'}
+2018/08/11 16:17:28 start at :3001
+2018/08/11 16:17:56 ip and request, ('127.0.0.1', 45050)
+POST /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=l2fdd4def32selaf
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=gua&password=123
+2018/08/11 16:17:56 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Content-Length: 25', 'Cache-Control: max-age=0', 'Origin: http://localhost:3001', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=l2fdd4def32selaf', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:17:56 cookie ['user=l2fdd4def32selaf']
+2018/08/11 16:17:56 path and query /login {}
+2018/08/11 16:17:56 login, cookies {'user': 'l2fdd4def32selaf'}
+2018/08/11 16:17:56 kwargs,  {'username': 'gua'}
+2018/08/11 16:17:56 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}, {'id': 2, 'username': 'gua', 'password': '123', 'note': 'xixixi'}]
+2018/08/11 16:17:56 kwargs,  {'username': 'gua'}
+2018/08/11 16:17:56 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}, {'id': 2, 'username': 'gua', 'password': '123', 'note': 'xixixi'}]
+2018/08/11 16:17:56 成功登录: gua
+2018/08/11 16:17:56 headers response {'Set-Cookie': 'user=a9cdgfkhkkjwg9ed'}
+2018/08/11 16:17:56 ip and request, ('127.0.0.1', 45054)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:17:56 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:17:56 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:17:56 path and query / {}
+2018/08/11 16:18:09 ip and request, ('127.0.0.1', 45068)
+GET /todo HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:18:09 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:18:09 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:18:09 path and query /todo {}
+2018/08/11 16:18:09 kwargs,  {'id': 2}
+2018/08/11 16:18:09 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}, {'id': 2, 'username': 'gua', 'password': '123', 'note': 'xixixi'}]
+2018/08/11 16:18:09 当前用户名: < User
+id: (2)
+username: (gua)
+password: (123)
+note: (xixixi) >
+
+2018/08/11 16:18:09 kwargs,  {'username': < User
+id: (2)
+username: (gua)
+password: (123)
+note: (xixixi) >
+}
+2018/08/11 16:18:09 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}, {'id': 2, 'username': 'gua', 'password': '123', 'note': 'xixixi'}]
+2018/08/11 16:18:09 ip and request, ('127.0.0.1', 45072)
+GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:18:09 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:18:09 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:18:09 path and query /login {}
+2018/08/11 16:18:09 login, cookies {'user': 'a9cdgfkhkkjwg9ed'}
+2018/08/11 16:28:07 start at :3001
+2018/08/11 16:28:11 ip and request, ('127.0.0.1', 45370)
+GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:28:11 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:28:11 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:28:11 path and query /login {}
+2018/08/11 16:28:11 login, cookies {'user': 'a9cdgfkhkkjwg9ed'}
+2018/08/11 16:30:33 start at :3001
+2018/08/11 16:30:46 start at :3000
+2018/08/11 16:30:53 ip and request, ('127.0.0.1', 39842)
+GET /todo HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:30:53 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:30:53 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:30:53 path and query /todo {}
+2018/08/11 16:30:53 find by kwargs,  {'id': -1}
+2018/08/11 16:30:53 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}, {'id': 2, 'username': 'gua', 'password': '123', 'note': 'xixixi'}]
+2018/08/11 16:31:39 start at :3000
+2018/08/11 16:32:23 start at :3001
+2018/08/11 16:32:26 ip and request, ('127.0.0.1', 45450)
+GET /todo HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:32:26 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:32:26 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:32:26 path and query /todo {}
+2018/08/11 16:32:26 find by kwargs,  {'id': -1}
+2018/08/11 16:32:26 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}, {'id': 2, 'username': 'gua', 'password': '123', 'note': 'xixixi'}]
+2018/08/11 16:32:26 find by kwargs,  {'username': None}
+2018/08/11 16:32:26 all models: [{'id': 1, 'username': 'weasny', 'password': '123', 'note': 'ni'}, {'id': 2, 'username': 'gua', 'password': '123', 'note': 'xixixi'}]
+2018/08/11 16:36:12 start at :3001
+2018/08/11 16:36:16 ip and request, ('127.0.0.1', 45478)
+GET /todo HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:36:16 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:36:16 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:36:16 path and query /todo {}
+2018/08/11 16:36:16 all models: [{'id': 3, 'title': '喝水', 'user_id': 1}, {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}, {'id': 6, 'title': '你好', 'user_id': 2}, {'id': 7, 'title': '123', 'user_id': 2}, {'id': 9, 'title': '12313qfasdf', 'user_id': 2}, {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}]
+2018/08/11 16:36:16 Todo model form: {'id': 3, 'title': '喝水', 'user_id': 1}
+2018/08/11 16:36:16 Todo model form: {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}
+2018/08/11 16:36:16 Todo model form: {'id': 6, 'title': '你好', 'user_id': 2}
+2018/08/11 16:36:16 Todo model form: {'id': 7, 'title': '123', 'user_id': 2}
+2018/08/11 16:36:16 Todo model form: {'id': 9, 'title': '12313qfasdf', 'user_id': 2}
+2018/08/11 16:36:16 Todo model form: {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}
+2018/08/11 16:36:52 start at :3001
+2018/08/11 16:36:54 start at :3001
+2018/08/11 16:36:59 start at :3000
+2018/08/11 16:37:04 ip and request, ('127.0.0.1', 39942)
+GET /todo HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:37:04 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:37:04 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:37:04 path and query /todo {}
+2018/08/11 16:37:04 all models: [{'id': 3, 'title': '喝水', 'user_id': 1}, {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}, {'id': 6, 'title': '你好', 'user_id': 2}, {'id': 7, 'title': '123', 'user_id': 2}, {'id': 9, 'title': '12313qfasdf', 'user_id': 2}, {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}]
+2018/08/11 16:37:04 Todo model form: {'id': 3, 'title': '喝水', 'user_id': 1}
+2018/08/11 16:37:04 Todo model form: {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}
+2018/08/11 16:37:04 Todo model form: {'id': 6, 'title': '你好', 'user_id': 2}
+2018/08/11 16:37:04 Todo model form: {'id': 7, 'title': '123', 'user_id': 2}
+2018/08/11 16:37:04 Todo model form: {'id': 9, 'title': '12313qfasdf', 'user_id': 2}
+2018/08/11 16:37:04 Todo model form: {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}
+2018/08/11 16:37:58 start at :3000
+2018/08/11 16:38:08 start at :3001
+2018/08/11 16:38:14 ip and request, ('127.0.0.1', 45512)
+GET /todo HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:38:14 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:38:14 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:38:14 path and query /todo {}
+2018/08/11 16:38:14 all models: [{'id': 3, 'title': '喝水', 'user_id': 1}, {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}, {'id': 6, 'title': '你好', 'user_id': 2}, {'id': 7, 'title': '123', 'user_id': 2}, {'id': 9, 'title': '12313qfasdf', 'user_id': 2}, {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}]
+2018/08/11 16:38:14 Todo model form: {'id': 3, 'title': '喝水', 'user_id': 1}
+2018/08/11 16:38:14 Todo model form: {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}
+2018/08/11 16:38:14 Todo model form: {'id': 6, 'title': '你好', 'user_id': 2}
+2018/08/11 16:38:14 Todo model form: {'id': 7, 'title': '123', 'user_id': 2}
+2018/08/11 16:38:14 Todo model form: {'id': 9, 'title': '12313qfasdf', 'user_id': 2}
+2018/08/11 16:38:14 Todo model form: {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}
+2018/08/11 16:38:20 ip and request, ('127.0.0.1', 45516)
+GET /delete?id=3 HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/todo
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:38:20 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/todo', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:38:20 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:38:20 path and query /delete {'id': '3'}
+2018/08/11 16:40:22 start at :3001
+2018/08/11 16:42:20 start at :3001
+2018/08/11 16:42:30 ip and request, ('127.0.0.1', 45536)
+GET /todo HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:42:30 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:42:30 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:42:30 path and query /todo {}
+2018/08/11 16:42:30 all models: [{'id': 3, 'title': '喝水', 'user_id': 1}, {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}, {'id': 6, 'title': '你好', 'user_id': 2}, {'id': 7, 'title': '123', 'user_id': 2}, {'id': 9, 'title': '12313qfasdf', 'user_id': 2}, {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}]
+2018/08/11 16:42:30 Todo model form: {'id': 3, 'title': '喝水', 'user_id': 1}
+2018/08/11 16:42:30 Todo model form: {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}
+2018/08/11 16:42:30 Todo model form: {'id': 6, 'title': '你好', 'user_id': 2}
+2018/08/11 16:42:30 Todo model form: {'id': 7, 'title': '123', 'user_id': 2}
+2018/08/11 16:42:30 Todo model form: {'id': 9, 'title': '12313qfasdf', 'user_id': 2}
+2018/08/11 16:42:30 Todo model form: {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}
+2018/08/11 16:42:45 start at :3001
+2018/08/11 16:42:55 start at :3000
+2018/08/11 16:43:00 ip and request, ('127.0.0.1', 40028)
+GET /todo HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:43:00 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:43:00 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:43:00 path and query /todo {}
+2018/08/11 16:43:00 all models: [{'id': 3, 'title': '喝水', 'user_id': 1}, {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}, {'id': 6, 'title': '你好', 'user_id': 2}, {'id': 7, 'title': '123', 'user_id': 2}, {'id': 9, 'title': '12313qfasdf', 'user_id': 2}, {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}]
+2018/08/11 16:43:00 Todo model form: {'id': 3, 'title': '喝水', 'user_id': 1}
+2018/08/11 16:43:00 Todo model form: {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}
+2018/08/11 16:43:00 Todo model form: {'id': 6, 'title': '你好', 'user_id': 2}
+2018/08/11 16:43:00 Todo model form: {'id': 7, 'title': '123', 'user_id': 2}
+2018/08/11 16:43:00 Todo model form: {'id': 9, 'title': '12313qfasdf', 'user_id': 2}
+2018/08/11 16:43:00 Todo model form: {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}
+2018/08/11 16:43:01 ip and request, ('127.0.0.1', 40032)
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3000/todo
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:43:01 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: image/webp,image/apng,image/*,*/*;q=0.8', 'Referer: http://localhost:3000/todo', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:43:01 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:43:01 path and query /favicon.ico {}
+2018/08/11 16:43:03 ip and request, ('127.0.0.1', 40036)
+GET /edit?id=3 HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/todo
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=a9cdgfkhkkjwg9ed
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/11 16:43:03 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/todo', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=a9cdgfkhkkjwg9ed', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/11 16:43:03 cookie ['user=a9cdgfkhkkjwg9ed']
+2018/08/11 16:43:03 path and query /edit {'id': '3'}

@@ -63,7 +63,7 @@ class Model(object):
         用法如下，kwargs 是只有一个元素的 dict
         u = User.find_by(username='gua')
         """
-        log('kwargs, ', kwargs)
+        log('find by kwargs, ', kwargs)
 
         for k, v in kwargs.items():
             for item in cls.all():

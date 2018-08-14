@@ -1,34 +1,10 @@
 from utils import log
-from todo import Todo
+from models import Todo
 from models import User
 from routes_user import current_user
 from utils import template
-
-
-def response_with_headers(headers, code=200):
-    """
-    Content-Type: text/html
-    Set-Cookie: user=gua
-    """
-    header = 'HTTP/1.1 {} VERY OK\r\n'.format(code)
-    header += ''.join(['{}: {}\r\n'.format(k, v)
-                       for k, v in headers.items()])
-    return header
-
-
-def redirect(url):
-    """
-    浏览器在收到 302 响应的时候
-    会自动在 HTTP header 里面找 Location 字段并获取一个 url
-    然后自动请求新的 url
-    """
-    headers = {
-        'Location': url,
-    }
-    # 增加 Location 字段并生成 HTTP 响应返回
-    # 注意, 没有 HTTP body 部分
-    r = response_with_headers(headers, 302) + '\r\n'
-    return r.encode('utf-8')
+from utils import redirect
+from utils import http_response
 
 
 def login_required(route_function):
@@ -38,7 +14,6 @@ def login_required(route_function):
         if u is None:
             return redirect('/login')
         return route_function(request)
-
     return f
 
 
@@ -46,39 +21,19 @@ def index(request):
     """
     todo 首页的路由函数
     """
-    header = 'HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n'
     todo_list = Todo.all()
     body = template('simple_todo_index.html', todos=todo_list)
-    r = header + '\r\n' + body
-    return r.encode(encoding='utf-8')
+    return http_response(body)
 
 
 def edit(request):
     """
-    todo edit 的路由函数
+    edit 首页的路由函数, 返回edit响应
     """
-    headers = {
-        'Content-Type': 'text/html',
-    }
-    uname = current_user(request)
-    u = User.find_by(username=uname)
-    if u is None:
-        return redirect('/login')
-    # 得到当前编辑的 todo 的 id
     todo_id = int(request.query.get('id', -1))
     t = Todo.find_by(id=todo_id)
-    if t.user_id != u.id:
-        return redirect('/login')
-    # if todo_id < 1:
-    #     return error(404)
-    # 替换模板文件中的标记字符串
-    body = template('todo_edit.html')
-    body = body.replace('{{todo_id}}', str(t.id))
-    body = body.replace('{{todo_title}}', str(t.title))
-    # 下面 3 行可以改写为一条函数, 还把 headers 也放进函数中
-    header = response_with_headers(headers)
-    r = header + '\r\n' + body
-    return r.encode(encoding='utf-8')
+    body = template('simple_todo_edit.html', todo=t)
+    return http_response(body)
 
 
 def add(request):
@@ -87,47 +42,27 @@ def add(request):
     """
     form = request.form()
     t = Todo.new(form)
-    t.user_id = u.id
     t.save()
     # 浏览器发送数据过来被处理后, 重定向到首页
     # 浏览器在请求新首页的时候, 就能看到新增的数据了
-    return redirect('/todo')
+    return redirect('/')
 
 
 def update(request):
-    """
-    用于增加新 todo 的路由函数
-    """
-    uname = current_user(request)
-    u = User.find_by(username=uname)
-    if u is None:
-        return redirect('/login')
-    if request.method == 'POST':
-        # 修改并且保存 todo
-        form = request.form()
-        print('debug update', form)
-        todo_id = int(form.get('id', -1))
-        t = Todo.find_by(id=todo_id)
-        t.title = form.get('title', t.title)
-        t.save()
-    # 浏览器发送数据过来被处理后, 重定向到首页
-    # 浏览器在请求新首页的时候, 就能看到新增的数据了
-    return redirect('/todo')
-
-
-def delete_todo(request):
-    uname = current_user(request)
-    u = User.find_by(username=uname)
-    if u is None:
-        return redirect('/login')
-    # 得到当前编辑的 todo 的 id
+    # 更新一个 TODO
     todo_id = int(request.query.get('id', -1))
     t = Todo.find_by(id=todo_id)
-    if t.user_id != u.id:
-        return redirect('/login')
-    if t is not None:
-        t.remove()
-    return redirect('/todo')
+    form = request.form()
+    t.task = form.get('task', '')
+    t.save()
+    return redirect('/')
+
+
+def delete(request):
+    # 得到当前编辑的 todo 的 id
+    todo_id = int(request.query.get('id', -1))
+    Todo.delete(todo_id)
+    return redirect('/')
 
 
 # 路由字典
@@ -135,10 +70,10 @@ def delete_todo(request):
 # value 是路由处理函数(就是响应)
 route_dict = {
     # GET 请求, 显示页面
-    '/todo': index,
-    '/todo/edit': edit,
+    '/': index,
+    '/add': add,
     # POST 请求, 处理数据
-    '/todo/add': login_required(add),
-    '/todo/update': update,
-    '/todo/delete': delete_todo,
+    '/edit': edit,
+    '/update': update,
+    '/delete': delete,
 }

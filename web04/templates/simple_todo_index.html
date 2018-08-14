@@ -12,7 +12,7 @@
 
     {% for t in todos %}
         <div>
-            {{ t.id }} : {{ t.task }}
+            {{ t.id }} : {{ t.task }} @ {{ t.ut() }}
             <a href="/edit?id={{t.id}}">edit</a>
             <a href="/delete?id={{t.id}}">删除</a>
         </div>

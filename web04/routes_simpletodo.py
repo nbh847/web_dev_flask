@@ -85,18 +85,10 @@ def add(request):
     """
     用于增加新 todo 的路由函数
     """
-    headers = {
-        'Content-Type': 'text/html',
-    }
-    uname = current_user(request)
-    u = User.find_by(username=uname)
-    if request.method == 'POST':
-        # 'title=aaa'
-        # {'title': 'aaa'}
-        form = request.form()
-        t = Todo.new(form)
-        t.user_id = u.id
-        t.save()
+    form = request.form()
+    t = Todo.new(form)
+    t.user_id = u.id
+    t.save()
     # 浏览器发送数据过来被处理后, 重定向到首页
     # 浏览器在请求新首页的时候, 就能看到新增的数据了
     return redirect('/todo')

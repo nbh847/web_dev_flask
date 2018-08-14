@@ -1,5 +1,4 @@
 from utils import log
-from models import Message
 from models import User
 
 import random

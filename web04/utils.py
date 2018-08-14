@@ -36,20 +36,19 @@ def template(path, **kwargs):
 
 
 def response_with_headers(headers, status_code=200):
-    header = 'HTTP/1.1 {} OK \r\n'.format(status_code)
-    header += ''.join(['{}: {}\r\n'.format(k, v) for k, v in headers.items()])
+    header = 'HTTP/1.1 {} OK\r\n'.format(status_code)
+    header += ''.join(['{}: {}\r\n'.format(k, v)
+                       for k, v in headers.items()])
     return header
 
 
-def redirect(location, headers=None):
-    h = {
+def redirect(location):
+    headers = {
         'Content-Type': 'text/html',
     }
-    if headers is not None:
-        h.update(headers)
-    h['Location'] = location
+    headers['Location'] = location
     # 302 状态码的含义, Location 的作用
-    header = response_with_headers(h, 302)
+    header = response_with_headers(headers, 302)
     r = header + '\r\n' + ''
     return r.encode(encoding='utf-8')
 

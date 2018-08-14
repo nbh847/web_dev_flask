@@ -1068,3 +1068,1451 @@ AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
 2018/08/11 16:07:55 cookie ['user=l2fdd4def32selaf']
 2018/08/11 16:07:55 path and query /login {}
 2018/08/11 16:07:55 login, cookies {'user': 'l2fdd4def32selaf'}
+2018/08/14 17:57:26 start at :3001
+2018/08/14 17:57:34 ip and request, ('127.0.0.1', 59959)
+GET /register HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 17:57:34 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 17:57:34 cookie ['']
+2018/08/14 17:57:34 path and query /register {}
+2018/08/14 17:57:38 ip and request, ('127.0.0.1', 59967)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 17:57:38 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 17:57:38 cookie ['']
+2018/08/14 17:57:38 path and query / {}
+2018/08/14 17:57:38 find all kwargs,  {}
+2018/08/14 17:57:38 all models: [{'id': 3, 'title': '喝水', 'user_id': 1}, {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}, {'id': 6, 'title': '你好', 'user_id': 2}, {'id': 7, 'title': '123', 'user_id': 2}, {'id': 9, 'title': '12313qfasdf', 'user_id': 2}, {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}]
+2018/08/14 17:57:38 Todo model form: {'id': 3, 'title': '喝水', 'user_id': 1}
+2018/08/14 17:57:38 Todo model form: {'id': 4, 'title': 'ceui+哈哈哈哈哈', 'user_id': 1}
+2018/08/14 17:57:38 Todo model form: {'id': 6, 'title': '你好', 'user_id': 2}
+2018/08/14 17:57:38 Todo model form: {'id': 7, 'title': '123', 'user_id': 2}
+2018/08/14 17:57:38 Todo model form: {'id': 9, 'title': '12313qfasdf', 'user_id': 2}
+2018/08/14 17:57:38 Todo model form: {'id': 10, 'title': '嘻嘻哈哈', 'user_id': 1}
+2018/08/14 18:00:19 start at :3001
+2018/08/14 18:00:22 ip and request, ('127.0.0.1', 60000)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:00:22 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:00:22 cookie ['']
+2018/08/14 18:00:22 path and query / {}
+2018/08/14 18:00:50 ip and request, ('127.0.0.1', 60001)
+
+2018/08/14 18:01:14 start at :3001
+2018/08/14 18:01:16 ip and request, ('127.0.0.1', 60006)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:01:16 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:01:16 cookie ['']
+2018/08/14 18:01:16 path and query / {}
+2018/08/14 18:01:19 ip and request, ('127.0.0.1', 60008)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:01:19 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:01:19 cookie ['']
+2018/08/14 18:01:19 path and query / {}
+2018/08/14 18:01:23 ip and request, ('127.0.0.1', 60010)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:01:23 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:01:23 cookie ['']
+2018/08/14 18:01:23 path and query / {}
+2018/08/14 18:02:43 ip and request, ('127.0.0.1', 60012)
+
+2018/08/14 18:04:01 start at :3001
+2018/08/14 18:04:03 ip and request, ('127.0.0.1', 60024)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:04:03 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:04:03 cookie ['']
+2018/08/14 18:04:03 path and query / {}
+2018/08/14 18:04:03 all of ms: [< Todo
+id: (3)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+]
+2018/08/14 18:04:52 ip and request, ('127.0.0.1', 60025)
+
+2018/08/14 18:08:11 start at :3001
+2018/08/14 18:08:15 ip and request, ('127.0.0.1', 60048)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:08:15 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:08:15 cookie ['']
+2018/08/14 18:08:15 path and query / {}
+2018/08/14 18:08:15 path of all: data/Todo.txt
+2018/08/14 18:08:15 load [
+  {
+    "id": 3,
+    "title": "喝水",
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "title": "ceui+哈哈哈哈哈",
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "title": "你好",
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "title": "123",
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "title": "12313qfasdf",
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "title": "嘻嘻哈哈",
+    "user_id": 1
+  }
+]
+2018/08/14 18:08:15 all of ms: [< Todo
+id: (3)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+]
+2018/08/14 18:08:55 ip and request, ('127.0.0.1', 60049)
+
+2018/08/14 18:12:35 ip and request, ('127.0.0.1', 60072)
+POST /add HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 13
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+task=xixihaha
+2018/08/14 18:12:35 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Content-Length: 13', 'Cache-Control: max-age=0', 'Origin: http://localhost:3001', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:12:35 cookie ['']
+2018/08/14 18:12:35 path and query /add {}
+2018/08/14 18:12:35 path of all: data/Todo.txt
+2018/08/14 18:12:35 load [
+  {
+    "id": 3,
+    "title": "喝水",
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "title": "ceui+哈哈哈哈哈",
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "title": "你好",
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "title": "123",
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "title": "12313qfasdf",
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "title": "嘻嘻哈哈",
+    "user_id": 1
+  }
+]
+2018/08/14 18:12:35 all of ms: [< Todo
+id: (3)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+]
+2018/08/14 18:12:35 ip and request, ('127.0.0.1', 60074)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:12:35 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:12:35 cookie ['']
+2018/08/14 18:12:35 path and query / {}
+2018/08/14 18:12:35 path of all: data/Todo.txt
+2018/08/14 18:12:35 load [
+  {
+    "id": 3,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:12:35 all of ms: [< Todo
+id: (3)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:15:45 ip and request, ('127.0.0.1', 60089)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:15:45 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:15:45 cookie ['']
+2018/08/14 18:15:45 path and query / {}
+2018/08/14 18:15:45 path of all: data/Todo.txt
+2018/08/14 18:15:45 load [
+  {
+    "id": 3,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:15:45 all of ms: [< Todo
+id: (3)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:22:19 ip and request, ('127.0.0.1', 60113)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:22:19 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:22:19 cookie ['']
+2018/08/14 18:22:19 path and query / {}
+2018/08/14 18:22:19 path of all: data/Todo.txt
+2018/08/14 18:22:19 load [
+  {
+    "id": 3,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:22:19 all of ms: [< Todo
+id: (3)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:22:54 ip and request, ('127.0.0.1', 60116)
+
+2018/08/14 18:22:54 ip and request, ('127.0.0.1', 60117)
+
+2018/08/14 18:23:22 ip and request, ('127.0.0.1', 60128)
+GET /delete?id=3 HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:22 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:22 cookie ['']
+2018/08/14 18:23:22 path and query /delete {'id': '3'}
+2018/08/14 18:23:22 path of all: data/Todo.txt
+2018/08/14 18:23:22 load [
+  {
+    "id": 3,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 4,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:22 all of ms: [< Todo
+id: (3)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:22 ip and request, ('127.0.0.1', 60130)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:22 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:22 cookie ['']
+2018/08/14 18:23:22 path and query / {}
+2018/08/14 18:23:22 path of all: data/Todo.txt
+2018/08/14 18:23:22 load [
+  {
+    "id": 4,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:22 all of ms: [< Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:23 ip and request, ('127.0.0.1', 60132)
+GET /delete?id=4 HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:23 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:23 cookie ['']
+2018/08/14 18:23:23 path and query /delete {'id': '4'}
+2018/08/14 18:23:23 path of all: data/Todo.txt
+2018/08/14 18:23:23 load [
+  {
+    "id": 4,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:23 all of ms: [< Todo
+id: (4)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:23 ip and request, ('127.0.0.1', 60134)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:23 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:23 cookie ['']
+2018/08/14 18:23:23 path and query / {}
+2018/08/14 18:23:23 path of all: data/Todo.txt
+2018/08/14 18:23:23 load [
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:23 all of ms: [< Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:24 ip and request, ('127.0.0.1', 60136)
+GET /delete?id=6 HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:24 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:24 cookie ['']
+2018/08/14 18:23:24 path and query /delete {'id': '6'}
+2018/08/14 18:23:24 path of all: data/Todo.txt
+2018/08/14 18:23:24 load [
+  {
+    "id": 6,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:24 all of ms: [< Todo
+id: (6)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:24 ip and request, ('127.0.0.1', 60138)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:24 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:24 cookie ['']
+2018/08/14 18:23:24 path and query / {}
+2018/08/14 18:23:24 path of all: data/Todo.txt
+2018/08/14 18:23:24 load [
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:24 all of ms: [< Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:25 ip and request, ('127.0.0.1', 60140)
+GET /delete?id=7 HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:25 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:25 cookie ['']
+2018/08/14 18:23:25 path and query /delete {'id': '7'}
+2018/08/14 18:23:25 path of all: data/Todo.txt
+2018/08/14 18:23:25 load [
+  {
+    "id": 7,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:25 all of ms: [< Todo
+id: (7)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:25 ip and request, ('127.0.0.1', 60142)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:25 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:25 cookie ['']
+2018/08/14 18:23:25 path and query / {}
+2018/08/14 18:23:25 path of all: data/Todo.txt
+2018/08/14 18:23:25 load [
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:25 all of ms: [< Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:26 ip and request, ('127.0.0.1', 60144)
+GET /delete?id=9 HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:26 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:26 cookie ['']
+2018/08/14 18:23:26 path and query /delete {'id': '9'}
+2018/08/14 18:23:26 path of all: data/Todo.txt
+2018/08/14 18:23:26 load [
+  {
+    "id": 9,
+    "task": "",
+    "completed": false,
+    "user_id": 2
+  },
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:26 all of ms: [< Todo
+id: (9)
+task: ()
+completed: (False)
+user_id: (2) 
+>
+, < Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:26 ip and request, ('127.0.0.1', 60146)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:26 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:26 cookie ['']
+2018/08/14 18:23:26 path and query / {}
+2018/08/14 18:23:26 path of all: data/Todo.txt
+2018/08/14 18:23:26 load [
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:26 all of ms: [< Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]
+2018/08/14 18:23:26 ip and request, ('127.0.0.1', 60148)
+GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/14 18:23:26 request header: ['Host: localhost:3001', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3001/', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/14 18:23:26 cookie ['']
+2018/08/14 18:23:26 path and query / {}
+2018/08/14 18:23:26 path of all: data/Todo.txt
+2018/08/14 18:23:26 load [
+  {
+    "id": 10,
+    "task": "",
+    "completed": false,
+    "user_id": 1
+  },
+  {
+    "id": 11,
+    "task": "xixihaha",
+    "completed": false,
+    "user_id": -1
+  }
+]
+2018/08/14 18:23:26 all of ms: [< Todo
+id: (10)
+task: ()
+completed: (False)
+user_id: (1) 
+>
+, < Todo
+id: (11)
+task: (xixihaha)
+completed: (False)
+user_id: (-1) 
+>
+]

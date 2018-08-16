@@ -1,6 +1,7 @@
 from utils import log
 from utils import template
 from utils import redirect
+from utils import http_response
 
 from models import Todo
 
@@ -10,11 +11,9 @@ def index(request):
     """
     主页的处理函数, 返回主页的响应
     """
-    header = 'HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n'
     todo_list = Todo.all()
     body = template('simple_todo_index.html', todos=todo_list)
-    r = header + '\r\n' + body
-    return r.encode(encoding='utf-8')
+    return http_response(body)
 
 
 def add(request):
@@ -36,12 +35,21 @@ def edit(request):
     edit 页的处理函数，返回 edit 页的响应
     /edit?id=1
     '''
-    header = 'HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n'
     todo_id = int(request.query.get('id', -1))
     t = Todo.find_by(id=todo_id)
-    body = template('simple_todo_edit.html', todos=t)
-    r = header + '\r\n' + body
-    return r.encode(encoding='utf-8')
+    body = template('simple_todo_edit.html', todo=t)
+    return http_response(body)
+
+
+def update(request):
+    """
+    通过下面这样的链接来删更新一个 todo
+    /update?id=1
+    """
+    todo_id = int(request.query.get('id'))
+    form = request.form()
+    Todo.update(id=todo_id, form=form)
+    return redirect('/')
 
 
 def delete(request):
@@ -58,5 +66,6 @@ route_dict = {
     '/': index,
     '/add': add,
     '/edit': edit,
+    '/update': update,
     '/delete': delete,
 }

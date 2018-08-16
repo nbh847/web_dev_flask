@@ -42,13 +42,15 @@ def response_with_headers(headers, status_code=200):
     return header
 
 
-def redirect(location):
-    headers = {
+def redirect(location, headers=None):
+    h = {
         'Content-Type': 'text/html',
     }
-    headers['Location'] = location
+    if headers is not None:
+        h.update(headers)
+    h['Location'] = location
     # 302 状态码的含义, Location 的作用
-    header = response_with_headers(headers, 302)
+    header = response_with_headers(h, 302)
     r = header + '\r\n' + ''
     return r.encode(encoding='utf-8')
 

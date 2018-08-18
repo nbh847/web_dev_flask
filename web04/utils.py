@@ -35,12 +35,8 @@ def template(path, **kwargs):
     return t.render(**kwargs)
 
 
-def response_with_headers(headers, code=200):
-    """
-    Content-Type: text/html
-    Set-Cookie: user=gua
-    """
-    header = 'HTTP/1.1 {} VERY OK\r\n'.format(code)
+def response_with_headers(headers, status_code=200):
+    header = 'HTTP/1.1 {} OK\r\n'.format(status_code)
     header += ''.join(['{}: {}\r\n'.format(k, v)
                        for k, v in headers.items()])
     return header
@@ -68,4 +64,3 @@ def http_response(body, headers=None):
         header += ''.join(['{}: {}\r\n'.format(k, v) for k, v in headers.items()])
     r = header + '\r\n' + body
     return r.encode(encoding='utf-8')
-

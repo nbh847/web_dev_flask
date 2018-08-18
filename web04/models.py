@@ -1,4 +1,5 @@
 import json
+import time
 
 from utils import log
 import time
@@ -18,7 +19,7 @@ def save(data, path):
 def load(path):
     with open(path, 'r', encoding='utf-8') as f:
         s = f.read()
-        # log('load', s)
+        log('load', s)
         return json.loads(s)
 
 
@@ -50,11 +51,13 @@ class Model(object):
         all 方法(类里面的函数叫方法)使用 load 函数得到所有的 models
         """
         path = cls.db_path()
+        log('path of all: {}'.format(path))
         models = load(path)
         # 这里用了列表推导生成一个包含所有 实例 的 list
         # m 是 dict, 用 cls(m) 可以初始化一个 cls 的实例
         # 不明白就 log 大法看看这些都是啥
         ms = [cls(m) for m in models]
+        log('all of ms: {}'.format(ms))
         return ms
 
     @classmethod
@@ -165,6 +168,7 @@ class User(Model):
         self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
+        self.role = int(form.get('role', 10))
 
     def todos(self):
         # 列表推倒和过滤
@@ -174,6 +178,19 @@ class User(Model):
             if t.user_id == self.id:
                 ts.append(t)
         return ts
+
+    def validate_login(self):
+        u = User.find_by(username=self.username)
+        if u is not None:
+            return u.password == self.password
+        else:
+            return False
+
+    def is_admin(self):
+        return self.role == 1
+
+    def validate_register(self):
+        return len(self.username) > 2 and len(self.password) > 2
 
 
 # 针对我们的数据 TODO
@@ -232,7 +249,7 @@ class Todo(Model):
     def is_owner(self, id):
         return self.user_id == id
 
-    def ut(self):
+    def ct(self):
         format = '%Y/%m/%d %H:%M:%S'
         value = time.localtime(self.updated_time)
         dt = time.strftime(format, value)
@@ -244,12 +261,12 @@ class Todo(Model):
         self.completed = False
         # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', user_id)
+        # 添加创建和修改时间
         self.created_time = form.get('created_time', None)
         self.updated_time = form.get('updated_time', None)
         if self.created_time is None:
             self.created_time = int(time.time())
             self.updated_time = self.created_time
-
 
 
 # 微博类

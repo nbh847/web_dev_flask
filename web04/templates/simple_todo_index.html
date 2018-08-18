@@ -14,6 +14,8 @@
         <div>
             {{ t.id }} : {{ t.task }} @ {{ t.ut() }}
             <a href="/edit?id={{t.id}}">edit</a>
+            {{ t.id }} : {{ t.task }} @ {{ t.ct() }}
+            <a href="/edit?id={{t.id}}">编辑</a>
             <a href="/delete?id={{t.id}}">删除</a>
         </div>
     {% endfor %}

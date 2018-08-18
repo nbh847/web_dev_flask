@@ -14,12 +14,28 @@ def login_required(route_function):
         if u is None:
             return redirect('/login')
         return route_function(request)
+
     return f
 
 
+from models import Todo
+
+
+# 直接写函数名字不写 route 了
 def index(request):
     """
-    todo 首页的路由函数
+    主页的处理函数, 返回主页的响应
+    """
+    todo_list = Todo.all()
+    body = template('simple_todo_index.html', todos=todo_list)
+    return http_response(body)
+
+
+def add(request):
+    """
+    接受浏览器发过来的添加 todo 请求
+    添加数据并发一个 302 定向给浏览器
+    浏览器就会去请求 / 从而回到主页
     """
     todo_list = Todo.all()
     body = template('simple_todo_index.html', todos=todo_list)
@@ -27,25 +43,14 @@ def index(request):
 
 
 def edit(request):
-    """
-    edit 首页的路由函数, 返回edit响应
-    """
+    '''
+    edit 页的处理函数，返回 edit 页的响应
+    /edit?id=1
+    '''
     todo_id = int(request.query.get('id', -1))
     t = Todo.find_by(id=todo_id)
     body = template('simple_todo_edit.html', todo=t)
     return http_response(body)
-
-
-def add(request):
-    """
-    用于增加新 todo 的路由函数
-    """
-    form = request.form()
-    t = Todo.new(form)
-    t.save()
-    # 浏览器发送数据过来被处理后, 重定向到首页
-    # 浏览器在请求新首页的时候, 就能看到新增的数据了
-    return redirect('/')
 
 
 def update(request):
@@ -59,20 +64,19 @@ def update(request):
 
 
 def delete(request):
-    # 得到当前编辑的 todo 的 id
-    todo_id = int(request.query.get('id', -1))
+    """
+    通过下面这样的链接来删除一个 todo
+    /delete?id=1
+    """
+    todo_id = int(request.query.get('id'))
     Todo.delete(todo_id)
     return redirect('/')
 
 
-# 路由字典
-# key 是路由(路由就是 path)
-# value 是路由处理函数(就是响应)
 route_dict = {
-    # GET 请求, 显示页面
+    # POST 请求, 处理数据
     '/': index,
     '/add': add,
-    # POST 请求, 处理数据
     '/edit': edit,
     '/update': update,
     '/delete': delete,

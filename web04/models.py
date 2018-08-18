@@ -1,8 +1,6 @@
 import json
-import time
 
 from utils import log
-import time
 
 
 def save(data, path):
@@ -19,7 +17,7 @@ def save(data, path):
 def load(path):
     with open(path, 'r', encoding='utf-8') as f:
         s = f.read()
-        log('load', s)
+        # log('load', s)
         return json.loads(s)
 
 
@@ -33,7 +31,6 @@ class Model(object):
     user = User()
     user.db_path() 返回 User.txt
     """
-
     @classmethod
     def db_path(cls):
         """
@@ -51,13 +48,11 @@ class Model(object):
         all 方法(类里面的函数叫方法)使用 load 函数得到所有的 models
         """
         path = cls.db_path()
-        log('path of all: {}'.format(path))
         models = load(path)
         # 这里用了列表推导生成一个包含所有 实例 的 list
         # m 是 dict, 用 cls(m) 可以初始化一个 cls 的实例
         # 不明白就 log 大法看看这些都是啥
         ms = [cls(m) for m in models]
-        log('all of ms: {}'.format(ms))
         return ms
 
     @classmethod
@@ -112,6 +107,7 @@ class Model(object):
             l = [m.__dict__ for m in models]
             path = cls.db_path()
             save(l, path)
+            return
 
     def __repr__(self):
         """
@@ -163,12 +159,17 @@ class User(Model):
     User 是一个保存用户数据的 model
     现在只有两个属性 username 和 password
     """
-
     def __init__(self, form):
         self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
-        self.role = int(form.get('role', 10))
+
+    def validate_login(self):
+        u = User.find_by(username=self.username)
+        if u is not None:
+            return u.password == self.password
+        else:
+            return False
 
     def todos(self):
         # 列表推倒和过滤
@@ -178,21 +179,6 @@ class User(Model):
             if t.user_id == self.id:
                 ts.append(t)
         return ts
-
-    def validate_login(self):
-        u = User.find_by(username=self.username)
-        if u is not None:
-            return u.password == self.password
-        else:
-            return False
-
-    def is_admin(self):
-        return self.role == 1
-
-    def validate_register(self):
-        return len(self.username) > 2 and len(self.password) > 2
-
-
 # 针对我们的数据 TODO
 # 我们要做 4 件事情
 """
@@ -203,8 +189,6 @@ D delete 删除数据
 
 Todo.new() 来创建一个 todo
 """
-
-
 class Todo(Model):
     @classmethod
     def new(cls, form, user_id=-1):
@@ -224,14 +208,12 @@ class Todo(Model):
         t = cls.find(id)
         valid_names = [
             'task',
-            'completed',
+            'completed'
         ]
         for key in form:
             # 这里只应该更新我们想要更新的东西
             if key in valid_names:
                 setattr(t, key, form[key])
-        # 修改更新时间
-        t.updated_time = int(time.time())
         t.save()
 
     @classmethod
@@ -249,24 +231,12 @@ class Todo(Model):
     def is_owner(self, id):
         return self.user_id == id
 
-    def ct(self):
-        format = '%Y/%m/%d %H:%M:%S'
-        value = time.localtime(self.updated_time)
-        dt = time.strftime(format, value)
-        return dt
-
     def __init__(self, form, user_id=-1):
         self.id = form.get('id', None)
         self.task = form.get('task', '')
         self.completed = False
         # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', user_id)
-        # 添加创建和修改时间
-        self.created_time = form.get('created_time', None)
-        self.updated_time = form.get('updated_time', None)
-        if self.created_time is None:
-            self.created_time = int(time.time())
-            self.updated_time = self.created_time
 
 
 # 微博类
@@ -280,7 +250,6 @@ class Tweet(Model):
     def comments(self):
         return [c for c in Comment.all() if c.tweet_id == self.id]
 
-
 # 评论类
 class Comment(Model):
     def __init__(self, form, user_id=-1):
@@ -289,7 +258,6 @@ class Comment(Model):
         # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', user_id)
         self.tweet_id = form.get('tweet_id', -1)
-
 
 def test_tweet():
     # 用户 1 发微博
@@ -309,7 +277,6 @@ def test_tweet():
     t = Tweet.find(1)
     print('comments, ', t.comments())
     pass
-
 
 def test():
     cs = Comment.find_all(user_id=2)

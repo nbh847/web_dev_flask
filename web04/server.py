@@ -1,15 +1,12 @@
 import socket
 import urllib.parse
 
+from routes.routes_simpletodo import route_dict as simpletodo_routes
+from routes.routes_static import route_static
+from routes.routes_user import route_dict as user_routes
+
+from routes.routes_todo import route_dict as todo_routes
 from utils import log
-
-from routes_static import route_static
-
-from routes_simpletodo import route_dict as simpletodo_routes
-from routes_user import route_dict as user_routes
-
-# 注意要用 from import as 来避免重名
-from routes_simpletodo import route_dict as todo_route
 
 
 # 定义一个 class 用于保存请求的数据
@@ -25,7 +22,6 @@ class Request(object):
     def add_cookies(self):
         """
         height=169; user=gua
-        :return:
         """
         cookies = self.headers.get('Cookie', '')
         kvs = cookies.split('; ')
@@ -51,12 +47,14 @@ class Request(object):
         body = urllib.parse.unquote(self.body)
         args = body.split('&')
         f = {}
+        log('form debug', args, len(args))
         for arg in args:
             k, v = arg.split('=')
             f[k] = v
         return f
 
 
+#
 request = Request()
 
 
@@ -68,7 +66,7 @@ def error(request, code=404):
     # 之前上课我说过不要用数字来作为字典的 key
     # 但是在 HTTP 协议中 code 都是数字似乎更方便所以打破了这个原则
     e = {
-        404: b'HTTP/1.x 404 NOT FOUND\r\n\r\n<h1>NOT FOUND</h1>',
+        404: b'HTTP/1.1 404 NOT FOUND\r\n\r\n<h1>NOT FOUND</h1>',
     }
     return e.get(code, b'')
 
@@ -105,13 +103,12 @@ def response_for_path(path):
     """
     r = {
         '/static': route_static,
-        '/': route_static,
-        # '/login': route_login,
-        # '/messages': route_message,
     }
     # 注册外部的路由
     r.update(simpletodo_routes)
     r.update(user_routes)
+    r.update(todo_routes)
+    #
     response = r.get(path, error)
     return response(request)
 
@@ -130,9 +127,12 @@ def run(host='', port=3000):
             # 监听 接受 读取请求数据 解码成字符串
             s.listen(3)
             connection, address = s.accept()
-            r = connection.recv(1000)
+            r = connection.recv(1100)
             r = r.decode('utf-8')
-            log('ip and request, {}\n{}'.format(address, r))
+            log('完整请求')
+            log(r.replace('\r\n', '\n'))
+            log('请求结束')
+            # log('ip and request, {}\n{}'.format(address, r))
             # 因为 chrome 会发送空请求导致 split 得到空 list
             # 所以这里判断一下防止程序崩溃
             if len(r.split()) < 2:
@@ -140,15 +140,19 @@ def run(host='', port=3000):
             path = r.split()[1]
             # 设置 request 的 method
             request.method = r.split()[0]
-            header = r.split('\r\n\r\n', 1)[0].split('\r\n')[1:]
-            log('request header: {}'.format(header))
-            request.add_headers(header)
+            request.add_headers(r.split('\r\n\r\n', 1)[0].split('\r\n')[1:])
             # 把 body 放入 request 中
             request.body = r.split('\r\n\r\n', 1)[1]
             # 用 response_for_path 函数来得到 path 对应的响应内容
             response = response_for_path(path)
             # 把响应发送给客户端
             connection.sendall(response)
+            log('完整响应')
+            try:
+                log(response.decode('utf-8').replace('\r\n', '\n'))
+            except Exception as e:
+                log('异常', e)
+            log('响应结束')
             # 处理完请求, 关闭连接
             connection.close()
 

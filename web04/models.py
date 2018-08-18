@@ -31,6 +31,7 @@ class Model(object):
     user = User()
     user.db_path() 返回 User.txt
     """
+
     @classmethod
     def db_path(cls):
         """
@@ -159,10 +160,38 @@ class User(Model):
     User 是一个保存用户数据的 model
     现在只有两个属性 username 和 password
     """
+
     def __init__(self, form):
         self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
+
+    def salted_password(self, password, salt='$!@><?>HUI&DWQa`'):
+        """$!@><?>HUI&DWQa`"""
+        import hashlib
+        def sha256(ascii_str):
+            return hashlib.sha256(ascii_str.encode('ascii')).hexdigest()
+
+        hash1 = sha256(password)
+        hash2 = sha256(hash1 + salt)
+        return hash2
+
+    def hashed_password(self, pwd):
+        import hashlib
+        # 用 ascii 编码转换成 bytes 对象
+        p = pwd.encode('ascii')
+        s = hashlib.sha256(p)
+        # 返回摘要字符串
+        return s.hexdigest()
+
+    def validate_register(self):
+        pwd = self.password
+        self.password = self.salted_password(pwd)
+        if User.find_by(username=self.username) is None:
+            self.save()
+            return self
+        else:
+            return None
 
     def validate_login(self):
         u = User.find_by(username=self.username)
@@ -179,6 +208,8 @@ class User(Model):
             if t.user_id == self.id:
                 ts.append(t)
         return ts
+
+
 # 针对我们的数据 TODO
 # 我们要做 4 件事情
 """
@@ -189,6 +220,8 @@ D delete 删除数据
 
 Todo.new() 来创建一个 todo
 """
+
+
 class Todo(Model):
     @classmethod
     def new(cls, form, user_id=-1):
@@ -240,7 +273,7 @@ class Todo(Model):
 
 
 # 微博类
-class Tweet(Model):
+class Weibo(Model):
     def __init__(self, form, user_id=-1):
         self.id = form.get('id', None)
         self.content = form.get('content', '')
@@ -248,7 +281,8 @@ class Tweet(Model):
         self.user_id = form.get('user_id', user_id)
 
     def comments(self):
-        return [c for c in Comment.all() if c.tweet_id == self.id]
+        return [c for c in Comment.all() if c.weibo_id == self.id]
+
 
 # 评论类
 class Comment(Model):
@@ -257,31 +291,33 @@ class Comment(Model):
         self.content = form.get('content', '')
         # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', user_id)
-        self.tweet_id = form.get('tweet_id', -1)
+        self.weibo_id = form.get('weibo_id', -1)
 
-def test_tweet():
+
+def test_weibo():
     # 用户 1 发微博
     form = {
-        'content': 'hello tweet'
+        'content': 'hello weibo'
     }
-    t = Tweet(form, 1)
+    t = Weibo(form, 1)
     t.save()
     # 用户 2 评论微博
     form = {
         'content': '楼主说得对'
     }
     c = Comment(form, 2)
-    c.tweet_id = 1
+    c.weibo_id = 1
     c.save()
     # 取出微博 1 的所有评论
-    t = Tweet.find(1)
+    t = Weibo.find(1)
     print('comments, ', t.comments())
     pass
+
 
 def test():
     cs = Comment.find_all(user_id=2)
     print(cs, '评论数', len(cs))
-    # test_tweet()
+    # test_weibo()
     # 测试数据关联
     # form = {
     #     'task': 'gua 的 todo'

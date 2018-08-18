@@ -1,5 +1,5 @@
 from models import User
-from models import Tweet
+from models import Weibo
 
 from .session import session
 from utils import template
@@ -26,16 +26,16 @@ def index(request):
     user_id = int(user_id)
     user = User.find(user_id)
     if user is None:
-        return error(request)
+        return redirect('/login')
     # 找到 user 发布的所有 weibo
-    weibos = Tweet.find_all(user_id=user_id)
+    weibos = Weibo.find_all(user_id=user_id)
     log('weibos', weibos)
 
     def weibo_tag(weibo):
-        return '<p>{} from {}@{} <a href="/tweet/delete?id={}">删除</a> <a href="/tweet/edit?id={}">修改</a></p>'.format(
+        return '<p>{} from {} <a href="/weibo/delete?id={}">删除</a> <a href="/weibo/edit?id={}">修改</a></p>'.format(
             weibo.content,
             user.username,
-            weibo.created_time,
+            # weibo.created_time,
             weibo.id,
             weibo.id,
         )
@@ -67,10 +67,10 @@ def add(request):
     user = User.find(uid)
     # 创建微博
     form = request.form()
-    w = Tweet(form)
+    w = Weibo(form)
     w.user_id = user.id
     w.save()
-    return redirect('/tweet?user_id={}'.format(user.id))
+    return redirect('/weibo?user_id={}'.format(user.id))
 
 
 def delete(request):
@@ -83,9 +83,9 @@ def delete(request):
     # 删除微博
     weibo_id = request.query.get('id', None)
     weibo_id = int(weibo_id)
-    w = Tweet.find(weibo_id)
+    w = Weibo.find(weibo_id)
     w.delete()
-    return redirect('/tweet?user_id={}'.format(user.id))
+    return redirect('/weibo?user_id={}'.format(user.id))
 
 
 def edit(request):
@@ -95,7 +95,7 @@ def edit(request):
     header = response_with_headers(headers)
     weibo_id = request.query.get('id', -1)
     weibo_id = int(weibo_id)
-    w = Tweet.find(weibo_id)
+    w = Weibo.find(weibo_id)
     if w is None:
         return error(request)
     # 生成一个 edit 页面
@@ -112,13 +112,13 @@ def update(request):
     form = request.form()
     content = form.get('content', '')
     weibo_id = int(form.get('id', -1))
-    w = Tweet.find(weibo_id)
+    w = Weibo.find(weibo_id)
     if user.id != w.user_id:
         return error(request)
     w.content = content
     w.save()
     # 重定向到用户的主页
-    return redirect('/tweet?user_id={}'.format(user.id))
+    return redirect('/weibo?user_id={}'.format(user.id))
 
 
 # 定义一个函数统一检测是否登录
@@ -137,10 +137,10 @@ def login_required(route_function):
 
 
 route_dict = {
-    '/tweet/index': index,
-    '/tweet/new': login_required(new),
-    '/tweet/add': login_required(add),
-    '/tweet/delete': login_required(delete),
-    '/tweet/edit': login_required(edit),
-    '/tweet/update': login_required(update),
+    '/weibo/index': index,
+    '/weibo/new': login_required(new),
+    '/weibo/add': login_required(add),
+    '/weibo/delete': login_required(delete),
+    '/weibo/edit': login_required(edit),
+    '/weibo/update': login_required(update),
 }

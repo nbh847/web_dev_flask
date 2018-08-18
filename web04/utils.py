@@ -3,7 +3,6 @@ import os.path
 import time
 
 
-
 def log(*args, **kwargs):
     # time.time() 返回 unix time
     # 如何把 unix time 转换为普通人类可以看懂的格式呢？
@@ -12,6 +11,7 @@ def log(*args, **kwargs):
     dt = time.strftime(format, value)
     with open('log.gua.txt', 'a', encoding='utf-8') as f:
         print(dt, *args, file=f, **kwargs)
+        print(dt, *args, **kwargs)
 
 
 # __file__ 就是本文件的名字
@@ -35,7 +35,7 @@ def template(path, **kwargs):
 def response_with_headers(headers, status_code=200):
     header = 'HTTP/1.1 {} OK\r\n'.format(status_code)
     header += ''.join(['{}: {}\r\n'.format(k, v)
-                           for k, v in headers.items()])
+                       for k, v in headers.items()])
     return header
 
 

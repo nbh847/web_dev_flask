@@ -4,7 +4,6 @@ from models import User
 
 import random
 
-
 # 这个函数用来保存所有的 messages
 message_list = []
 session = {}
@@ -53,7 +52,7 @@ def response_with_headers(headers):
     """
     header = 'HTTP/1.1 210 VERY OK\r\n'
     header += ''.join(['{}: {}\r\n'.format(k, v)
-                           for k, v in headers.items()])
+                       for k, v in headers.items()])
     return header
 
 
@@ -171,5 +170,5 @@ route_dict = {
     '/login': route_login,
     '/register': route_register,
     # '/messages': route_message,
-    '/profile':route_profile,
+    '/profile': route_profile,
 }

@@ -15,6 +15,7 @@ def current_user(request):
     user_id = session.get(session_id, -1)
     return user_id
 
+
 # 微博相关页面
 def index(request):
     headers = {
@@ -29,6 +30,7 @@ def index(request):
     # 找到 user 发布的所有 weibo
     weibos = Tweet.find_all(user_id=user_id)
     log('weibos', weibos)
+
     def weibo_tag(weibo):
         return '<p>{} from {}@{} <a href="/tweet/delete?id={}">删除</a> <a href="/tweet/edit?id={}">修改</a></p>'.format(
             weibo.content,
@@ -37,6 +39,7 @@ def index(request):
             weibo.id,
             weibo.id,
         )
+
     weibos = '\n'.join([weibo_tag(w) for w in weibos])
     body = template('weibo_index.html', weibos=weibos)
     r = header + '\r\n' + body
@@ -129,6 +132,7 @@ def login_required(route_function):
         else:
             # 登录了, 正常返回路由函数响应
             return route_function(request)
+
     return func
 
 

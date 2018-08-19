@@ -48,6 +48,7 @@ def route_login(request):
     log('login, cookies', request.cookies)
 
     if request.method == 'POST':
+
         form = request.form()
         u = User(form)
         if u.validate_login():
@@ -56,11 +57,19 @@ def route_login(request):
             session_id = random_str()
             session[session_id] = user.id
             headers['Set-Cookie'] = 'user={}'.format(session_id)
-            log('headers response', headers)
+            log('route login headers response', headers)
+            log('成功登录')
             # 登录后定向到 /
             return redirect('/', headers)
     # 显示登录页面
-    body = template('login.html')
+    session_id = request.cookies.get('user', '')
+    user_id = session.get(session_id, '')
+    username = User.find_by(id=user_id)
+    if username is None:
+        username = '游客'
+    else:
+        username = username.username
+    body = template('login.html', username=username)
     header = response_with_headers(headers)
     r = header + '\r\n' + body
     return r.encode(encoding='utf-8')

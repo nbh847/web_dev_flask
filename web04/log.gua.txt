@@ -1268,3 +1268,1265 @@ Content-Type: text/html
 </body>
 </html>
 17:20:13 响应结束
+17:34:15 start at :3001
+17:34:21 完整请求
+17:34:21 POST /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 28
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Origin: http://localhost:3001
+Content-Type: application/x-www-form-urlencoded
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=weasny&password=123
+17:34:21 请求结束
+17:34:21 cookie ['user=aksgkk4ji4l49s83']
+17:34:21 path and query /login {}
+17:34:21 login, cookies {'user': 'aksgkk4ji4l49s83'}
+17:34:21 form debug ['username=weasny', 'password=123'] 2
+17:34:21 kwargs,  {'username': 'weasny'} <class 'dict'>
+17:34:21 完整响应
+17:34:21 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 weasny</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+17:34:21 响应结束
+17:35:16 完整请求
+17:35:16 GET /weibo/index HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:35:16 请求结束
+17:35:16 cookie ['user=aksgkk4ji4l49s83']
+17:35:16 path and query /weibo/index {}
+17:35:16 kwargs,  {'id': -1} <class 'dict'>
+17:35:16 完整响应
+17:35:16 HTTP/1.1 302 OK
+Content-Type: text/html
+Location: /login
+
+
+17:35:16 响应结束
+17:35:16 完整请求
+17:35:16 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:35:16 请求结束
+17:35:16 cookie ['user=aksgkk4ji4l49s83']
+17:35:16 path and query /login {}
+17:35:16 login, cookies {'user': 'aksgkk4ji4l49s83'}
+17:35:16 form debug [''] 1
+17:35:45 start at :3001
+17:35:48 start at :3001
+17:35:49 start at :3001
+17:36:04 start at :3000
+17:36:07 完整请求
+17:36:07 GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:36:07 请求结束
+17:36:07 cookie ['user=aksgkk4ji4l49s83']
+17:36:07 path and query / {}
+17:37:07 start at :3000
+17:37:15 start at :3001
+17:37:17 完整请求
+17:37:17 GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:37:17 请求结束
+17:37:17 cookie ['user=aksgkk4ji4l49s83']
+17:37:17 path and query / {}
+17:42:42 start at :3001
+17:42:46 完整请求
+17:42:46 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:42:46 请求结束
+17:42:46 cookie ['user=aksgkk4ji4l49s83']
+17:42:46 path and query /login {}
+17:42:46 login, cookies {'user': 'aksgkk4ji4l49s83'}
+17:42:46 form debug [''] 1
+17:47:09 start at :3001
+17:47:11 完整请求
+17:47:11 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:47:11 请求结束
+17:47:11 cookie ['user=aksgkk4ji4l49s83']
+17:47:11 path and query /login {}
+17:47:11 login, cookies {'user': 'aksgkk4ji4l49s83'}
+17:47:11 form debug [''] 1
+17:47:53 start at :3001
+17:48:01 start at :3000
+17:48:28 完整请求
+17:48:28 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+
+17:48:28 请求结束
+17:48:28 cookie ['']
+17:48:28 path and query /login {}
+17:48:28 login, cookies {}
+17:48:28 form debug [''] 1
+17:49:05 start at :3000
+17:49:06 start at :3000
+17:49:07 start at :3000
+17:56:05 start at :3000
+17:56:13 完整请求
+17:56:13 GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:56:13 请求结束
+17:56:13 cookie ['user=aksgkk4ji4l49s83']
+17:56:13 path and query / {}
+17:56:13 完整响应
+17:56:13 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple todo</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input name="task">
+        <button>add todo</button>
+    </form>
+
+    
+        <div>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">edit</a>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">编辑</a>
+            <a href="/delete?id=1">删除</a>
+        </div>
+    
+</body>
+</html>
+17:56:13 响应结束
+17:56:14 完整请求
+17:56:14 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+17:56:14 请求结束
+17:56:14 cookie ['user=aksgkk4ji4l49s83']
+17:56:14 path and query /login {}
+17:56:14 login, cookies {'user': 'aksgkk4ji4l49s83'}
+17:56:14 form body: 
+17:56:14 form debug [''] 1
+18:00:58 start at :3000
+18:01:10 完整请求
+18:01:10 GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+
+18:01:10 请求结束
+18:01:10 cookie ['']
+18:01:10 path and query / {}
+18:01:10 完整响应
+18:01:10 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple todo</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input name="task">
+        <button>add todo</button>
+    </form>
+
+    
+        <div>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">edit</a>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">编辑</a>
+            <a href="/delete?id=1">删除</a>
+        </div>
+    
+</body>
+</html>
+18:01:10 响应结束
+18:01:30 完整请求
+18:01:30 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+
+18:01:30 请求结束
+18:01:30 cookie ['']
+18:01:30 path and query /login {}
+18:01:30 login, cookies {}
+18:01:30 form debug [''] 1
+18:05:31 start at :3000
+18:05:34 完整请求
+18:05:34 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=aksgkk4ji4l49s83
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+18:05:34 请求结束
+18:05:34 cookie ['user=aksgkk4ji4l49s83']
+18:05:34 path and query /login {}
+18:05:34 login, cookies {'user': 'aksgkk4ji4l49s83'}
+18:05:34 form debug [''] 1
+18:17:32 start at :3000
+18:17:36 完整请求
+18:17:36 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+
+18:17:36 请求结束
+18:17:36 cookie ['']
+18:17:36 path and query /login {}
+18:17:36 login, cookies {}
+18:17:36 kwargs,  {'id': ''} <class 'dict'>
+18:17:36 完整响应
+18:17:36 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:17:36 响应结束
+18:21:15 完整请求
+18:21:15 GET /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+
+18:21:15 请求结束
+18:21:15 cookie ['']
+18:21:15 path and query /register {}
+18:21:15 完整响应
+18:21:15 HTTP/1.1 210 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页面</title>
+</head>
+<body>
+    <h1>注册</h1>
+    <form action="/register" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <input type="text" name="note" placeholder="签名">
+        <br>
+        <button type="submit">注册</button>
+    </form>
+    <h3></h3>
+</body>
+</html>
+18:21:15 响应结束
+18:21:26 完整请求
+18:21:26 POST /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 37
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+username=xxq&password=123&note=qqqqqq
+18:21:26 请求结束
+18:21:26 cookie ['']
+18:21:26 path and query /register {}
+18:21:26 form debug ['username=xxq', 'password=123', 'note=qqqqqq'] 3
+18:21:26 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:21:26 debug 1
+18:21:26 完整响应
+18:21:26 HTTP/1.1 302 VERY OK
+Content-Type: text/html
+Location: /login
+
+
+18:21:26 响应结束
+18:21:26 完整请求
+18:21:26 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+
+18:21:26 请求结束
+18:21:26 cookie ['']
+18:21:26 path and query /login {}
+18:21:26 login, cookies {}
+18:21:26 kwargs,  {'id': ''} <class 'dict'>
+18:21:26 完整响应
+18:21:26 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:21:26 响应结束
+18:21:33 完整请求
+18:21:33 POST /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+username=xxq&password=123
+18:21:33 请求结束
+18:21:33 cookie ['']
+18:21:33 path and query /login {}
+18:21:33 login, cookies {}
+18:21:33 form debug ['username=xxq', 'password=123'] 2
+18:21:33 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:21:33 kwargs,  {'id': ''} <class 'dict'>
+18:21:33 完整响应
+18:21:33 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:21:33 响应结束
+18:24:07 完整请求
+18:24:07 POST /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+username=xxq&password=123
+18:24:07 请求结束
+18:24:07 cookie ['']
+18:24:07 path and query /login {}
+18:24:07 login, cookies {}
+18:24:07 form debug ['username=xxq', 'password=123'] 2
+18:24:07 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:24:07 kwargs,  {'id': ''} <class 'dict'>
+18:24:07 完整响应
+18:24:07 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:24:07 响应结束
+18:24:27 完整请求
+18:24:27 POST /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+username=xxq&password=123
+18:24:27 请求结束
+18:24:27 cookie ['']
+18:24:27 path and query /login {}
+18:24:27 login, cookies {}
+18:24:27 form debug ['username=xxq', 'password=123'] 2
+18:24:27 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:24:27 kwargs,  {'id': ''} <class 'dict'>
+18:24:27 完整响应
+18:24:27 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:24:27 响应结束
+18:32:36 start at :3000
+18:32:46 完整请求
+18:32:46 POST /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+username=xxq&password=123
+18:32:46 请求结束
+18:32:46 cookie ['']
+18:32:46 path and query /login {}
+18:32:46 login, cookies {}
+18:32:46 form debug ['username=xxq', 'password=123'] 2
+18:32:46 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:32:46 kwargs,  {'id': ''} <class 'dict'>
+18:32:46 完整响应
+18:32:46 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:32:46 响应结束
+18:36:02 start at :3000
+18:36:09 完整请求
+18:36:09 POST /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Origin: http://localhost:3000
+Content-Type: application/x-www-form-urlencoded
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+
+username=xxq&password=123
+18:36:09 请求结束
+18:36:09 cookie ['']
+18:36:09 path and query /login {}
+18:36:09 login, cookies {}
+18:36:09 form debug ['username=xxq', 'password=123'] 2
+18:36:09 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:36:09 validate login: 1be6af03717a0906a774a129ac467fcea8f89849df003548a8039cffffb12baf
+18:36:09 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:36:09 route login headers response {'Content-Type': 'text/html', 'Set-Cookie': 'user=asj9a4awsh3gwadj'}
+18:36:09 成功登录
+18:36:09 完整响应
+18:36:09 HTTP/1.1 302 VERY OK
+Content-Type: text/html
+Set-Cookie: user=asj9a4awsh3gwadj
+Location: /
+
+
+18:36:09 响应结束
+18:36:09 完整请求
+18:36:09 GET / HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=asj9a4awsh3gwadj
+
+
+18:36:09 请求结束
+18:36:09 cookie ['user=asj9a4awsh3gwadj']
+18:36:09 path and query / {}
+18:36:09 完整响应
+18:36:09 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple todo</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input name="task">
+        <button>add todo</button>
+    </form>
+
+    
+        <div>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">edit</a>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">编辑</a>
+            <a href="/delete?id=1">删除</a>
+        </div>
+    
+</body>
+</html>
+18:36:09 响应结束
+18:36:13 完整请求
+18:36:13 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=asj9a4awsh3gwadj
+
+
+18:36:13 请求结束
+18:36:13 cookie ['user=asj9a4awsh3gwadj']
+18:36:13 path and query /login {}
+18:36:13 login, cookies {'user': 'asj9a4awsh3gwadj'}
+18:36:13 kwargs,  {'id': 2} <class 'dict'>
+18:36:13 完整响应
+18:36:13 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 < User
+id: (2)
+username: (xxq)
+password: (1be6af03717a0906a774a129ac467fcea8f89849df003548a8039cffffb12baf) 
+>
+</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:36:13 响应结束
+18:37:49 完整请求
+18:37:49 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=asj9a4awsh3gwadj
+
+
+18:37:49 请求结束
+18:37:49 cookie ['user=asj9a4awsh3gwadj']
+18:37:49 path and query /login {}
+18:37:49 login, cookies {'user': 'asj9a4awsh3gwadj'}
+18:37:49 kwargs,  {'id': 2} <class 'dict'>
+18:37:49 完整响应
+18:37:49 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 < User
+id: (2)
+username: (xxq)
+password: (1be6af03717a0906a774a129ac467fcea8f89849df003548a8039cffffb12baf) 
+>
+</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:37:49 响应结束
+18:37:54 start at :3000
+18:38:06 start at :3001
+18:38:12 完整请求
+18:38:12 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=asj9a4awsh3gwadj
+
+
+18:38:12 请求结束
+18:38:12 cookie ['user=asj9a4awsh3gwadj']
+18:38:12 path and query /login {}
+18:38:12 login, cookies {'user': 'asj9a4awsh3gwadj'}
+18:38:12 kwargs,  {'id': ''} <class 'dict'>
+18:38:12 完整响应
+18:38:12 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:38:12 响应结束
+18:38:17 完整请求
+18:38:17 POST /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=asj9a4awsh3gwadj
+
+username=xxq&password=123
+18:38:17 请求结束
+18:38:17 cookie ['user=asj9a4awsh3gwadj']
+18:38:17 path and query /login {}
+18:38:17 login, cookies {'user': 'asj9a4awsh3gwadj'}
+18:38:17 form debug ['username=xxq', 'password=123'] 2
+18:38:17 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:38:17 validate login: 1be6af03717a0906a774a129ac467fcea8f89849df003548a8039cffffb12baf
+18:38:17 kwargs,  {'username': 'xxq'} <class 'dict'>
+18:38:17 route login headers response {'Content-Type': 'text/html', 'Set-Cookie': 'user=elsjaakdff2gfaas'}
+18:38:17 成功登录
+18:38:17 完整响应
+18:38:17 HTTP/1.1 302 VERY OK
+Content-Type: text/html
+Set-Cookie: user=elsjaakdff2gfaas
+Location: /
+
+
+18:38:17 响应结束
+18:38:17 完整请求
+18:38:17 GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=elsjaakdff2gfaas
+
+
+18:38:17 请求结束
+18:38:17 cookie ['user=elsjaakdff2gfaas']
+18:38:17 path and query / {}
+18:38:17 完整响应
+18:38:17 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple todo</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input name="task">
+        <button>add todo</button>
+    </form>
+
+    
+        <div>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">edit</a>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">编辑</a>
+            <a href="/delete?id=1">删除</a>
+        </div>
+    
+</body>
+</html>
+18:38:17 响应结束
+18:38:20 完整请求
+18:38:20 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=elsjaakdff2gfaas
+
+
+18:38:20 请求结束
+18:38:20 cookie ['user=elsjaakdff2gfaas']
+18:38:20 path and query /login {}
+18:38:20 login, cookies {'user': 'elsjaakdff2gfaas'}
+18:38:20 kwargs,  {'id': 2} <class 'dict'>
+18:38:20 完整响应
+18:38:20 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 xxq</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+18:38:20 响应结束
+10:20:58 start at :3001
+10:21:15 完整请求
+10:21:15 GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+10:21:15 请求结束
+10:21:15 cookie ['']
+10:21:15 path and query / {}
+10:21:15 完整响应
+10:21:15 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple todo</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input name="task">
+        <button>add todo</button>
+    </form>
+
+    
+        <div>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">edit</a>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">编辑</a>
+            <a href="/delete?id=1">删除</a>
+        </div>
+    
+</body>
+</html>
+10:21:15 响应结束
+10:21:16 完整请求
+10:21:16 GET /favicon.ico HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+10:21:16 请求结束
+10:21:16 cookie ['']
+10:21:16 path and query /favicon.ico {}
+10:21:16 完整响应
+10:21:16 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+10:21:16 响应结束
+10:21:23 完整请求
+10:21:23 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+10:21:23 请求结束
+10:21:23 cookie ['']
+10:21:23 path and query /login {}
+10:21:23 login, cookies {}
+10:21:23 kwargs,  {'id': ''} <class 'dict'>
+10:21:23 完整响应
+10:21:23 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+10:21:23 响应结束
+10:21:56 完整请求
+10:21:56 
+10:21:56 请求结束
+10:21:56 完整请求
+10:21:56 
+10:21:56 请求结束
+10:21:56 完整请求
+10:21:56 
+10:21:56 请求结束
+10:21:56 完整请求
+10:21:56 POST /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=xxq&password=123
+10:21:56 请求结束
+10:21:56 cookie ['']
+10:21:56 path and query /login {}
+10:21:56 login, cookies {}
+10:21:56 form debug ['username=xxq', 'password=123'] 2
+10:21:56 kwargs,  {'username': 'xxq'} <class 'dict'>
+10:21:56 validate login: 1be6af03717a0906a774a129ac467fcea8f89849df003548a8039cffffb12baf
+10:21:56 kwargs,  {'username': 'xxq'} <class 'dict'>
+10:21:56 route login headers response {'Content-Type': 'text/html', 'Set-Cookie': 'user=k9sjilsgd4dfgfkh'}
+10:21:56 成功登录
+10:21:56 完整响应
+10:21:56 HTTP/1.1 302 VERY OK
+Content-Type: text/html
+Set-Cookie: user=k9sjilsgd4dfgfkh
+Location: /
+
+
+10:21:56 响应结束
+10:21:56 完整请求
+10:21:56 GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=k9sjilsgd4dfgfkh
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+10:21:56 请求结束
+10:21:56 cookie ['user=k9sjilsgd4dfgfkh']
+10:21:56 path and query / {}
+10:21:56 完整响应
+10:21:56 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple todo</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input name="task">
+        <button>add todo</button>
+    </form>
+
+    
+        <div>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">edit</a>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">编辑</a>
+            <a href="/delete?id=1">删除</a>
+        </div>
+    
+</body>
+</html>
+10:21:56 响应结束
+10:22:05 完整请求
+10:22:05 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=k9sjilsgd4dfgfkh
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+10:22:05 请求结束
+10:22:05 cookie ['user=k9sjilsgd4dfgfkh']
+10:22:05 path and query /login {}
+10:22:05 login, cookies {'user': 'k9sjilsgd4dfgfkh'}
+10:22:05 kwargs,  {'id': 2} <class 'dict'>
+10:22:05 完整响应
+10:22:05 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 xxq</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+</body>
+</html>
+10:22:05 响应结束

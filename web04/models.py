@@ -195,8 +195,9 @@ class User(Model):
 
     def validate_login(self):
         u = User.find_by(username=self.username)
+        log('validate login: {}'.format(u.password))
         if u is not None:
-            return u.password == self.password
+            return self.salted_password(self.password) == u.password
         else:
             return False
 

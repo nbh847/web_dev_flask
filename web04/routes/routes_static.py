@@ -165,10 +165,10 @@ def route_static(request):
 # 路由字典
 # key 是路由(路由就是 path)
 # value 是路由处理函数(就是响应)
-route_dict = {
-    '/': route_index,
-    '/login': route_login,
-    '/register': route_register,
-    # '/messages': route_message,
-    '/profile': route_profile,
-}
+# route_dict = {
+#     '/': route_index,
+#     '/login': route_login,
+#     '/register': route_register,
+#     # '/messages': route_message,
+#     '/profile': route_profile,
+# }

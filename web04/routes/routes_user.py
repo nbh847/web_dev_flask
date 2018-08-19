@@ -60,7 +60,7 @@ def route_login(request):
             log('route login headers response', headers)
             log('成功登录')
             # 登录后定向到 /
-            return redirect('/', headers)
+            return redirect('/login', headers)
     # 显示登录页面
     session_id = request.cookies.get('user', '')
     user_id = session.get(session_id, '')

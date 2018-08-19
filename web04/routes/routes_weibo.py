@@ -1,5 +1,6 @@
 from models import User
 from models import Weibo
+from models import Comment
 
 from .session import session
 from utils import template
@@ -24,24 +25,17 @@ def index(request):
     header = response_with_headers(headers)
     user_id = request.query.get('user_id', -1)
     user_id = int(user_id)
+    log('index of user id: {}'.format(user_id))
+    # log('index of query: {}'.format(request.query))
     user = User.find(user_id)
     if user is None:
         return redirect('/login')
+    else:
+        log('has user: {}'.format(user))
     # 找到 user 发布的所有 weibo
     weibos = Weibo.find_all(user_id=user_id)
     log('weibos', weibos)
-
-    def weibo_tag(weibo):
-        return '<p>{} from {} <a href="/weibo/delete?id={}">删除</a> <a href="/weibo/edit?id={}">修改</a></p>'.format(
-            weibo.content,
-            user.username,
-            # weibo.created_time,
-            weibo.id,
-            weibo.id,
-        )
-
-    weibos = '\n'.join([weibo_tag(w) for w in weibos])
-    body = template('weibo_index.html', weibos=weibos)
+    body = template('weibo_index.html', weibos=weibos, user=user)
     r = header + '\r\n' + body
     return r.encode(encoding='utf-8')
 
@@ -70,7 +64,7 @@ def add(request):
     w = Weibo(form)
     w.user_id = user.id
     w.save()
-    return redirect('/weibo?user_id={}'.format(user.id))
+    return redirect('/weibo/index?user_id={}'.format(user.id))
 
 
 def delete(request):
@@ -83,9 +77,9 @@ def delete(request):
     # 删除微博
     weibo_id = request.query.get('id', None)
     weibo_id = int(weibo_id)
-    w = Weibo.find(weibo_id)
-    w.delete()
-    return redirect('/weibo?user_id={}'.format(user.id))
+    log('weibo id: {}'.format(weibo_id))
+    Weibo.delete(weibo_id)
+    return redirect('/weibo/index?user_id={}'.format(user.id))
 
 
 def edit(request):
@@ -118,7 +112,22 @@ def update(request):
     w.content = content
     w.save()
     # 重定向到用户的主页
-    return redirect('/weibo?user_id={}'.format(user.id))
+    return redirect('/weibo/index?user_id={}'.format(user.id))
+
+
+def comment_add(request):
+    headers = {
+        'Content-Type': 'text/html',
+    }
+    uid = current_user(request)
+    header = response_with_headers(headers)
+    user = User.find(uid)
+    # 创建评论
+    form = request.form()
+    w = Comment(form)
+    w.user_id = user.id
+    w.save()
+    return redirect('/weibo/index?user_id={}'.format(user.id))
 
 
 # 定义一个函数统一检测是否登录
@@ -143,4 +152,6 @@ route_dict = {
     '/weibo/delete': login_required(delete),
     '/weibo/edit': login_required(edit),
     '/weibo/update': login_required(update),
+    # 评论功能
+    '/comment/add': login_required(comment_add),
 }

@@ -59,15 +59,16 @@ class Model(object):
     @classmethod
     def find_all(cls, **kwargs):
         ms = []
-        log('kwargs, ', kwargs, type(kwargs))
         k, v = '', ''
         for key, value in kwargs.items():
+            log('find all key value {}: {}'.format(key, value))
             k, v = key, value
         all = cls.all()
         for m in all:
             # 也可以用 getattr(m, k) 取值
             if v == m.__dict__[k]:
                 ms.append(m)
+        log('find all ms: {}'.format(ms))
         return ms
 
     @classmethod
@@ -195,8 +196,8 @@ class User(Model):
 
     def validate_login(self):
         u = User.find_by(username=self.username)
-        log('validate login: {}'.format(u.password))
-        if u is not None:
+        log('validate login: {}'.format(u))
+        if u is not None and u.password:
             return self.salted_password(self.password) == u.password
         else:
             return False
@@ -282,7 +283,9 @@ class Weibo(Model):
         self.user_id = form.get('user_id', user_id)
 
     def comments(self):
-        return [c for c in Comment.all() if c.weibo_id == self.id]
+        # return [c for c in Comment.all() if c.weibo_id == self.id]
+        log('weibo id : {}, find all comments: {}'.format(self.id, Comment.find_all(weibo_id=self.id)))
+        return Comment.find_all(weibo_id=self.id)
 
 
 # 评论类
@@ -292,7 +295,11 @@ class Comment(Model):
         self.content = form.get('content', '')
         # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', user_id)
-        self.weibo_id = form.get('weibo_id', -1)
+        self.weibo_id = int(form.get('weibo_id', -1))
+
+    def user(self):
+        u = User.find_by(id=self.user_id)
+        return u
 
 
 def test_weibo():

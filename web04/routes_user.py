@@ -59,10 +59,10 @@ def route_register(request):
         log('post ')
         form = request.form()
         u = User(form)
-        if u.validate_register():
+        if u.validate_register() is not None:
             u.save()
             # 注册成功后 定向到登录页面
-            log('成功注册: {}'.format(form.get('username', 'None')))
+            log('成功注册: {}'.format(u))
             return redirect('/login')
         else:
             # 注册失败 定向到注册页面

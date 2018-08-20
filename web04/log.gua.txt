@@ -6617,3 +6617,235 @@ username: (haha)
 password: (123123) 
 >
 ]
+2018/08/17 15:11:06 start at :3000
+2018/08/17 15:11:12 ip and request, ('127.0.0.1', 51598)
+GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/17 15:11:12 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=sfs9eijgsdgibagb', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/17 15:11:12 cookie ['user=sfs9eijgsdgibagb']
+2018/08/17 15:11:12 path and query /login {}
+2018/08/17 15:11:12 login, cookies {'user': 'sfs9eijgsdgibagb'}
+2018/08/17 15:11:12 ip and request, ('127.0.0.1', 51600)
+GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/17 15:11:12 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Pragma: no-cache', 'Cache-Control: no-cache', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'Accept: image/webp,image/apng,image/*,*/*;q=0.8', 'Referer: http://localhost:3000/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=sfs9eijgsdgibagb', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/17 15:11:12 cookie ['user=sfs9eijgsdgibagb']
+2018/08/17 15:11:12 path and query /favicon.ico {}
+2018/08/17 15:11:18 ip and request, ('127.0.0.1', 51602)
+GET /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/17 15:11:18 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/login', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=sfs9eijgsdgibagb', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/17 15:11:18 cookie ['user=sfs9eijgsdgibagb']
+2018/08/17 15:11:18 path and query /register {}
+2018/08/17 15:11:35 ip and request, ('127.0.0.1', 51604)
+
+2018/08/17 15:11:35 ip and request, ('127.0.0.1', 51611)
+POST /register HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 41
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=niqiu&password=123&note=niniqqqq
+2018/08/17 15:11:35 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Content-Length: 41', 'Cache-Control: max-age=0', 'Origin: http://localhost:3000', 'Upgrade-Insecure-Requests: 1', 'Content-Type: application/x-www-form-urlencoded', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=sfs9eijgsdgibagb', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/17 15:11:35 cookie ['user=sfs9eijgsdgibagb']
+2018/08/17 15:11:35 path and query /register {}
+2018/08/17 15:11:35 post 
+2018/08/17 15:11:35 kwargs,  {'username': 'niqiu'} <class 'dict'>
+2018/08/17 15:11:35 path of all: data/User.txt
+2018/08/17 15:11:35 load [
+  {
+    "id": 1,
+    "username": "weasny",
+    "password": "123"
+  },
+  {
+    "id": 2,
+    "username": "gua",
+    "password": "123"
+  },
+  {
+    "id": 3,
+    "username": "haha",
+    "password": "123123"
+  }
+]
+2018/08/17 15:11:35 all of ms: [< User
+id: (1)
+username: (weasny)
+password: (123)
+role: (10) 
+>
+, < User
+id: (2)
+username: (gua)
+password: (123)
+role: (10) 
+>
+, < User
+id: (3)
+username: (haha)
+password: (123123)
+role: (10) 
+>
+]
+2018/08/17 15:11:35 path of all: data/User.txt
+2018/08/17 15:11:35 load [
+  {
+    "id": 1,
+    "username": "weasny",
+    "password": "123"
+  },
+  {
+    "id": 2,
+    "username": "gua",
+    "password": "123"
+  },
+  {
+    "id": 3,
+    "username": "haha",
+    "password": "123123"
+  }
+]
+2018/08/17 15:11:35 all of ms: [< User
+id: (1)
+username: (weasny)
+password: (123)
+role: (10) 
+>
+, < User
+id: (2)
+username: (gua)
+password: (123)
+role: (10) 
+>
+, < User
+id: (3)
+username: (haha)
+password: (123123)
+role: (10) 
+>
+]
+2018/08/17 15:11:35 path of all: data/User.txt
+2018/08/17 15:11:35 load [
+  {
+    "id": 1,
+    "username": "weasny",
+    "password": "123",
+    "role": 10
+  },
+  {
+    "id": 2,
+    "username": "gua",
+    "password": "123",
+    "role": 10
+  },
+  {
+    "id": 3,
+    "username": "haha",
+    "password": "123123",
+    "role": 10
+  },
+  {
+    "id": 4,
+    "username": "niqiu",
+    "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "role": 10
+  }
+]
+2018/08/17 15:11:35 all of ms: [< User
+id: (1)
+username: (weasny)
+password: (123)
+role: (10) 
+>
+, < User
+id: (2)
+username: (gua)
+password: (123)
+role: (10) 
+>
+, < User
+id: (3)
+username: (haha)
+password: (123123)
+role: (10) 
+>
+, < User
+id: (4)
+username: (niqiu)
+password: (a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3)
+role: (10) 
+>
+]
+2018/08/17 15:11:35 debug 3
+2018/08/17 15:11:35 成功注册: < User
+id: (4)
+username: (niqiu)
+password: (a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3)
+role: (10) 
+>
+
+2018/08/17 15:11:35 ip and request, ('127.0.0.1', 51613)
+GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/register
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+2018/08/17 15:11:35 request header: ['Host: localhost:3000', 'Connection: keep-alive', 'Cache-Control: max-age=0', 'Upgrade-Insecure-Requests: 1', 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36', 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8', 'Referer: http://localhost:3000/register', 'Accept-Encoding: gzip, deflate, br', 'Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7', 'Cookie: user=sfs9eijgsdgibagb', 'AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3']
+2018/08/17 15:11:35 cookie ['user=sfs9eijgsdgibagb']
+2018/08/17 15:11:35 path and query /login {}
+2018/08/17 15:11:35 login, cookies {'user': 'sfs9eijgsdgibagb'}

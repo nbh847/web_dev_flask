@@ -2,16 +2,25 @@
   {
     "id": 1,
     "username": "weasny",
-    "password": "123"
+    "password": "123",
+    "role": 10
   },
   {
     "id": 2,
     "username": "gua",
-    "password": "123"
+    "password": "123",
+    "role": 10
   },
   {
     "id": 3,
     "username": "haha",
-    "password": "123123"
+    "password": "123123",
+    "role": 10
+  },
+  {
+    "id": 4,
+    "username": "niqiu",
+    "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "role": 10
   }
 ]

@@ -1,26 +1,8 @@
 [
   {
     "id": 1,
-    "task": "sdfdsfxcxcxcxccx",
+    "task": "sdfsdfsd",
     "completed": false,
-    "user_id": -1,
-    "created_time": 1534391242,
-    "updated_time": 1534391253
-  },
-  {
-    "id": 2,
-    "task": "xixihaha",
-    "completed": false,
-    "user_id": -1,
-    "created_time": 1534391244,
-    "updated_time": 1534391244
-  },
-  {
-    "id": 3,
-    "task": "sdf",
-    "completed": false,
-    "user_id": -1,
-    "created_time": 1534391247,
-    "updated_time": 1534391247
+    "user_id": -1
   }
 ]

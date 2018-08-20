@@ -1,5 +1,4 @@
 import json
-import time
 
 from utils import log
 
@@ -18,7 +17,7 @@ def save(data, path):
 def load(path):
     with open(path, 'r', encoding='utf-8') as f:
         s = f.read()
-        log('load', s)
+        # log('load', s)
         return json.loads(s)
 
 
@@ -50,27 +49,26 @@ class Model(object):
         all 方法(类里面的函数叫方法)使用 load 函数得到所有的 models
         """
         path = cls.db_path()
-        log('path of all: {}'.format(path))
         models = load(path)
         # 这里用了列表推导生成一个包含所有 实例 的 list
         # m 是 dict, 用 cls(m) 可以初始化一个 cls 的实例
         # 不明白就 log 大法看看这些都是啥
         ms = [cls(m) for m in models]
-        log('all of ms: {}'.format(ms))
         return ms
 
     @classmethod
     def find_all(cls, **kwargs):
         ms = []
-        log('kwargs, ', kwargs, type(kwargs))
         k, v = '', ''
         for key, value in kwargs.items():
+            log('find all key value {}: {}'.format(key, value))
             k, v = key, value
         all = cls.all()
         for m in all:
             # 也可以用 getattr(m, k) 取值
             if v == m.__dict__[k]:
                 ms.append(m)
+        log('find all ms: {}'.format(ms))
         return ms
 
     @classmethod
@@ -111,6 +109,7 @@ class Model(object):
             l = [m.__dict__ for m in models]
             path = cls.db_path()
             save(l, path)
+            return
 
     def __repr__(self):
         """
@@ -167,10 +166,37 @@ class User(Model):
         self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
-        self.role = int(form.get('role', 10))
+
+    def salted_password(self, password, salt='$!@><?>HUI&DWQa`'):
+        """$!@><?>HUI&DWQa`"""
+        import hashlib
+        def sha256(ascii_str):
+            return hashlib.sha256(ascii_str.encode('ascii')).hexdigest()
+
+        hash1 = sha256(password)
+        hash2 = sha256(hash1 + salt)
+        return hash2
+
+    def hashed_password(self, pwd):
+        import hashlib
+        # 用 ascii 编码转换成 bytes 对象
+        p = pwd.encode('ascii')
+        s = hashlib.sha256(p)
+        # 返回摘要字符串
+        return s.hexdigest()
+
+    def validate_register(self):
+        pwd = self.password
+        self.password = self.salted_password(pwd)
+        if User.find_by(username=self.username) is None:
+            self.save()
+            return self
+        else:
+            return None
 
     def validate_login(self):
         u = User.find_by(username=self.username)
+<<<<<<< HEAD
         if u is not None:
             return u.password == self.hashed_password(self.password)
         else:
@@ -197,6 +223,14 @@ class User(Model):
         else:
             return None
 
+=======
+        log('validate login: {}'.format(u))
+        if u is not None and u.password:
+            return self.salted_password(self.password) == u.password
+        else:
+            return False
+
+>>>>>>> origin/web_dev_nbh
     def todos(self):
         # 列表推倒和过滤
         # return [t for t in Todo.all() if t.user_id == self.id]
@@ -244,8 +278,6 @@ class Todo(Model):
             # 这里只应该更新我们想要更新的东西
             if key in valid_names:
                 setattr(t, key, form[key])
-        # 修改更新时间
-        t.updated_time = int(time.time())
         t.save()
 
     @classmethod
@@ -263,28 +295,16 @@ class Todo(Model):
     def is_owner(self, id):
         return self.user_id == id
 
-    def ct(self):
-        format = '%Y/%m/%d %H:%M:%S'
-        value = time.localtime(self.updated_time)
-        dt = time.strftime(format, value)
-        return dt
-
     def __init__(self, form, user_id=-1):
         self.id = form.get('id', None)
         self.task = form.get('task', '')
         self.completed = False
         # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', user_id)
-        # 添加创建和修改时间
-        self.created_time = form.get('created_time', None)
-        self.updated_time = form.get('updated_time', None)
-        if self.created_time is None:
-            self.created_time = int(time.time())
-            self.updated_time = self.created_time
 
 
 # 微博类
-class Tweet(Model):
+class Weibo(Model):
     def __init__(self, form, user_id=-1):
         self.id = form.get('id', None)
         self.content = form.get('content', '')
@@ -292,7 +312,9 @@ class Tweet(Model):
         self.user_id = form.get('user_id', user_id)
 
     def comments(self):
-        return [c for c in Comment.all() if c.tweet_id == self.id]
+        # return [c for c in Comment.all() if c.weibo_id == self.id]
+        log('weibo id : {}, find all comments: {}'.format(self.id, Comment.find_all(weibo_id=self.id)))
+        return Comment.find_all(weibo_id=self.id)
 
 
 # 评论类
@@ -302,25 +324,29 @@ class Comment(Model):
         self.content = form.get('content', '')
         # 和别的数据关联的方式, 用 user_id 表明拥有它的 user 实例
         self.user_id = form.get('user_id', user_id)
-        self.tweet_id = form.get('tweet_id', -1)
+        self.weibo_id = int(form.get('weibo_id', -1))
+
+    def user(self):
+        u = User.find_by(id=self.user_id)
+        return u
 
 
-def test_tweet():
+def test_weibo():
     # 用户 1 发微博
     form = {
-        'content': 'hello tweet'
+        'content': 'hello weibo'
     }
-    t = Tweet(form, 1)
+    t = Weibo(form, 1)
     t.save()
     # 用户 2 评论微博
     form = {
         'content': '楼主说得对'
     }
     c = Comment(form, 2)
-    c.tweet_id = 1
+    c.weibo_id = 1
     c.save()
     # 取出微博 1 的所有评论
-    t = Tweet.find(1)
+    t = Weibo.find(1)
     print('comments, ', t.comments())
     pass
 
@@ -328,7 +354,7 @@ def test_tweet():
 def test():
     cs = Comment.find_all(user_id=2)
     print(cs, '评论数', len(cs))
-    # test_tweet()
+    # test_weibo()
     # 测试数据关联
     # form = {
     #     'task': 'gua 的 todo'

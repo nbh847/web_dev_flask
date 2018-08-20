@@ -1,13 +1,9 @@
-from utils import log
-from utils import template
-from utils import redirect
-from utils import http_response
-
-from models import User
-
 import random
 
-session = {}
+from models import User
+from routes.session import session
+from utils import log
+from utils import template
 
 
 def random_str():
@@ -19,86 +15,90 @@ def random_str():
     return s
 
 
-def current_user(request):
-    session_id = request.cookies.get('user', '')
-    user_id = int(session.get(session_id, -1))
-    u = User.find_by(id=user_id)
-    return u
+def response_with_headers(headers, status_code=200):
+    """
+    Content-Type: text/html
+    Set-Cookie: user=gua
+    """
+    header = 'HTTP/1.1 {} VERY OK\r\n'.format(status_code)
+    header += ''.join(['{}: {}\r\n'.format(k, v)
+                       for k, v in headers.items()])
+    return header
+
+
+def redirect(location, headers=None):
+    if headers is None:
+        headers = {
+            'Content-Type': 'text/html',
+        }
+    headers['Location'] = location
+    # 302 状态码的含义, Location 的作用
+    header = response_with_headers(headers, 302)
+    r = header + '\r\n' + ''
+    return r.encode(encoding='utf-8')
 
 
 def route_login(request):
-    '''
+    """
     登录页面的路由函数
-    '''
-    headers = {}
+    """
+    headers = {
+        'Content-Type': 'text/html',
+    }
     log('login, cookies', request.cookies)
 
     if request.method == 'POST':
+
         form = request.form()
         u = User(form)
         if u.validate_login():
             user = User.find_by(username=u.username)
-            log('成功登录: {}'.format(u.username))
             # 设置 session
             session_id = random_str()
             session[session_id] = user.id
             headers['Set-Cookie'] = 'user={}'.format(session_id)
-            log('headers response', headers)
+            log('route login headers response', headers)
+            log('成功登录')
             # 登录后定向到 /
-            return redirect('/', headers)
+            return redirect('/login', headers)
     # 显示登录页面
-    body = template('login.html')
-    return http_response(body, headers=headers)
+    session_id = request.cookies.get('user', '')
+    user_id = session.get(session_id, '')
+    username = User.find_by(id=user_id)
+    if username is None:
+        username = '游客'
+    else:
+        username = username.username
+    body = template('login.html', username=username)
+    header = response_with_headers(headers)
+    r = header + '\r\n' + body
+    return r.encode(encoding='utf-8')
 
 
 def route_register(request):
     """
     注册页面的路由函数
     """
+    header = 'HTTP/1.1 210 VERY OK\r\nContent-Type: text/html\r\n'
     if request.method == 'POST':
-        log('post ')
         form = request.form()
         u = User(form)
         if u.validate_register() is not None:
             u.save()
+            result = '注册成功<br> <pre>{}</pre>'.format(User.all())
             # 注册成功后 定向到登录页面
+<<<<<<< HEAD:web04/routes_user.py
             log('成功注册: {}'.format(u))
+=======
+>>>>>>> origin/web_dev_nbh:web04/routes/routes_user.py
             return redirect('/login')
         else:
             # 注册失败 定向到注册页面
-            log('注册失败: {}'.format(form.get('username', 'None')))
             return redirect('/register')
     # 显示注册页面
     body = template('register.html')
-    return http_response(body)
-
-
-def route_admin_users(request):
-    u = current_user(request)
-    log('admin users', u)
-    if u is not None and u.is_admin():
-        us = User.all()
-        body = template('admin_users.html', users=us)
-        return http_response(body)
-    else:
-        return redirect('/login')
-
-
-# 6, 在 /admin/users 页面中新增一个表单
-# 表单包括 id password 两个 input
-# 管理员可以在这个表单中输入 id 和 新密码 来修改相应用户的密码
-# 这个表单发送 POST 请求到 /admin/user/update
-# 所以你要增加一个新的路由函数实现更新用户密码的功能
-
-def route_admin_user_update(request):
-    form = request.form()
-    user_id = int(form.get('id', -1))
-    new_password = form.get('password', '')
-    u = User.find_by(id=user_id)
-    if u is not None:
-        u.password = new_password
-        u.save()
-    return redirect('/admin/users')
+    r = header + '\r\n' + body
+    return r.encode(encoding='utf-8')
 
 
 def route_static(request):
@@ -117,6 +117,4 @@ def route_static(request):
 route_dict = {
     '/login': route_login,
     '/register': route_register,
-    '/admin/users': route_admin_users,
-    '/admin/user/update': route_admin_user_update,
 }

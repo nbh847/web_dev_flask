@@ -87,10 +87,7 @@ def route_register(request):
             u.save()
             result = '注册成功<br> <pre>{}</pre>'.format(User.all())
             # 注册成功后 定向到登录页面
-<<<<<<< HEAD:web04/routes_user.py
             log('成功注册: {}'.format(u))
-=======
->>>>>>> origin/web_dev_nbh:web04/routes/routes_user.py
             return redirect('/login')
         else:
             # 注册失败 定向到注册页面

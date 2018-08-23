@@ -71,10 +71,18 @@ def update(request):
     return redirect('/')
 
 
+def api_all(request):
+    body = request.body
+    log('前端的原始数据 body ', body)
+    return 'ok'.encode('utf-8')
+
+
 route_dict = {
     '/': index,
     '/add': add,
     '/delete': delete,
     '/edit': edit,
     '/update': update,
+    # 添加api给前端
+    '/api/todo/all': api_all,
 }

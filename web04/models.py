@@ -166,6 +166,7 @@ class User(Model):
         self.id = form.get('id', None)
         self.username = form.get('username', '')
         self.password = form.get('password', '')
+        self.role = form.get('role', 10)
 
     def salted_password(self, password, salt='$!@><?>HUI&DWQa`'):
         """$!@><?>HUI&DWQa`"""
@@ -196,7 +197,6 @@ class User(Model):
 
     def validate_login(self):
         u = User.find_by(username=self.username)
-<<<<<<< HEAD
         if u is not None:
             return u.password == self.hashed_password(self.password)
         else:
@@ -205,32 +205,6 @@ class User(Model):
     def is_admin(self):
         return self.role == 1
 
-    def hashed_password(self, pwd):
-        import hashlib
-        # 要加密的是 'gua'
-        # 用 ascii 编码转换成 bytes 对象
-        p = pwd.encode('ascii')
-        # 创建 md5 对象
-        s1 = hashlib.sha256(p)
-        return s1.hexdigest()
-
-    def validate_register(self):
-        pwd = self.password
-        self.password = self.hashed_password(pwd)
-        if User.find_by(username=self.username) is None:
-            self.save()
-            return self
-        else:
-            return None
-
-=======
-        log('validate login: {}'.format(u))
-        if u is not None and u.password:
-            return self.salted_password(self.password) == u.password
-        else:
-            return False
-
->>>>>>> origin/web_dev_nbh
     def todos(self):
         # 列表推倒和过滤
         # return [t for t in Todo.all() if t.user_id == self.id]

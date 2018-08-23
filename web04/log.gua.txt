@@ -18296,3 +18296,315 @@ Content-Type: text/html
 </html>
 13:39:26 响应结束
 >>>>>>> origin/web_dev_nbh
+18:28:30 start at :3001
+18:28:40 完整请求
+18:28:40 GET /todo HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+18:28:40 请求结束
+18:28:40 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:28:40 path and query /todo {}
+18:28:40 完整响应
+18:28:40 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+18:28:40 响应结束
+18:28:40 完整请求
+18:28:40 GET /favicon.ico HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3001/todo
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+18:28:40 请求结束
+18:28:40 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:28:40 path and query /favicon.ico {}
+18:28:40 完整响应
+18:28:40 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+18:28:40 响应结束
+18:28:57 完整请求
+18:28:57 GET /todo/index HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+18:28:57 请求结束
+18:28:57 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:28:57 path and query /todo/index {}
+18:28:57 find all key value user_id: None
+18:28:57 find all ms: []
+18:28:57 index debug None []
+18:28:57 完整响应
+18:28:57 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO 程序</title>
+</head>
+<body>
+    <h1>TODO</h1>
+    <form action="/todo/add" method="post">
+        <input type="text" name="title" placeholder="请输入todo">
+        <br>
+        <button type="submit">添加</button>
+    </form>
+    <div>[]</div>
+</body>
+</html>
+18:28:57 响应结束
+18:34:21 完整请求
+18:34:21 
+18:34:21 请求结束
+18:35:23 完整请求
+18:35:23 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+todo=吃瓜
+18:35:23 请求结束
+18:35:23 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:35:23 path and query /api/todo/all {}
+18:35:23 前端的原始数据 body  todo=吃瓜
+18:36:52 start at :3001
+18:37:29 start at :3001
+18:37:34 完整请求
+18:37:34 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+18:37:34 请求结束
+18:37:34 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:37:34 path and query /api/todo/all {}
+18:37:46 start at :3001
+18:37:49 完整请求
+18:37:49 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+18:37:49 请求结束
+18:37:49 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:37:49 path and query /api/todo/all {}
+18:37:49 前端的原始数据 body  
+18:37:49 完整响应
+18:37:49 ok
+18:37:49 响应结束
+18:39:17 完整请求
+18:39:17 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+todo=吃瓜
+18:39:17 请求结束
+18:39:17 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:39:17 path and query /api/todo/all {}
+18:39:17 前端的原始数据 body  todo=吃瓜
+18:39:17 完整响应
+18:39:17 ok
+18:39:17 响应结束
+18:39:51 完整请求
+18:39:51 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+todo=吃瓜
+18:39:51 请求结束
+18:39:51 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:39:51 path and query /api/todo/all {}
+18:39:51 前端的原始数据 body  todo=吃瓜
+18:39:51 完整响应
+18:39:51 ok
+18:39:51 响应结束
+18:42:36 完整请求
+18:42:36 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+todo=吃瓜
+18:42:36 请求结束
+18:42:36 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:42:36 path and query /api/todo/all {}
+18:42:36 前端的原始数据 body  todo=吃瓜
+18:42:36 完整响应
+18:42:36 ok
+18:42:36 响应结束
+18:42:55 完整请求
+18:42:55 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+todo=吃瓜
+18:42:55 请求结束
+18:42:55 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:42:55 path and query /api/todo/all {}
+18:42:55 前端的原始数据 body  todo=吃瓜
+18:42:55 完整响应
+18:42:55 ok
+18:42:55 响应结束
+18:42:56 完整请求
+18:42:56 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+todo=吃瓜
+18:42:56 请求结束
+18:42:56 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:42:56 path and query /api/todo/all {}
+18:42:56 前端的原始数据 body  todo=吃瓜
+18:42:56 完整响应
+18:42:56 ok
+18:42:56 响应结束
+18:42:57 完整请求
+18:42:57 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+18:42:57 请求结束
+18:42:57 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:42:57 path and query /api/todo/all {}
+18:42:57 前端的原始数据 body  
+18:42:57 完整响应
+18:42:57 ok
+18:42:57 响应结束
+18:43:00 完整请求
+18:43:00 POST /api/todo/all HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 11
+Origin: http://localhost:3001
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36
+Content-Type: application/json
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: user=sfs9eijgsdgibagb; Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+todo=吃瓜
+18:43:00 请求结束
+18:43:00 cookie ['user=sfs9eijgsdgibagb', 'Pycharm-d53b4700=029f068c-b4a9-4f1f-96ce-9d257b7cfdd0']
+18:43:00 path and query /api/todo/all {}
+18:43:00 前端的原始数据 body  todo=吃瓜
+18:43:00 完整响应
+18:43:00 ok
+18:43:00 响应结束

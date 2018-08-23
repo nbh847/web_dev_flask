@@ -214,10 +214,11 @@ def get(url, query):
 # 使用
 def main():
     url = 'http://movie.douban.com/top250'
-    status_code, headers, body = get(url)
+    status_code, headers, body = get(url, {})
+    print (headers, '\n')
     if status_code == 301:
         url = headers['Location']
-        status_code, headers, body = get(url)
+        status_code, headers, body = get(url, {})
     print(status_code, headers, body)
 
 

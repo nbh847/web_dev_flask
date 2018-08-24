@@ -58,6 +58,6 @@ todoList.addEventListener('click', function(event){
         self.parentElement.remove()
     }
     else{
-        log('没有点到删除按钮')
+//        log('没有点到删除按钮')
     }
 })

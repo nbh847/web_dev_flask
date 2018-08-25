@@ -18609,3 +18609,565 @@ todo=吃瓜
 18:43:00 ok
 18:43:00 响应结束
 11:41:01 start at :3001
+11:00:32 start at :3001
+11:00:38 完整请求
+11:00:38 GET / HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:00:38 请求结束
+11:00:38 cookie ['']
+11:00:38 path and query / {}
+11:00:38 完整响应
+11:00:38 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simple todo</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input name="task">
+        <button>add todo</button>
+    </form>
+
+    
+        <div>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">edit</a>
+            1 : sdfsdfsd }}
+            <a href="/edit?id=1">编辑</a>
+            <a href="/delete?id=1">删除</a>
+        </div>
+    
+</body>
+</html>
+11:00:38 响应结束
+11:00:39 完整请求
+11:00:39 GET /favicon.ico HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3001/
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:00:39 请求结束
+11:00:39 cookie ['']
+11:00:39 path and query /favicon.ico {}
+11:00:39 完整响应
+11:00:39 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+11:00:39 响应结束
+11:00:42 完整请求
+11:00:42 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:00:42 请求结束
+11:00:43 cookie ['']
+11:00:43 path and query /login {}
+11:00:43 login, cookies {}
+11:00:43 kwargs,  {'id': ''} <class 'dict'>
+11:06:46 start at :3001
+11:06:49 完整请求
+11:06:49 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:06:49 请求结束
+11:06:49 cookie ['']
+11:06:49 path and query /login {}
+11:06:49 开始登录
+11:06:49 login, cookies {}
+11:06:49 kwargs,  {'id': ''} <class 'dict'>
+11:09:42 start at :3001
+11:09:43 完整请求
+11:09:43 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:09:43 请求结束
+11:09:43 cookie ['']
+11:09:43 path and query /login {}
+11:09:43 开始登录
+11:09:43 login, cookies {}
+11:09:43 kwargs,  {'id': ''} <class 'dict'>
+11:11:57 start at :3001
+11:11:59 完整请求
+11:11:59 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:11:59 请求结束
+11:11:59 cookie ['']
+11:11:59 path and query /login {}
+11:11:59 开始登录
+11:11:59 login, cookies {}
+11:11:59 login sessino id: 
+11:11:59 kwargs,  {'id': ''} <class 'dict'>
+11:12:21 start at :3001
+11:12:29 start at :3000
+11:12:37 完整请求
+11:12:37 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:12:37 请求结束
+11:12:37 cookie ['']
+11:12:37 path and query /login {}
+11:12:37 开始登录
+11:12:37 login, cookies {}
+11:12:37 login sessino id: 
+11:12:37 login user id: 
+11:12:37 kwargs,  {'id': ''} <class 'dict'>
+11:19:37 start at :3000
+11:19:40 完整请求
+11:19:40 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:19:40 请求结束
+11:19:40 cookie ['']
+11:19:40 path and query /login {}
+11:19:40 开始登录
+11:19:40 login, cookies {}
+11:19:40 login sessino id: 
+11:19:40 login user id: 
+11:19:40 kwargs,  {'id': ''} <class 'dict'>
+11:21:21 start at :3000
+11:21:24 完整请求
+11:21:24 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:21:24 请求结束
+11:21:24 cookie ['']
+11:21:24 path and query /login {}
+11:21:24 开始登录
+11:21:24 login, cookies {}
+11:21:24 login sessino id: 
+11:21:24 login user id: 
+11:21:24 kwargs,  {'id': ''} <class 'dict'>
+11:21:24 path of all: data/User.txt
+11:22:12 start at :3000
+11:22:20 start at :3001
+11:22:23 完整请求
+11:22:23 GET /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:22:23 请求结束
+11:22:23 cookie ['']
+11:22:23 path and query /login {}
+11:22:23 开始登录
+11:22:23 login, cookies {}
+11:22:23 login sessino id: 
+11:22:23 login user id: 
+11:22:23 kwargs,  {'id': ''} <class 'dict'>
+11:22:23 load [
+]
+11:22:23 login username: None
+11:22:23 完整响应
+11:22:23 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+    <script src="js/login.js"></script>
+</body>
+</html>
+11:22:23 响应结束
+11:22:24 完整请求
+11:22:24 GET /js/login.js HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:22:24 请求结束
+11:22:24 cookie ['']
+11:22:24 path and query /js/login.js {}
+11:22:24 完整响应
+11:22:24 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+11:22:24 响应结束
+11:42:06 完整请求
+11:42:06 
+11:42:06 请求结束
+11:42:06 完整请求
+11:42:06 
+11:42:06 请求结束
+11:42:06 完整请求
+11:42:06 
+11:42:06 请求结束
+11:42:06 完整请求
+11:42:06 
+11:42:06 请求结束
+11:45:15 完整请求
+11:45:15 POST /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 22
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=sdf&password=
+11:45:15 请求结束
+11:45:15 cookie ['']
+11:45:15 path and query /login {}
+11:45:15 开始登录
+11:45:15 login, cookies {}
+11:45:15 form debug ['username=sdf', 'password='] 2
+11:45:15 kwargs,  {'username': 'sdf'} <class 'dict'>
+11:45:15 load [
+]
+11:45:15 login sessino id: 
+11:45:15 login user id: 
+11:45:15 kwargs,  {'id': ''} <class 'dict'>
+11:45:15 load [
+]
+11:45:15 login username: None
+11:45:15 完整响应
+11:45:15 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input id="user-input" type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input id="user-password" type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button id="login-button" type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+    <script src="js/login.js"></script>
+</body>
+</html>
+11:45:15 响应结束
+11:45:15 完整请求
+11:45:15 GET /js/login.js HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:45:15 请求结束
+11:45:15 cookie ['']
+11:45:15 path and query /js/login.js {}
+11:45:15 完整响应
+11:45:15 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+11:45:15 响应结束
+11:45:42 完整请求
+11:45:42 POST /login HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 22
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:45:42 请求结束
+11:45:42 cookie ['']
+11:45:42 path and query /login {}
+11:45:42 开始登录
+11:45:42 login, cookies {}
+11:45:42 form debug [''] 1
+11:45:55 start at :3001
+11:46:06 start at :3000
+11:46:09 完整请求
+11:46:09 GET /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:46:09 请求结束
+11:46:09 cookie ['']
+11:46:09 path and query /login {}
+11:46:09 开始登录
+11:46:09 login, cookies {}
+11:46:09 login sessino id: 
+11:46:09 login user id: 
+11:46:09 login username: None
+11:46:09 完整响应
+11:46:09 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input id="user-input" type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input id="user-password" type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button id="login-button" type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+    <script src="js/login.js"></script>
+</body>
+</html>
+11:46:09 响应结束
+11:46:09 完整请求
+11:46:09 GET /js/login.js HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:46:09 请求结束
+11:46:09 cookie ['']
+11:46:09 path and query /js/login.js {}
+11:46:09 完整响应
+11:46:09 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+11:46:09 响应结束
+11:46:10 完整请求
+11:46:10 GET /favicon.ico HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: image/webp,image/apng,image/*,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:46:10 请求结束
+11:46:10 cookie ['']
+11:46:10 path and query /favicon.ico {}
+11:46:10 完整响应
+11:46:10 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+11:46:10 响应结束
+11:46:45 完整请求
+11:46:45 
+11:46:45 请求结束
+11:46:45 完整请求
+11:46:45 
+11:46:45 请求结束
+11:46:45 完整请求
+11:46:45 
+11:46:45 请求结束
+11:46:45 完整请求
+11:46:45 POST /login HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+Content-Length: 25
+Cache-Control: max-age=0
+Origin: http://localhost:3000
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+username=111&password=111
+11:46:45 请求结束
+11:46:45 cookie ['']
+11:46:45 path and query /login {}
+11:46:45 开始登录
+11:46:45 login, cookies {}
+11:46:45 form debug ['username=111', 'password=111'] 2
+11:46:45 login sessino id: 
+11:46:45 login user id: 
+11:46:45 login username: None
+11:46:45 完整响应
+11:46:45 HTTP/1.1 200 VERY OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册登录页面</title>
+</head>
+<body>
+    <h1>登录</h1>
+    <h2>你好 游客</h2>
+    <form action="/login" method="post">
+        <input id="user-input" type="text" name="username" placeholder="请输入用户名">
+        <br>
+        <input id="user-password" type="text" name="password" placeholder="请输入密码">
+        <br>
+        <button id="login-button" type="submit">登录</button>
+    </form>
+    <h3></h3>
+    <a href="/register">未注册账号？点击注册</a>
+    <script src="js/login.js"></script>
+</body>
+</html>
+11:46:45 响应结束
+11:46:45 完整请求
+11:46:45 GET /js/login.js HTTP/1.1
+Host: localhost:3000
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3000/login
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+11:46:45 请求结束
+11:46:45 cookie ['']
+11:46:45 path and query /js/login.js {}
+11:46:45 完整响应
+11:46:45 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+11:46:45 响应结束

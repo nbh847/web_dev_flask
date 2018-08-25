@@ -45,6 +45,7 @@ def route_login(request):
     headers = {
         'Content-Type': 'text/html',
     }
+    log('开始登录')
     log('login, cookies', request.cookies)
 
     if request.method == 'POST':
@@ -63,8 +64,11 @@ def route_login(request):
             return redirect('/login', headers)
     # 显示登录页面
     session_id = request.cookies.get('user', '')
+    log('login sessino id: {}'.format(session_id))
     user_id = session.get(session_id, '')
+    log('login user id: {}'.format(user_id))
     username = User.find_by(id=user_id)
+    log('login username: {}'.format(username))
     if username is None:
         username = '游客'
     else:

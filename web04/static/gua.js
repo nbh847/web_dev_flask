@@ -1,10 +1,3 @@
-/*
-1, 给 add button 绑定事件
-2, 在事件处理函数中, 获取 input 的值
-3, 用获取的值 组装一个 todo-cell HTML 字符串
-4, 插入 todo-list 中
-*/
-
 var log = function() {
     console.log.apply(console, arguments)
 }
@@ -16,7 +9,7 @@ var e = function(sel) {
 /*
  ajax 函数
 */
-var ajax = function(method, path, data, reseponseCallback) {
+var ajax = function(method, path, data, responseCallback) {
     var r = new XMLHttpRequest()
     // 设置请求方法和请求地址
     r.open(method, path, true)
@@ -27,7 +20,7 @@ var ajax = function(method, path, data, reseponseCallback) {
     r.onreadystatechange = function() {
         if(r.readyState === 4) {
             // r.response 存的就是服务器发过来的放在 HTTP BODY 中的数据
-            reseponseCallback(r.response)
+            responseCallback(r.response)
         }
     }
     // 把数据转换为 json 格式字符串

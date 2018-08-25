@@ -1,6 +1,6 @@
 import random
 
-from models import User
+from models.user import User
 from routes.session import session
 from utils import log
 from utils import template
@@ -22,7 +22,7 @@ def response_with_headers(headers, status_code=200):
     """
     header = 'HTTP/1.1 {} VERY OK\r\n'.format(status_code)
     header += ''.join(['{}: {}\r\n'.format(k, v)
-                       for k, v in headers.items()])
+                           for k, v in headers.items()])
     return header
 
 
@@ -45,11 +45,9 @@ def route_login(request):
     headers = {
         'Content-Type': 'text/html',
     }
-    log('开始登录')
     log('login, cookies', request.cookies)
 
     if request.method == 'POST':
-
         form = request.form()
         u = User(form)
         if u.validate_login():
@@ -58,22 +56,11 @@ def route_login(request):
             session_id = random_str()
             session[session_id] = user.id
             headers['Set-Cookie'] = 'user={}'.format(session_id)
-            log('route login headers response', headers)
-            log('成功登录')
+            log('headers response', headers)
             # 登录后定向到 /
-            return redirect('/login', headers)
+            return redirect('/', headers)
     # 显示登录页面
-    session_id = request.cookies.get('user', '')
-    log('login sessino id: {}'.format(session_id))
-    user_id = session.get(session_id, '')
-    log('login user id: {}'.format(user_id))
-    username = User.find_by(id=user_id)
-    log('login username: {}'.format(username))
-    if username is None:
-        username = '游客'
-    else:
-        username = username.username
-    body = template('login.html', username=username)
+    body = template('login.html')
     header = response_with_headers(headers)
     r = header + '\r\n' + body
     return r.encode(encoding='utf-8')
@@ -88,10 +75,9 @@ def route_register(request):
         form = request.form()
         u = User(form)
         if u.validate_register() is not None:
-            u.save()
-            result = '注册成功<br> <pre>{}</pre>'.format(User.all())
+            # result = '注册成功<br> <pre>{}</pre>'.format(User.all())
+            print('注册成功', u)
             # 注册成功后 定向到登录页面
-            log('成功注册: {}'.format(u))
             return redirect('/login')
         else:
             # 注册失败 定向到注册页面

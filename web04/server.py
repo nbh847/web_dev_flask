@@ -2,7 +2,7 @@ import socket
 import urllib.parse
 import _thread
 
-from routes.routes_simpletodo import route_dict as todo_routes
+from routes.todo import route_dict as todo_routes
 from routes.routes_static import route_static
 from routes.routes_user import route_dict as user_routes
 from routes.routes_weibo import route_dict as weibo_routes

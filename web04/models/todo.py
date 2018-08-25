@@ -38,6 +38,8 @@ class Todo(Model):
             # 这里只应该更新我们想要更新的东西
             if key in valid_names:
                 setattr(t, key, form[key])
+        # 更新修改时间
+        t.ut = int(time.time())
         t.save()
         return t
 

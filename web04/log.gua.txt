@@ -19617,3 +19617,2586 @@ __main()
 //         // log('点击的不是删除按钮******')
 //     }
 // })
+14:14:22 start at :3000
+14:14:27 完整请求
+14:14:27 请求结束
+14:14:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:14:27 path and query / {}
+14:14:27 HTTP/1.1 302 OK
+Content-Type: text/html
+Location: /todo/index
+
+
+14:14:27 完整请求
+14:14:27 请求结束
+14:14:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:14:27 path and query /todo/index {}
+14:14:27 HTTP/1.1 200 OK
+Content-Type: text/html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO 程序</title>
+</head>
+<body>
+    <h1>TODO</h1>
+    <form action="/todo/add" method="post">
+        <input type="text" name="title" placeholder="请输入todo">
+        <br>
+        <button type="submit">添加</button>
+    </form>
+    <div></div>
+    <!-- 这是我们处理静态文件的套路 -->
+    <!-- gua.js 放了公共的函数 -->
+    <!-- 按顺序引入 2 个 js 文件, 后面的 js 文件就能使用前面的文件中的函数了 -->
+    <script src='/static?file=gua.js'></script>
+    <script src='/static?file=todo.js'></script>
+</body>
+</html>
+14:14:27 完整请求
+14:14:27 请求结束
+14:14:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:14:27 path and query /static {'file': 'gua.js'}
+14:14:27 HTTP/1.1 200 OK
+
+var log = function() {
+    console.log.apply(console, arguments)
+}
+
+var e = function(sel) {
+    return document.querySelector(sel)
+}
+
+/*
+ ajax 函数
+*/
+var ajax = function(method, path, data, responseCallback) {
+    var r = new XMLHttpRequest()
+    // 设置请求方法和请求地址
+    r.open(method, path, true)
+    // 设置发送的数据的格式为 application/json
+    // 这个不是必须的
+    r.setRequestHeader('Content-Type', 'application/json')
+    // 注册响应函数
+    r.onreadystatechange = function() {
+        if(r.readyState === 4) {
+            // r.response 存的就是服务器发过来的放在 HTTP BODY 中的数据
+            responseCallback(r.response)
+        }
+    }
+    // 把数据转换为 json 格式字符串
+    data = JSON.stringify(data)
+    // 发送请求
+    r.send(data)
+}
+
+// TODO API
+// 获取所有 todo
+var apiTodoAll = function(callback) {
+    var path = '/api/todo/all'
+    ajax('GET', path, '', callback)
+}
+
+// 增加一个 todo
+var apiTodoAdd = function(form, callback) {
+    var path = '/api/todo/add'
+    ajax('POST', path, form, callback)
+}
+14:14:27 完整请求
+14:14:27 请求结束
+14:14:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:14:27 path and query /static {'file': 'todo.js'}
+14:14:27 HTTP/1.1 200 OK
+
+var todoTemplate = function(title) {
+    var t = `
+        <div class="todo-cell">
+            <button class="todo-delete">删除</button>
+            <span>${title}</span>
+        </div>
+    `
+    return t
+    /*
+    上面的写法在 python 中是这样的
+    t = """
+    <div class="todo-cell">
+        <button class="todo-delete">删除</button>
+        <span>{}</span>
+    </div>
+    """.format(todo)
+    */
+}
+
+var insertTodo = function(todo) {
+    var title = todo.title
+    var todoCell = todoTemplate(title)
+    // 插入 todo-list
+    var todoList = e('.todo-list')
+    todoList.insertAdjacentHTML('beforeend', todoCell)
+}
+
+var loadTodos = function() {
+    // 调用 ajax api 来载入数据
+    apiTodoAll(function(r) {
+        // console.log('load all', r)
+        // 解析为 数组
+        var todos = JSON.parse(r)
+        // 循环添加到页面中
+        for(var i = 0; i < todos.length; i++) {
+            var todo = todos[i]
+            insertTodo(todo)
+        }
+    })
+}
+
+var bindEventTodoAdd = function() {
+    var b = e('#id-button-add')
+    // 注意, 第二个参数可以直接给出定义函数
+    b.addEventListener('click', function(){
+        var input = e('#id-input-todo')
+        var title = input.value
+        log('click add', title)
+        var form = {
+            title: title,
+        }
+        apiTodoAdd(form, function(r) {
+            // 收到返回的数据, 插入到页面中
+            var todo = JSON.parse(r)
+            insertTodo(todo)
+        })
+    })
+}
+
+var bindEvents = function() {
+    bindEventTodoAdd()
+}
+
+var __main = function() {
+    bindEvents()
+    loadTodos()
+}
+
+__main()
+
+
+
+
+/*
+给 删除 按钮绑定删除的事件
+1, 绑定事件
+2, 删除整个 todo-cell 元素
+*/
+// var todoList = e('.todo-list')
+// // 事件响应函数会被传入一个参数, 就是事件本身
+// todoList.addEventListener('click', function(event){
+//     // log('click todolist', event)
+//     // 我们可以通过 event.target 来得到被点击的元素
+//     var self = event.target
+//     // log('被点击的元素是', self)
+//     // 通过比较被点击元素的 class 来判断元素是否是我们想要的
+//     // classList 属性保存了元素的所有 class
+//     // 在 HTML 中, 一个元素可以有多个 class, 用空格分开
+//     // log(self.classList)
+//     // 判断是否拥有某个 class 的方法如下
+//     if (self.classList.contains('todo-delete')) {
+//         log('点到了 删除按钮')
+//         // 删除 self 的父节点
+//         // parentElement 可以访问到元素的父节点
+//         self.parentElement.remove()
+//     } else {
+//         // log('点击的不是删除按钮******')
+//     }
+// })
+14:14:28 完整请求
+14:14:28 请求结束
+14:14:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:14:28 path and query /favicon.ico {}
+14:14:28 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+14:14:31 完整请求
+14:14:31 请求结束
+14:14:31 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:14:31 path and query /todo/add {}
+14:14:31 HTTP/1.1 404 NOT FOUND
+
+<h1>NOT FOUND</h1>
+14:16:28 start at :3000
+14:16:31 完整请求
+14:16:31 请求结束
+14:16:31 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:16:31 path and query /todo/add {}
+14:16:54 完整请求
+14:16:54 请求结束
+14:16:54 完整请求
+14:16:54 请求结束
+14:16:54 完整请求
+14:16:54 请求结束
+14:16:54 完整请求
+14:16:54 请求结束
+14:16:54 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:16:54 path and query /todo/ {}
+14:16:57 完整请求
+14:16:57 请求结束
+14:16:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:16:57 path and query /todo {}
+14:16:58 完整请求
+14:16:58 请求结束
+14:16:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:16:58 path and query / {}
+14:16:58 完整请求
+14:16:58 请求结束
+14:16:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:16:58 path and query /todo/index {}
+14:16:58 完整请求
+14:16:58 请求结束
+14:16:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:16:58 path and query /static {'file': 'gua.js'}
+14:16:58 完整请求
+14:16:58 请求结束
+14:16:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:16:58 path and query /static {'file': 'todo.js'}
+14:17:15 完整请求
+14:17:15 请求结束
+14:17:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:17:15 path and query /todo/add {}
+14:18:35 start at :3000
+14:18:38 完整请求
+14:18:38 请求结束
+14:18:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:18:38 path and query /todo/add {}
+14:18:58 start at :3000
+14:19:00 start at :3000
+14:19:10 start at :3001
+14:19:18 完整请求
+14:19:18 请求结束
+14:19:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:19:18 path and query /todo {}
+14:19:18 完整请求
+14:19:18 请求结束
+14:19:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:19:18 path and query / {}
+14:19:18 完整请求
+14:19:18 请求结束
+14:19:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:19:18 path and query /todo/index {}
+14:19:18 完整请求
+14:19:18 请求结束
+14:19:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:19:18 path and query /static {'file': 'gua.js'}
+14:19:18 完整请求
+14:19:18 请求结束
+14:19:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:19:18 path and query /static {'file': 'todo.js'}
+14:19:19 完整请求
+14:19:19 请求结束
+14:19:19 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:19:19 path and query /favicon.ico {}
+14:19:30 完整请求
+14:19:30 完整请求
+14:19:30 请求结束
+14:19:30 请求结束
+14:19:30 完整请求
+14:19:30 请求结束
+14:19:30 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:19:30 path and query /todo/add {}
+14:20:35 完整请求
+14:20:35 请求结束
+14:20:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:20:35 path and query /todo/add {}
+14:24:31 完整请求
+14:24:31 请求结束
+14:24:31 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:31 path and query /todo/add {}
+14:24:32 完整请求
+14:24:32 请求结束
+14:24:32 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:32 path and query /todo/add {}
+14:24:47 start at :3001
+14:24:51 完整请求
+14:24:51 请求结束
+14:24:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:51 path and query / {}
+14:24:51 完整请求
+14:24:51 请求结束
+14:24:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:51 path and query /todo/index {}
+14:24:51 完整请求
+14:24:51 请求结束
+14:24:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:51 path and query /static {'file': 'gua.js'}
+14:24:51 完整请求
+14:24:51 请求结束
+14:24:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:51 path and query /static {'file': 'todo.js'}
+14:24:56 完整请求
+14:24:56 请求结束
+14:24:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:56 path and query /api/todo/add {}
+14:24:56 完整请求
+14:24:56 请求结束
+14:24:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:56 path and query /api/todo/add {}
+14:24:56 完整请求
+14:24:56 请求结束
+14:24:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:56 path and query /api/todo/add {}
+14:24:56 完整请求
+14:24:56 请求结束
+14:24:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:56 path and query /api/todo/add {}
+14:24:58 完整请求
+14:24:58 请求结束
+14:24:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:58 path and query /api/todo/add {}
+14:24:59 完整请求
+14:24:59 请求结束
+14:24:59 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:24:59 path and query /api/todo/add {}
+14:25:00 完整请求
+14:25:00 请求结束
+14:25:00 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:25:00 path and query /api/todo/add {}
+14:25:18 完整请求
+14:25:18 请求结束
+14:25:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:25:18 path and query /api/todo/add {}
+14:26:14 完整请求
+14:26:14 请求结束
+14:26:14 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:26:14 path and query /api/todo/add {}
+14:57:35 start at :3001
+14:57:44 完整请求
+14:57:44 请求结束
+14:57:44 ip and request, GET /todo/index HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+
+14:57:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:57:44 path and query /todo/index {}
+14:57:44 完整请求
+14:57:44 请求结束
+14:57:44 ip and request, GET /static?file=gua.js HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+
+14:57:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:57:44 path and query /static {'file': 'gua.js'}
+14:57:44 完整请求
+14:57:44 请求结束
+14:57:44 ip and request, GET /static?file=todo.js HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+
+14:57:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:57:44 path and query /static {'file': 'todo.js'}
+14:57:50 完整请求
+14:57:50 请求结束
+14:57:50 ip and request, GET /todo/index HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+
+14:57:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:57:50 path and query /todo/index {}
+14:57:50 完整请求
+14:57:50 请求结束
+14:57:50 ip and request, GET /static?file=gua.js HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+
+14:57:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:57:50 path and query /static {'file': 'gua.js'}
+14:57:50 完整请求
+14:57:50 请求结束
+14:57:50 ip and request, GET /static?file=todo.js HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: */*
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+
+
+14:57:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:57:50 path and query /static {'file': 'todo.js'}
+14:58:16 完整请求
+14:58:16 请求结束
+14:58:16 ip and request, 
+
+14:58:16 完整请求
+14:58:16 请求结束
+14:58:16 ip and request, POST /api/todo/add HTTP/1.1
+Host: localhost:3001
+Connection: keep-alive
+Content-Length: 24
+Cache-Control: max-age=0
+Origin: http://localhost:3001
+Upgrade-Insecure-Requests: 1
+Content-Type: application/x-www-form-urlencoded
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: http://localhost:3001/todo/index
+Accept-Encoding: gzip, deflate, br
+Accept-Language: zh-CN,zh;q=0.9,en;q=0.8,zh-TW;q=0.7
+Cookie: Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9
+AlexaToolbar-ALX_NS_PH: AlexaToolbar/alx-4.0.3
+
+title=%E8%B5%9B%E9%A3%8E
+
+14:58:16 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+14:58:16 path and query /api/todo/add {}
+15:01:38 start at :3001
+15:01:46 start at :3000
+15:01:52 完整请求
+15:01:52 请求结束
+15:01:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:06:15 start at :3000
+15:06:23 start at :3001
+15:06:31 完整请求
+15:06:31 请求结束
+15:06:31 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:06:31 path and query / {}
+15:06:31 完整请求
+15:06:31 请求结束
+15:06:31 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:06:31 path and query /todo/index {}
+15:06:31 完整请求
+15:06:31 请求结束
+15:06:31 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:06:31 path and query /static {'file': 'gua.js'}
+15:06:31 完整请求
+15:06:31 请求结束
+15:06:31 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:06:31 path and query /static {'file': 'todo.js'}
+15:06:47 完整请求
+15:06:47 请求结束
+15:06:47 完整请求
+15:06:47 请求结束
+15:06:47 完整请求
+15:06:47 完整请求
+15:06:47 完整请求
+15:06:47 请求结束
+15:06:47 请求结束
+15:06:47 请求结束
+15:06:47 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:06:47 path and query /api/todo/add {}
+15:10:05 start at :3001
+15:10:12 start at :3000
+15:10:18 完整请求
+15:10:18 请求结束
+15:10:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:10:18 path and query / {}
+15:10:18 完整请求
+15:10:18 请求结束
+15:10:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:10:18 path and query /todo/index {}
+15:10:18 完整请求
+15:10:18 请求结束
+15:10:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:10:18 path and query /static {'file': 'gua.js'}
+15:10:18 完整请求
+15:10:18 请求结束
+15:10:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:10:18 path and query /static {'file': 'todo.js'}
+15:10:29 完整请求
+15:10:29 请求结束
+15:10:29 完整请求
+15:10:29 请求结束
+15:10:29 完整请求
+15:10:29 请求结束
+15:10:29 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:10:29 path and query /api/todo/add {}
+15:13:37 start at :3000
+15:13:45 start at :3001
+15:13:47 完整请求
+15:13:47 请求结束
+15:13:47 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:47 path and query / {}
+15:13:47 完整请求
+15:13:47 请求结束
+15:13:47 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:47 path and query /todo/index {}
+15:13:48 完整请求
+15:13:48 请求结束
+15:13:48 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:48 path and query /static {'file': 'gua.js'}
+15:13:48 完整请求
+15:13:48 请求结束
+15:13:48 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:48 path and query /static {'file': 'todo.js'}
+15:13:53 完整请求
+15:13:53 请求结束
+15:13:53 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:53 path and query /api/todo/add {}
+15:13:53 完整请求
+15:13:53 请求结束
+15:13:53 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:53 path and query /api/todo/add {}
+15:13:53 完整请求
+15:13:53 请求结束
+15:13:53 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:53 path and query /api/todo/add {}
+15:13:53 完整请求
+15:13:53 请求结束
+15:13:53 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:13:53 path and query /api/todo/add {}
+15:14:46 start at :3001
+15:14:54 start at :3000
+15:14:57 完整请求
+15:14:57 请求结束
+15:14:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:14:57 path and query / {}
+15:14:57 完整请求
+15:14:57 请求结束
+15:14:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:14:57 path and query /todo/index {}
+15:14:57 完整请求
+15:14:57 请求结束
+15:14:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:14:57 path and query /static {'file': 'gua.js'}
+15:14:57 完整请求
+15:14:57 请求结束
+15:14:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:14:57 path and query /static {'file': 'todo.js'}
+15:15:01 完整请求
+15:15:01 请求结束
+15:15:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:15:01 path and query /api/todo/add {}
+15:15:01 完整请求
+15:15:01 请求结束
+15:15:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:15:01 path and query /api/todo/add {}
+15:15:01 完整请求
+15:15:01 请求结束
+15:15:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:15:01 path and query /api/todo/add {}
+15:16:50 start at :3000
+15:16:55 完整请求
+15:16:55 请求结束
+15:16:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:16:55 origin request body: 
+15:16:55 path and query / {}
+15:16:55 完整请求
+15:16:55 请求结束
+15:16:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:16:55 origin request body: 
+15:16:55 path and query /todo/index {}
+15:16:55 完整请求
+15:16:55 请求结束
+15:16:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:16:55 origin request body: 
+15:16:55 path and query /static {'file': 'gua.js'}
+15:16:55 完整请求
+15:16:55 请求结束
+15:16:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:16:55 origin request body: 
+15:16:55 path and query /static {'file': 'todo.js'}
+15:17:04 完整请求
+15:17:04 请求结束
+15:17:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:17:04 origin request body: 
+15:17:04 path and query /api/todo/add {}
+15:17:04 完整请求
+15:17:04 请求结束
+15:17:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:17:04 origin request body: 
+15:17:04 path and query /api/todo/add {}
+15:17:04 完整请求
+15:17:04 请求结束
+15:17:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:17:04 origin request body: 
+15:17:04 path and query /api/todo/add {}
+15:17:24 完整请求
+15:17:24 请求结束
+15:17:24 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:17:24 origin request body: title=2324324234
+15:17:24 path and query /api/todo/add {}
+15:18:28 start at :3000
+15:18:35 start at :3001
+15:18:38 完整请求
+15:18:38 请求结束
+15:18:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:38 origin request body: 
+15:18:38 path and query / {}
+15:18:38 完整请求
+15:18:38 请求结束
+15:18:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:38 origin request body: 
+15:18:38 path and query /todo/index {}
+15:18:38 完整请求
+15:18:38 完整请求
+15:18:38 请求结束
+15:18:38 请求结束
+15:18:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:38 origin request body: 
+15:18:38 origin request body: 
+15:18:38 path and query /static {'file': 'todo.js'}
+15:18:38 path and query /static {'file': 'gua.js'}
+15:18:44 完整请求
+15:18:44 请求结束
+15:18:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:44 origin request body: 
+15:18:44 path and query /api/todo/add {}
+15:18:44 完整请求
+15:18:44 请求结束
+15:18:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:44 origin request body: 
+15:18:44 path and query /api/todo/add {}
+15:18:44 完整请求
+15:18:44 请求结束
+15:18:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:44 origin request body: 
+15:18:44 path and query /api/todo/add {}
+15:18:45 完整请求
+15:18:45 请求结束
+15:18:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:18:45 origin request body: 
+15:18:45 path and query /api/todo/add {}
+15:20:18 start at :3001
+15:20:22 完整请求
+15:20:22 请求结束
+15:20:22 origin request body: 2134
+15:20:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:22 origin request body: 
+15:20:22 path and query / {}
+15:20:22 完整请求
+15:20:22 请求结束
+15:20:22 origin request body: 2134
+15:20:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:22 origin request body: 
+15:20:22 path and query /todo/index {}
+15:20:22 完整请求
+15:20:22 请求结束
+15:20:22 origin request body: 2134
+15:20:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:22 origin request body: 
+15:20:22 path and query /static {'file': 'gua.js'}
+15:20:22 完整请求
+15:20:22 请求结束
+15:20:22 origin request body: 2134
+15:20:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:22 origin request body: 
+15:20:22 path and query /static {'file': 'todo.js'}
+15:20:28 完整请求
+15:20:28 请求结束
+15:20:28 origin request body: 2134
+15:20:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:28 origin request body: 
+15:20:28 path and query /api/todo/add {}
+15:20:28 完整请求
+15:20:28 请求结束
+15:20:28 origin request body: 2134
+15:20:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:28 origin request body: 
+15:20:28 path and query /api/todo/add {}
+15:20:28 完整请求
+15:20:28 请求结束
+15:20:28 origin request body: 2134
+15:20:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:28 origin request body: 
+15:20:28 path and query /api/todo/add {}
+15:20:28 完整请求
+15:20:28 请求结束
+15:20:28 origin request body: 2134
+15:20:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:20:28 origin request body: 
+15:20:28 path and query /api/todo/add {}
+15:21:30 start at :3001
+15:21:33 完整请求
+15:21:33 请求结束
+15:21:33 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:33 origin before request body: 
+15:21:33 origin after request body: 
+15:21:33 path and query / {}
+15:21:33 完整请求
+15:21:33 请求结束
+15:21:33 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:33 origin before request body: 
+15:21:33 origin after request body: 
+15:21:33 path and query /todo/index {}
+15:21:33 完整请求
+15:21:33 请求结束
+15:21:33 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:33 origin before request body: 
+15:21:33 origin after request body: 
+15:21:33 path and query /static {'file': 'gua.js'}
+15:21:33 完整请求
+15:21:33 请求结束
+15:21:33 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:33 origin before request body: 
+15:21:33 origin after request body: 
+15:21:33 path and query /static {'file': 'todo.js'}
+15:21:38 完整请求
+15:21:38 请求结束
+15:21:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:38 origin before request body: 
+15:21:38 origin after request body: 
+15:21:38 path and query /api/todo/add {}
+15:21:38 完整请求
+15:21:38 请求结束
+15:21:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:38 origin before request body: 
+15:21:38 origin after request body: 
+15:21:38 path and query /api/todo/add {}
+15:21:38 完整请求
+15:21:38 请求结束
+15:21:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:38 origin before request body: 
+15:21:38 origin after request body: 
+15:21:38 path and query /api/todo/add {}
+15:21:38 完整请求
+15:21:38 请求结束
+15:21:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:21:38 origin before request body: 
+15:21:38 origin after request body: title=32
+15:21:38 path and query /api/todo/add {}
+15:29:22 完整请求
+15:29:22 请求结束
+15:29:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:29:22 origin before request body: 
+15:29:22 origin after request body: 
+15:29:22 path and query / {}
+15:29:22 完整请求
+15:29:22 请求结束
+15:29:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:29:22 origin before request body: 
+15:29:22 origin after request body: 
+15:29:22 path and query /todo/index {}
+15:29:22 完整请求
+15:29:22 请求结束
+15:29:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:29:22 origin before request body: 
+15:29:22 origin after request body: 
+15:29:22 path and query /static {'file': 'gua.js'}
+15:29:22 完整请求
+15:29:22 请求结束
+15:29:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:29:22 origin before request body: 
+15:29:22 origin after request body: 
+15:29:22 path and query /static {'file': 'todo.js'}
+15:29:27 完整请求
+15:29:27 请求结束
+15:29:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:29:27 origin before request body: 
+15:29:27 origin after request body: title=sdf&age=11
+15:29:27 path and query /api/todo/add {}
+15:31:13 start at :3001
+15:31:34 start at :3000
+15:31:37 完整请求
+15:31:37 请求结束
+15:31:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:31:37 origin before request body: 
+15:31:37 origin after request body: 
+15:31:37 path and query / {}
+15:31:37 完整请求
+15:31:37 请求结束
+15:31:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:31:37 origin before request body: 
+15:31:37 origin after request body: 
+15:31:37 path and query /todo/index {}
+15:31:37 完整请求
+15:31:37 请求结束
+15:31:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:31:37 origin before request body: 
+15:31:37 origin after request body: 
+15:31:37 path and query /static {'file': 'gua.js'}
+15:31:37 完整请求
+15:31:37 请求结束
+15:31:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:31:37 origin before request body: 
+15:31:37 origin after request body: 
+15:31:37 path and query /static {'file': 'todo.js'}
+15:31:39 完整请求
+15:31:39 请求结束
+15:31:39 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:31:39 origin before request body: 
+15:31:39 origin after request body: title=222
+15:31:39 path and query /api/todo/add {}
+15:32:35 start at :3000
+15:32:41 start at :3001
+15:32:44 完整请求
+15:32:44 请求结束
+15:32:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:32:45 origin before request body: 
+15:32:45 origin after request body: 
+15:32:45 path and query / {}
+15:32:45 完整请求
+15:32:45 请求结束
+15:32:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:32:45 origin before request body: 
+15:32:45 origin after request body: 
+15:32:45 path and query /todo/index {}
+15:32:45 完整请求
+15:32:45 请求结束
+15:32:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:32:45 origin before request body: 
+15:32:45 origin after request body: 
+15:32:45 path and query /static {'file': 'gua.js'}
+15:32:45 完整请求
+15:32:45 请求结束
+15:32:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:32:45 origin before request body: 
+15:32:45 origin after request body: 
+15:32:45 path and query /static {'file': 'todo.js'}
+15:32:47 完整请求
+15:32:47 请求结束
+15:32:47 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:32:47 origin before request body: 
+15:32:47 origin after request body: 
+15:32:47 path and query /api/todo/add {}
+15:33:04 完整请求
+15:33:04 请求结束
+15:33:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:04 origin before request body: 
+15:33:04 origin after request body: 
+15:33:04 path and query / {}
+15:33:04 完整请求
+15:33:04 请求结束
+15:33:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:04 origin before request body: 
+15:33:04 origin after request body: 
+15:33:04 path and query /todo/index {}
+15:33:04 完整请求
+15:33:04 请求结束
+15:33:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:04 origin before request body: 
+15:33:04 origin after request body: 
+15:33:04 path and query /static {'file': 'gua.js'}
+15:33:04 完整请求
+15:33:04 请求结束
+15:33:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:04 origin before request body: 
+15:33:04 origin after request body: 
+15:33:04 path and query /static {'file': 'todo.js'}
+15:33:12 完整请求
+15:33:12 请求结束
+15:33:12 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:12 origin before request body: 
+15:33:12 origin after request body: 
+15:33:12 path and query /api/todo/add {}
+15:33:52 完整请求
+15:33:52 请求结束
+15:33:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:52 origin before request body: 
+15:33:52 origin after request body: 
+15:33:52 path and query / {}
+15:33:52 完整请求
+15:33:52 请求结束
+15:33:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:52 origin before request body: 
+15:33:52 origin after request body: 
+15:33:52 path and query /todo/index {}
+15:33:52 完整请求
+15:33:52 请求结束
+15:33:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:52 origin before request body: 
+15:33:52 origin after request body: 
+15:33:52 path and query /static {'file': 'gua.js'}
+15:33:52 完整请求
+15:33:52 请求结束
+15:33:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:52 origin before request body: 
+15:33:52 origin after request body: 
+15:33:52 path and query /static {'file': 'todo.js'}
+15:33:59 完整请求
+15:33:59 请求结束
+15:33:59 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:33:59 origin before request body: 
+15:33:59 origin after request body: 
+15:33:59 path and query /api/todo/add {}
+15:36:51 完整请求
+15:36:51 请求结束
+15:36:51 完整请求
+15:36:51 请求结束
+15:36:51 完整请求
+15:36:51 请求结束
+15:36:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:36:51 origin before request body: 
+15:36:51 origin after request body: 
+15:36:51 path and query / {}
+15:36:51 完整请求
+15:36:51 请求结束
+15:36:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:36:51 origin before request body: 
+15:36:51 origin after request body: 
+15:36:51 path and query /todo/index {}
+15:36:51 完整请求
+15:36:51 请求结束
+15:36:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:36:51 origin before request body: 
+15:36:51 origin after request body: 
+15:36:51 path and query /static {'file': 'gua.js'}
+15:36:51 完整请求
+15:36:51 请求结束
+15:36:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:36:51 origin before request body: 
+15:36:51 origin after request body: 
+15:36:51 path and query /static {'file': 'todo.js'}
+15:45:43 完整请求
+15:45:43 请求结束
+15:45:43 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:45:43 origin before request body: 
+15:45:43 origin after request body: 
+15:45:43 path and query /todo/index {}
+15:45:43 完整请求
+15:45:43 请求结束
+15:45:43 完整请求
+15:45:43 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:45:43 请求结束
+15:45:43 origin before request body: 
+15:45:43 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:45:43 origin after request body: 
+15:45:43 origin before request body: 
+15:45:43 path and query /static {'file': 'gua.js'}
+15:45:43 origin after request body: 
+15:45:43 path and query /static {'file': 'todo.js'}
+15:45:43 完整请求
+15:45:43 请求结束
+15:45:43 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:45:43 origin before request body: 
+15:45:43 origin after request body: 
+15:45:43 path and query /api/todo/all {}
+15:45:49 完整请求
+15:45:49 请求结束
+15:45:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:45:49 origin before request body: 
+15:45:49 origin after request body: 
+15:45:49 path and query /api/todo/add {}
+15:45:49 完整请求
+15:45:49 请求结束
+15:45:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:45:49 origin before request body: 
+15:45:49 origin after request body: 
+15:45:49 path and query /api/todo/add {}
+15:46:12 start at :3001
+15:46:20 start at :3000
+15:46:23 完整请求
+15:46:23 请求结束
+15:46:23 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:46:23 origin before request body: 
+15:46:23 origin after request body: 
+15:46:23 path and query / {}
+15:46:23 完整请求
+15:46:23 请求结束
+15:46:23 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:46:23 origin before request body: 
+15:46:23 origin after request body: 
+15:46:23 path and query /todo/index {}
+15:46:23 完整请求
+15:46:23 请求结束
+15:46:23 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:46:23 origin before request body: 
+15:46:23 origin after request body: 
+15:46:23 path and query /static {'file': 'gua.js'}
+15:46:23 完整请求
+15:46:23 请求结束
+15:46:23 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:46:23 origin before request body: 
+15:46:23 origin after request body: 
+15:46:23 path and query /static {'file': 'todo.js'}
+15:46:23 完整请求
+15:46:23 请求结束
+15:46:23 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:46:23 origin before request body: 
+15:46:23 origin after request body: 
+15:46:23 path and query /api/todo/all {}
+15:50:37 完整请求
+15:50:37 完整请求
+15:50:37 请求结束
+15:50:37 请求结束
+15:50:55 完整请求
+15:50:55 请求结束
+15:50:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:50:55 origin before request body: 
+15:50:55 origin after request body: 
+15:50:55 path and query /todo/index {}
+15:50:55 完整请求
+15:50:55 请求结束
+15:50:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:50:55 origin before request body: 
+15:50:55 origin after request body: 
+15:50:55 path and query /static {'file': 'gua.js'}
+15:50:55 完整请求
+15:50:55 请求结束
+15:50:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:50:55 origin before request body: 
+15:50:55 origin after request body: 
+15:50:55 path and query /static {'file': 'todo.js'}
+15:50:55 完整请求
+15:50:55 请求结束
+15:50:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:50:55 origin before request body: 
+15:50:55 origin after request body: 
+15:50:55 path and query /api/todo/all {}
+15:51:11 完整请求
+15:51:11 请求结束
+15:51:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:51:11 origin before request body: 
+15:51:11 origin after request body: {"title":"ddd"}
+15:51:11 path and query /api/todo/add {}
+15:51:11 完整请求
+15:51:11 请求结束
+15:51:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:51:11 origin before request body: 
+15:51:11 origin after request body: 
+15:51:11 path and query /api/todo/add {}
+15:53:21 完整请求
+15:53:21 请求结束
+15:53:21 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:21 origin before request body: 
+15:53:21 origin after request body: 
+15:53:21 path and query /todo/index {}
+15:53:21 完整请求
+15:53:21 请求结束
+15:53:21 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:21 origin before request body: 
+15:53:21 origin after request body: 
+15:53:21 path and query /static {'file': 'gua.js'}
+15:53:21 完整请求
+15:53:21 请求结束
+15:53:21 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:21 origin before request body: 
+15:53:21 origin after request body: 
+15:53:21 path and query /static {'file': 'todo.js'}
+15:53:22 完整请求
+15:53:22 请求结束
+15:53:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:22 origin before request body: 
+15:53:22 origin after request body: 
+15:53:22 path and query /api/todo/all {}
+15:53:26 完整请求
+15:53:26 请求结束
+15:53:26 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:26 origin before request body: 
+15:53:26 origin after request body: 
+15:53:26 path and query /api/todo/add {}
+15:53:28 完整请求
+15:53:28 请求结束
+15:53:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:28 origin before request body: 
+15:53:28 origin after request body: {"title":"sdf"}
+15:53:28 path and query /api/todo/add {}
+15:53:29 完整请求
+15:53:29 请求结束
+15:53:29 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:29 origin before request body: 
+15:53:29 origin after request body: {"title":"sdf"}
+15:53:29 path and query /api/todo/add {}
+15:53:29 完整请求
+15:53:29 请求结束
+15:53:29 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:29 origin before request body: 
+15:53:29 origin after request body: {"title":"sdf"}
+15:53:29 path and query /api/todo/add {}
+15:53:30 完整请求
+15:53:30 请求结束
+15:53:30 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:30 origin before request body: 
+15:53:30 origin after request body: 
+15:53:30 path and query /api/todo/add {}
+15:53:38 完整请求
+15:53:38 请求结束
+15:53:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+15:53:38 origin before request body: 
+15:53:38 origin after request body: {"title":"sdfsdfsdfsdf"}
+15:53:38 path and query /api/todo/add {}
+21:48:07 start at :3000
+21:48:11 完整请求
+21:48:11 请求结束
+21:48:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:48:11 origin before request body: 
+21:48:11 origin after request body: 
+21:48:11 path and query /todo/index {}
+21:48:11 完整请求
+21:48:11 请求结束
+21:48:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:48:11 origin before request body: 
+21:48:11 origin after request body: 
+21:48:11 path and query /static {'file': 'gua.js'}
+21:48:11 完整请求
+21:48:11 请求结束
+21:48:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:48:11 origin before request body: 
+21:48:11 origin after request body: 
+21:48:11 path and query /static {'file': 'todo.js'}
+21:48:21 完整请求
+21:48:21 请求结束
+21:48:21 完整请求
+21:48:21 请求结束
+21:48:21 完整请求
+21:48:21 请求结束
+21:48:21 完整请求
+21:48:21 请求结束
+21:48:21 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:48:21 origin before request body: 
+21:48:21 origin after request body: 
+21:48:21 path and query / {}
+21:48:21 完整请求
+21:48:21 请求结束
+21:48:21 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:48:21 origin before request body: 
+21:48:21 origin after request body: 
+21:48:21 path and query /todo/index {}
+21:48:21 完整请求
+21:48:21 完整请求
+21:48:21 请求结束
+21:48:21 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:48:21 origin before request body: 
+21:48:21 origin after request body: 
+21:48:21 path and query /static {'file': 'todo.js'}
+21:48:21 请求结束
+21:48:21 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:48:21 origin before request body: 
+21:48:21 origin after request body: 
+21:48:21 path and query /static {'file': 'gua.js'}
+21:49:13 完整请求
+21:49:13 请求结束
+21:49:13 完整请求
+21:49:13 请求结束
+21:49:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:13 origin before request body: 
+21:49:13 origin after request body: 
+21:49:13 path and query /todo/index {}
+21:49:14 完整请求
+21:49:14 请求结束
+21:49:14 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:14 origin before request body: 
+21:49:14 origin after request body: 
+21:49:14 path and query /static {'file': 'gua.js'}
+21:49:14 完整请求
+21:49:14 请求结束
+21:49:14 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:14 origin before request body: 
+21:49:14 origin after request body: 
+21:49:14 path and query /static {'file': 'todo.js'}
+21:49:14 完整请求
+21:49:14 请求结束
+21:49:14 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:14 origin before request body: 
+21:49:14 origin after request body: 
+21:49:14 path and query /api/todo/all {}
+21:49:15 完整请求
+21:49:15 请求结束
+21:49:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:15 origin before request body: 
+21:49:15 origin after request body: 
+21:49:15 path and query /api/todo/add {}
+21:49:16 完整请求
+21:49:16 完整请求
+21:49:16 完整请求
+21:49:16 请求结束
+21:49:16 请求结束
+21:49:16 请求结束
+21:49:16 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:16 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:16 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:16 origin before request body: 
+21:49:16 origin before request body: 
+21:49:16 origin before request body: 
+21:49:16 origin after request body: 
+21:49:16 origin after request body: {"title":""}
+21:49:16 origin after request body: 
+21:49:16 path and query /api/todo/delete {'id': '3'}
+21:49:16 path and query /api/todo/add {}
+21:49:16 path and query /api/todo/add {}
+21:49:18 完整请求
+21:49:18 完整请求
+21:49:18 请求结束
+21:49:18 请求结束
+21:49:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:18 origin before request body: 
+21:49:18 origin before request body: 
+21:49:18 origin after request body: 
+21:49:18 origin after request body: {"title":""}
+21:49:18 path and query /api/todo/delete {'id': '4'}
+21:49:18 path and query /api/todo/add {}
+21:49:25 完整请求
+21:49:25 完整请求
+21:49:25 请求结束
+21:49:25 请求结束
+21:49:25 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:25 origin before request body: 
+21:49:25 origin after request body: 
+21:49:25 path and query /api/todo/delete {'id': '11'}
+21:49:25 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:25 origin before request body: 
+21:49:25 origin after request body: {"title":""}
+21:49:25 path and query /api/todo/add {}
+21:49:28 完整请求
+21:49:28 请求结束
+21:49:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:28 origin before request body: 
+21:49:28 完整请求
+21:49:28 origin after request body: {"title":""}
+21:49:28 请求结束
+21:49:28 path and query /api/todo/add {}
+21:49:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:28 origin before request body: 
+21:49:28 origin after request body: 
+21:49:28 path and query /api/todo/delete {'id': '5'}
+21:49:35 完整请求
+21:49:35 请求结束
+21:49:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:35 origin before request body: 
+21:49:35 origin after request body: 
+21:49:35 path and query /api/todo/add {}
+21:49:35 完整请求
+21:49:35 请求结束
+21:49:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:35 origin before request body: 
+21:49:35 origin after request body: 
+21:49:35 path and query /api/todo/delete {'id': '8'}
+21:49:37 完整请求
+21:49:37 请求结束
+21:49:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:37 origin before request body: 
+21:49:37 origin after request body: 
+21:49:37 path and query /api/todo/delete {'id': '2'}
+21:49:37 完整请求
+21:49:37 请求结束
+21:49:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:49:37 origin before request body: 
+21:49:37 origin after request body: {"title":""}
+21:49:37 path and query /api/todo/add {}
+21:50:13 完整请求
+21:50:13 请求结束
+21:50:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:13 origin before request body: 
+21:50:13 origin after request body: 
+21:50:13 path and query /todo/index {}
+21:50:13 完整请求
+21:50:13 请求结束
+21:50:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:13 origin before request body: 
+21:50:13 origin after request body: 
+21:50:13 path and query /static {'file': 'gua.js'}
+21:50:13 完整请求
+21:50:13 请求结束
+21:50:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:13 origin before request body: 
+21:50:13 origin after request body: 
+21:50:13 path and query /static {'file': 'todo.js'}
+21:50:13 完整请求
+21:50:13 请求结束
+21:50:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:13 origin before request body: 
+21:50:13 origin after request body: 
+21:50:13 path and query /api/todo/all {}
+21:50:14 完整请求
+21:50:14 请求结束
+21:50:14 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:14 origin before request body: 
+21:50:14 origin after request body: 
+21:50:14 path and query /api/todo/add {}
+21:50:15 完整请求
+21:50:15 完整请求
+21:50:15 完整请求
+21:50:15 请求结束
+21:50:15 请求结束
+21:50:15 请求结束
+21:50:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:15 origin before request body: 
+21:50:15 origin before request body: 
+21:50:15 origin after request body: {"title":""}
+21:50:15 origin before request body: 
+21:50:15 origin after request body: 
+21:50:15 path and query /api/todo/delete {'id': '4'}
+21:50:15 path and query /api/todo/add {}
+21:50:15 origin after request body: {"title":""}
+21:50:15 path and query /api/todo/add {}
+21:50:17 完整请求
+21:50:17 完整请求
+21:50:17 请求结束
+21:50:17 请求结束
+21:50:17 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:17 origin before request body: 
+21:50:17 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:17 origin after request body: 
+21:50:17 origin before request body: 
+21:50:17 path and query /api/todo/add {}
+21:50:17 origin after request body: 
+21:50:17 path and query /api/todo/delete {'id': '11'}
+21:50:18 完整请求
+21:50:18 完整请求
+21:50:18 请求结束
+21:50:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:18 请求结束
+21:50:18 origin before request body: 
+21:50:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:18 origin after request body: 
+21:50:18 path and query /api/todo/delete {'id': '5'}
+21:50:18 origin before request body: 
+21:50:18 origin after request body: {"title":""}
+21:50:18 path and query /api/todo/add {}
+21:50:25 完整请求
+21:50:25 请求结束
+21:50:25 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:25 origin before request body: 
+21:50:25 origin after request body: {"title":""}
+21:50:25 path and query /api/todo/add {}
+21:50:25 完整请求
+21:50:25 请求结束
+21:50:25 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:25 origin before request body: 
+21:50:25 origin after request body: 
+21:50:25 path and query /api/todo/delete {'id': '2'}
+21:50:26 完整请求
+21:50:26 完整请求
+21:50:26 请求结束
+21:50:26 请求结束
+21:50:26 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:26 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:26 origin before request body: 
+21:50:26 origin before request body: 
+21:50:26 origin after request body: {"title":""}
+21:50:26 origin after request body: 
+21:50:26 path and query /api/todo/delete {'id': '2'}
+21:50:26 path and query /api/todo/add {}
+21:50:27 完整请求
+21:50:27 完整请求
+21:50:27 请求结束
+21:50:27 请求结束
+21:50:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:27 origin before request body: 
+21:50:27 origin after request body: {"title":""}
+21:50:27 path and query /api/todo/add {}
+21:50:27 origin before request body: 
+21:50:27 origin after request body: 
+21:50:27 path and query /api/todo/delete {'id': '6'}
+21:50:36 完整请求
+21:50:36 请求结束
+21:50:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:36 origin before request body: 
+21:50:36 origin after request body: 
+21:50:36 path and query /todo/index {}
+21:50:36 完整请求
+21:50:36 请求结束
+21:50:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:36 origin before request body: 
+21:50:36 origin after request body: 
+21:50:36 path and query /static {'file': 'todo.js'}
+21:50:36 完整请求
+21:50:36 请求结束
+21:50:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:36 origin before request body: 
+21:50:36 origin after request body: 
+21:50:36 path and query /static {'file': 'gua.js'}
+21:50:36 完整请求
+21:50:36 请求结束
+21:50:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:36 origin before request body: 
+21:50:36 origin after request body: 
+21:50:36 path and query /api/todo/all {}
+21:50:36 完整请求
+21:50:36 请求结束
+21:50:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:36 origin before request body: 
+21:50:36 origin after request body: 
+21:50:36 path and query /api/todo/all {}
+21:50:37 完整请求
+21:50:37 请求结束
+21:50:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:37 origin before request body: 
+21:50:37 origin after request body: 
+21:50:37 path and query /api/todo/all {}
+21:50:37 完整请求
+21:50:37 请求结束
+21:50:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:37 origin before request body: 
+21:50:37 origin after request body: 
+21:50:37 path and query /todo/index {}
+21:50:37 完整请求
+21:50:37 请求结束
+21:50:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:37 origin before request body: 
+21:50:37 origin after request body: 
+21:50:37 path and query /api/todo/all {}
+21:50:37 完整请求
+21:50:37 请求结束
+21:50:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:37 origin before request body: 
+21:50:37 origin after request body: 
+21:50:37 path and query /api/todo/all {}
+21:50:37 完整请求
+21:50:37 请求结束
+21:50:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:37 origin before request body: 
+21:50:37 origin after request body: 
+21:50:37 path and query /static {'file': 'gua.js'}
+21:50:37 完整请求
+21:50:37 请求结束
+21:50:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:37 origin before request body: 
+21:50:37 origin after request body: 
+21:50:37 path and query /static {'file': 'todo.js'}
+21:50:37 完整请求
+21:50:37 请求结束
+21:50:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:37 origin before request body: 
+21:50:37 origin after request body: 
+21:50:37 path and query /api/todo/all {}
+21:50:38 完整请求
+21:50:38 请求结束
+21:50:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:38 origin before request body: 
+21:50:38 origin after request body: 
+21:50:38 path and query /todo/index {}
+21:50:38 完整请求
+21:50:38 请求结束
+21:50:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:38 origin before request body: 
+21:50:38 origin after request body: 
+21:50:38 path and query /static {'file': 'gua.js'}
+21:50:38 完整请求
+21:50:38 请求结束
+21:50:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:38 origin before request body: 
+21:50:38 origin after request body: 
+21:50:38 path and query /static {'file': 'todo.js'}
+21:50:39 完整请求
+21:50:39 请求结束
+21:50:39 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:39 origin before request body: 
+21:50:39 origin after request body: 
+21:50:39 path and query /api/todo/all {}
+21:50:39 完整请求
+21:50:39 请求结束
+21:50:39 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:39 origin before request body: 
+21:50:39 origin after request body: 
+21:50:39 path and query /api/todo/all {}
+21:50:52 完整请求
+21:50:52 请求结束
+21:50:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:52 origin before request body: 
+21:50:52 origin after request body: 
+21:50:52 path and query /api/todo/all {}
+21:50:52 完整请求
+21:50:52 请求结束
+21:50:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:52 origin before request body: 
+21:50:52 origin after request body: 
+21:50:52 path and query /todo/index {}
+21:50:52 完整请求
+21:50:52 请求结束
+21:50:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:52 origin before request body: 
+21:50:52 origin after request body: 
+21:50:52 path and query /static {'file': 'gua.js'}
+21:50:52 完整请求
+21:50:52 请求结束
+21:50:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:52 origin before request body: 
+21:50:52 origin after request body: 
+21:50:52 path and query /static {'file': 'todo.js'}
+21:50:52 完整请求
+21:50:52 请求结束
+21:50:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:50:52 origin before request body: 
+21:50:52 origin after request body: 
+21:50:52 path and query /api/todo/all {}
+21:51:15 完整请求
+21:51:15 完整请求
+21:51:15 请求结束
+21:51:15 请求结束
+21:51:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:51:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:51:15 origin before request body: 
+21:51:15 origin before request body: 
+21:51:15 origin after request body: 
+21:51:15 path and query /api/todo/delete {'id': '5'}
+21:51:15 origin after request body: {"title":""}
+21:51:15 path and query /api/todo/add {}
+21:51:57 完整请求
+21:51:57 完整请求
+21:51:57 请求结束
+21:51:57 请求结束
+21:51:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:51:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:51:57 origin before request body: 
+21:51:57 origin before request body: 
+21:51:57 origin after request body: 
+21:51:57 path and query /api/todo/delete {'id': '6'}
+21:51:57 origin after request body: {"title":""}
+21:51:57 path and query /api/todo/add {}
+21:52:37 完整请求
+21:52:37 请求结束
+21:52:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:52:37 origin before request body: 
+21:52:37 origin after request body: 
+21:52:37 path and query /todo/index {}
+21:52:37 完整请求
+21:52:37 完整请求
+21:52:37 请求结束
+21:52:37 请求结束
+21:52:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:52:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:52:37 origin before request body: 
+21:52:37 origin before request body: 
+21:52:37 origin after request body: 
+21:52:37 origin after request body: 
+21:52:37 path and query /static {'file': 'todo.js'}
+21:52:37 path and query /static {'file': 'gua.js'}
+21:52:37 完整请求
+21:52:37 请求结束
+21:52:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:52:37 origin before request body: 
+21:52:37 origin after request body: 
+21:52:37 path and query /api/todo/all {}
+21:52:44 完整请求
+21:52:44 请求结束
+21:52:44 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:52:44 origin before request body: 
+21:52:44 origin after request body: 
+21:52:44 path and query /api/todo/delete {'id': '11'}
+21:52:45 完整请求
+21:52:45 请求结束
+21:52:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:52:45 origin before request body: 
+21:52:45 origin after request body: 
+21:52:45 path and query /api/todo/delete {'id': '12'}
+21:52:46 完整请求
+21:52:46 请求结束
+21:52:46 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:52:46 origin before request body: 
+21:52:46 origin after request body: 
+21:52:46 path and query /api/todo/delete {'id': '7'}
+21:54:57 完整请求
+21:54:57 请求结束
+21:54:57 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:54:57 origin before request body: 
+21:54:57 origin after request body: 
+21:54:57 path and query /todo/index {}
+21:54:58 完整请求
+21:54:58 请求结束
+21:54:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:54:58 origin before request body: 
+21:54:58 origin after request body: 
+21:54:58 path and query /static {'file': 'gua.js'}
+21:54:58 完整请求
+21:54:58 请求结束
+21:54:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:54:58 origin before request body: 
+21:54:58 origin after request body: 
+21:54:58 path and query /static {'file': 'todo.js'}
+21:54:58 完整请求
+21:54:58 请求结束
+21:54:58 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:54:58 origin before request body: 
+21:54:58 origin after request body: 
+21:54:58 path and query /api/todo/all {}
+21:57:56 完整请求
+21:57:56 请求结束
+21:57:56 完整请求
+21:57:56 请求结束
+21:57:56 完整请求
+21:57:56 请求结束
+21:57:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:57:56 origin before request body: 
+21:57:56 origin after request body: 
+21:57:56 path and query /todo/index {}
+21:57:56 完整请求
+21:57:56 请求结束
+21:57:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:57:56 origin before request body: 
+21:57:56 origin after request body: 
+21:57:56 path and query /static {'file': 'gua.js'}
+21:57:56 完整请求
+21:57:56 请求结束
+21:57:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:57:56 origin before request body: 
+21:57:56 origin after request body: 
+21:57:56 path and query /static {'file': 'todo.js'}
+21:57:56 完整请求
+21:57:56 请求结束
+21:57:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:57:56 origin before request body: 
+21:57:56 origin after request body: 
+21:57:56 path and query /api/todo/all {}
+21:58:35 完整请求
+21:58:35 请求结束
+21:58:35 完整请求
+21:58:35 请求结束
+21:58:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:58:35 origin before request body: 
+21:58:35 origin after request body: 
+21:58:35 path and query /todo/index {}
+21:58:35 完整请求
+21:58:35 完整请求
+21:58:35 请求结束
+21:58:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:58:35 请求结束
+21:58:35 origin before request body: 
+21:58:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:58:35 origin before request body: 
+21:58:35 origin after request body: 
+21:58:35 path and query /static {'file': 'todo.js'}
+21:58:35 origin after request body: 
+21:58:35 path and query /static {'file': 'gua.js'}
+21:58:35 完整请求
+21:58:35 请求结束
+21:58:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+21:58:35 origin before request body: 
+21:58:35 origin after request body: 
+21:58:35 path and query /api/todo/all {}
+22:00:37 完整请求
+22:00:37 请求结束
+22:00:49 完整请求
+22:00:49 请求结束
+22:00:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:00:49 origin before request body: 
+22:00:49 origin after request body: 
+22:00:49 path and query /todo/index {}
+22:00:49 完整请求
+22:00:49 完整请求
+22:00:49 请求结束
+22:00:49 请求结束
+22:00:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:00:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:00:49 origin before request body: 
+22:00:49 origin after request body: 
+22:00:49 origin before request body: 
+22:00:49 origin after request body: 
+22:00:49 path and query /static {'file': 'todo.js'}
+22:00:49 path and query /static {'file': 'gua.js'}
+22:00:49 完整请求
+22:00:49 请求结束
+22:00:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:00:49 origin before request body: 
+22:00:49 origin after request body: 
+22:00:49 path and query /api/todo/all {}
+22:01:20 完整请求
+22:01:20 请求结束
+22:01:20 完整请求
+22:01:20 请求结束
+22:01:20 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:20 origin before request body: 
+22:01:20 origin after request body: 
+22:01:20 path and query /todo/index {}
+22:01:20 完整请求
+22:01:20 请求结束
+22:01:20 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:20 origin before request body: 
+22:01:20 origin after request body: 
+22:01:20 path and query /static {'file': 'gua.js'}
+22:01:20 完整请求
+22:01:20 请求结束
+22:01:20 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:20 origin before request body: 
+22:01:20 origin after request body: 
+22:01:20 path and query /static {'file': 'todo.js'}
+22:01:20 完整请求
+22:01:20 请求结束
+22:01:20 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:20 origin before request body: 
+22:01:20 origin after request body: 
+22:01:20 path and query /api/todo/all {}
+22:01:28 完整请求
+22:01:28 请求结束
+22:01:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:28 origin before request body: 
+22:01:28 origin after request body: 
+22:01:28 path and query /api/todo/add {}
+22:01:29 完整请求
+22:01:29 完整请求
+22:01:29 请求结束
+22:01:29 请求结束
+22:01:29 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:29 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:29 origin before request body: 
+22:01:29 origin before request body: 
+22:01:29 origin after request body: {"title":"123123123"}
+22:01:29 origin after request body: {"title":"123123123"}
+22:01:29 path and query /api/todo/add {}
+22:01:29 path and query /api/todo/add {}
+22:01:29 完整请求
+22:01:29 请求结束
+22:01:29 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:29 origin before request body: 
+22:01:29 origin after request body: {"title":"123123123"}
+22:01:29 path and query /api/todo/add {}
+22:01:30 完整请求
+22:01:30 请求结束
+22:01:30 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:30 origin before request body: 
+22:01:30 origin after request body: {"title":"123123123"}
+22:01:30 path and query /api/todo/add {}
+22:01:46 完整请求
+22:01:46 请求结束
+22:01:46 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:46 origin before request body: 
+22:01:46 origin after request body: 
+22:01:46 path and query /api/todo/add {}
+22:01:48 完整请求
+22:01:48 请求结束
+22:01:48 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:48 origin before request body: 
+22:01:48 origin after request body: 
+22:01:48 path and query /api/todo/add {}
+22:01:49 完整请求
+22:01:49 请求结束
+22:01:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:49 origin before request body: 
+22:01:49 origin after request body: {"title":"1231231231111"}
+22:01:49 path and query /api/todo/add {}
+22:01:50 完整请求
+22:01:50 请求结束
+22:01:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:50 origin before request body: 
+22:01:50 origin after request body: 
+22:01:50 path and query /api/todo/add {}
+22:01:50 完整请求
+22:01:50 请求结束
+22:01:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:50 origin before request body: 
+22:01:50 origin after request body: {"title":"1231231231111"}
+22:01:50 path and query /api/todo/add {}
+22:01:51 完整请求
+22:01:51 请求结束
+22:01:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:51 origin before request body: 
+22:01:51 origin after request body: {"title":"1231231231111"}
+22:01:51 path and query /api/todo/add {}
+22:01:51 完整请求
+22:01:51 请求结束
+22:01:51 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:51 origin before request body: 
+22:01:51 origin after request body: {"title":"1231231231111"}
+22:01:51 path and query /api/todo/add {}
+22:01:52 完整请求
+22:01:52 请求结束
+22:01:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:52 origin before request body: 
+22:01:52 origin after request body: {"title":"1231231231111"}
+22:01:52 path and query /api/todo/add {}
+22:01:53 完整请求
+22:01:53 请求结束
+22:01:53 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:53 origin before request body: 
+22:01:53 origin after request body: 
+22:01:53 path and query /api/todo/add {}
+22:01:53 完整请求
+22:01:53 请求结束
+22:01:53 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:01:53 origin before request body: 
+22:01:53 origin after request body: {"title":"1231231231111"}
+22:01:53 path and query /api/todo/add {}
+22:02:01 完整请求
+22:02:01 请求结束
+22:02:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:01 origin before request body: 
+22:02:01 origin after request body: 
+22:02:01 path and query /api/todo/delete {'id': '19'}
+22:02:02 完整请求
+22:02:02 请求结束
+22:02:02 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:02 origin before request body: 
+22:02:02 origin after request body: 
+22:02:02 path and query /api/todo/delete {'id': '18'}
+22:02:03 完整请求
+22:02:03 请求结束
+22:02:03 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:03 origin before request body: 
+22:02:03 origin after request body: 
+22:02:03 path and query /api/todo/delete {'id': '16'}
+22:02:03 完整请求
+22:02:03 请求结束
+22:02:03 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:03 origin before request body: 
+22:02:03 origin after request body: 
+22:02:03 path and query /api/todo/delete {'id': '14'}
+22:02:04 完整请求
+22:02:04 请求结束
+22:02:04 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:04 origin before request body: 
+22:02:04 origin after request body: 
+22:02:04 path and query /api/todo/delete {'id': '15'}
+22:02:05 完整请求
+22:02:05 请求结束
+22:02:05 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:05 origin before request body: 
+22:02:05 origin after request body: 
+22:02:05 path and query /api/todo/delete {'id': '17'}
+22:02:55 完整请求
+22:02:55 请求结束
+22:02:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:55 origin before request body: 
+22:02:55 origin after request body: 
+22:02:55 path and query /todo/index {}
+22:02:56 完整请求
+22:02:56 请求结束
+22:02:56 完整请求
+22:02:56 请求结束
+22:02:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:56 origin before request body: 
+22:02:56 origin after request body: 
+22:02:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:56 path and query /static {'file': 'todo.js'}
+22:02:56 origin before request body: 
+22:02:56 origin after request body: 
+22:02:56 path and query /static {'file': 'gua.js'}
+22:02:56 完整请求
+22:02:56 请求结束
+22:02:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:02:56 origin before request body: 
+22:02:56 origin after request body: 
+22:02:56 path and query /api/todo/all {}
+22:07:14 完整请求
+22:07:14 完整请求
+22:07:14 完整请求
+22:07:14 请求结束
+22:07:14 请求结束
+22:07:14 请求结束
+22:07:14 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:07:14 origin before request body: 
+22:07:14 origin after request body: 
+22:07:14 path and query /api/todo/delete {'id': '2'}
+22:07:27 完整请求
+22:07:27 请求结束
+22:07:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:07:27 origin before request body: 
+22:07:27 origin after request body: 
+22:07:27 path and query /todo/index {}
+22:07:27 完整请求
+22:07:27 请求结束
+22:07:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:07:27 origin before request body: 
+22:07:27 origin after request body: 
+22:07:27 path and query /static {'file': 'gua.js'}
+22:07:27 完整请求
+22:07:27 请求结束
+22:07:27 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:07:27 origin before request body: 
+22:07:27 origin after request body: 
+22:07:27 path and query /static {'file': 'todo.js'}
+22:09:36 完整请求
+22:09:36 请求结束
+22:09:36 完整请求
+22:09:36 完整请求
+22:09:36 请求结束
+22:09:36 请求结束
+22:09:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:09:36 origin before request body: 
+22:09:36 origin after request body: 
+22:09:36 path and query /todo/index {}
+22:09:36 完整请求
+22:09:36 请求结束
+22:09:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:09:36 origin before request body: 
+22:09:36 origin after request body: 
+22:09:36 path and query /static {'file': 'gua.js'}
+22:09:36 完整请求
+22:09:36 请求结束
+22:09:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:09:36 origin before request body: 
+22:09:36 origin after request body: 
+22:09:36 path and query /static {'file': 'todo.js'}
+22:10:37 完整请求
+22:10:37 完整请求
+22:10:37 请求结束
+22:10:37 请求结束
+22:11:11 完整请求
+22:11:11 请求结束
+22:11:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:11 origin before request body: 
+22:11:11 origin after request body: 
+22:11:11 path and query /todo/index {}
+22:11:11 完整请求
+22:11:11 请求结束
+22:11:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:11 origin before request body: 
+22:11:11 origin after request body: 
+22:11:11 path and query /static {'file': 'gua.js'}
+22:11:11 完整请求
+22:11:11 请求结束
+22:11:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:11 origin before request body: 
+22:11:11 origin after request body: 
+22:11:11 path and query /static {'file': 'todo.js'}
+22:11:28 完整请求
+22:11:28 请求结束
+22:11:28 完整请求
+22:11:28 请求结束
+22:11:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:28 origin before request body: 
+22:11:28 origin after request body: 
+22:11:28 path and query /todo/index {}
+22:11:28 完整请求
+22:11:28 请求结束
+22:11:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:28 origin before request body: 
+22:11:28 origin after request body: 
+22:11:28 path and query /static {'file': 'gua.js'}
+22:11:28 完整请求
+22:11:28 请求结束
+22:11:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:28 origin before request body: 
+22:11:28 origin after request body: 
+22:11:28 path and query /static {'file': 'todo.js'}
+22:11:28 完整请求
+22:11:28 请求结束
+22:11:28 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:28 origin before request body: 
+22:11:28 origin after request body: 
+22:11:28 path and query /api/todo/all {}
+22:11:40 完整请求
+22:11:40 请求结束
+22:11:40 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:40 origin before request body: 
+22:11:40 origin after request body: 
+22:11:40 path and query /todo/index {}
+22:11:40 完整请求
+22:11:40 请求结束
+22:11:40 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:40 origin before request body: 
+22:11:40 origin after request body: 
+22:11:40 path and query /static {'file': 'todo.js'}
+22:11:40 完整请求
+22:11:40 请求结束
+22:11:40 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:40 origin before request body: 
+22:11:40 origin after request body: 
+22:11:40 path and query /static {'file': 'gua.js'}
+22:11:40 完整请求
+22:11:40 请求结束
+22:11:40 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:11:40 origin before request body: 
+22:11:40 origin after request body: 
+22:11:40 path and query /api/todo/all {}
+22:15:22 完整请求
+22:15:22 请求结束
+22:15:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:15:22 origin before request body: 
+22:15:22 origin after request body: 
+22:15:22 path and query /todo/index {}
+22:15:22 完整请求
+22:15:22 请求结束
+22:15:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:15:22 origin before request body: 
+22:15:22 origin after request body: 
+22:15:22 path and query /static {'file': 'gua.js'}
+22:15:22 完整请求
+22:15:22 请求结束
+22:15:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:15:22 origin before request body: 
+22:15:22 origin after request body: 
+22:15:22 path and query /static {'file': 'todo.js'}
+22:15:22 完整请求
+22:15:22 请求结束
+22:15:22 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:15:22 origin before request body: 
+22:15:22 origin after request body: 
+22:15:22 path and query /api/todo/all {}
+22:19:56 完整请求
+22:19:56 请求结束
+22:19:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:19:56 origin before request body: 
+22:19:56 origin after request body: 
+22:19:56 path and query /todo/index {}
+22:19:56 完整请求
+22:19:56 请求结束
+22:19:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:19:56 origin before request body: 
+22:19:56 origin after request body: 
+22:19:56 path and query /static {'file': 'todo.js'}
+22:19:56 完整请求
+22:19:56 请求结束
+22:19:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:19:56 origin before request body: 
+22:19:56 origin after request body: 
+22:19:56 path and query /static {'file': 'gua.js'}
+22:19:56 完整请求
+22:19:56 请求结束
+22:19:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:19:56 origin before request body: 
+22:19:56 origin after request body: 
+22:19:56 path and query /api/todo/all {}
+22:23:53 start at :3000
+22:24:01 完整请求
+22:24:01 请求结束
+22:24:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:24:01 origin before request body: 
+22:24:01 origin after request body: 
+22:24:01 path and query /todo/index {}
+22:24:01 完整请求
+22:24:01 完整请求
+22:24:01 请求结束
+22:24:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:24:01 origin before request body: 
+22:24:01 origin after request body: 
+22:24:01 path and query /static {'file': 'todo.js'}
+22:24:01 请求结束
+22:24:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:24:01 origin before request body: 
+22:24:01 origin after request body: 
+22:24:01 path and query /static {'file': 'gua.js'}
+22:25:02 完整请求
+22:25:02 请求结束
+22:25:02 完整请求
+22:25:02 请求结束
+22:25:02 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:02 origin before request body: 
+22:25:02 origin after request body: 
+22:25:02 path and query /todo/index {}
+22:25:02 完整请求
+22:25:02 完整请求
+22:25:02 请求结束
+22:25:02 请求结束
+22:25:02 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:02 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:02 origin before request body: 
+22:25:02 origin before request body: 
+22:25:02 origin after request body: 
+22:25:02 path and query /static {'file': 'todo.js'}
+22:25:02 origin after request body: 
+22:25:02 path and query /static {'file': 'gua.js'}
+22:25:02 完整请求
+22:25:02 请求结束
+22:25:02 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:02 origin before request body: 
+22:25:02 origin after request body: 
+22:25:02 path and query /api/todo/all {}
+22:25:54 完整请求
+22:25:54 请求结束
+22:25:54 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:54 origin before request body: 
+22:25:54 origin after request body: 
+22:25:54 path and query /todo/index {}
+22:25:54 完整请求
+22:25:54 请求结束
+22:25:54 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:54 origin before request body: 
+22:25:54 origin after request body: 
+22:25:54 path and query /static {'file': 'gua.js'}
+22:25:54 完整请求
+22:25:54 请求结束
+22:25:54 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:54 origin before request body: 
+22:25:54 origin after request body: 
+22:25:54 path and query /static {'file': 'todo.js'}
+22:25:54 完整请求
+22:25:54 请求结束
+22:25:54 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:54 origin before request body: 
+22:25:54 origin after request body: 
+22:25:54 path and query /api/todo/all {}
+22:25:56 完整请求
+22:25:56 请求结束
+22:25:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:56 origin before request body: 
+22:25:56 origin after request body: 
+22:25:56 path and query /todo/index {}
+22:25:56 完整请求
+22:25:56 请求结束
+22:25:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:56 origin before request body: 
+22:25:56 origin after request body: 
+22:25:56 path and query /static {'file': 'gua.js'}
+22:25:56 完整请求
+22:25:56 请求结束
+22:25:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:56 origin before request body: 
+22:25:56 origin after request body: 
+22:25:56 path and query /static {'file': 'todo.js'}
+22:25:56 完整请求
+22:25:56 请求结束
+22:25:56 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:25:56 origin before request body: 
+22:25:56 origin after request body: 
+22:25:56 path and query /api/todo/all {}
+22:27:37 完整请求
+22:27:37 请求结束
+22:27:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:27:37 origin before request body: 
+22:27:37 origin after request body: 
+22:27:37 path and query /todo/index {}
+22:27:37 完整请求
+22:27:37 请求结束
+22:27:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:27:37 origin before request body: 
+22:27:37 origin after request body: 
+22:27:37 path and query /static {'file': 'gua.js'}
+22:27:37 完整请求
+22:27:37 请求结束
+22:27:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:27:37 origin before request body: 
+22:27:37 origin after request body: 
+22:27:37 path and query /static {'file': 'todo.js'}
+22:27:37 完整请求
+22:27:37 请求结束
+22:27:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:27:37 origin before request body: 
+22:27:37 origin after request body: 
+22:27:37 path and query /api/todo/all {}
+22:27:41 完整请求
+22:27:41 请求结束
+22:27:41 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:27:41 origin before request body: 
+22:27:41 origin after request body: {"id":"8","title":"1111"}
+22:27:41 path and query /api/todo/update {}
+22:27:41 kwargs,  {'id': 8} <class 'dict'>
+22:27:41 debug 0
+22:35:32 完整请求
+22:35:32 请求结束
+22:35:32 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:35:32 origin before request body: 
+22:35:32 origin after request body: 
+22:35:32 path and query /todo/index {}
+22:35:32 完整请求
+22:35:32 请求结束
+22:35:32 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:35:32 origin before request body: 
+22:35:32 origin after request body: 
+22:35:32 path and query /static {'file': 'gua.js'}
+22:35:32 完整请求
+22:35:32 请求结束
+22:35:32 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:35:32 origin before request body: 
+22:35:32 origin after request body: 
+22:35:32 path and query /static {'file': 'todo.js'}
+22:35:32 完整请求
+22:35:32 请求结束
+22:35:32 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:35:32 origin before request body: 
+22:35:32 origin after request body: 
+22:35:32 path and query /api/todo/all {}
+22:35:36 完整请求
+22:35:36 请求结束
+22:35:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:35:36 origin before request body: 
+22:35:36 origin after request body: 
+22:35:36 path and query /api/todo/update {}
+22:35:37 完整请求
+22:35:37 完整请求
+22:35:37 请求结束
+22:35:37 请求结束
+22:35:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:35:37 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:35:37 origin before request body: 
+22:35:37 origin before request body: 
+22:35:37 origin after request body: {"id":"8","title":"23"}
+22:35:37 origin after request body: {"id":"8","title":"23"}
+22:35:37 path and query /api/todo/update {}
+22:35:37 path and query /api/todo/update {}
+22:35:37 kwargs,  {'id': 8} <class 'dict'>
+22:35:37 kwargs,  {'id': 8} <class 'dict'>
+22:35:37 debug 0
+22:35:37 debug 0
+22:37:50 完整请求
+22:37:50 请求结束
+22:37:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:50 origin before request body: 
+22:37:50 origin after request body: 
+22:37:50 path and query /todo/index {}
+22:37:50 完整请求
+22:37:50 完整请求
+22:37:50 请求结束
+22:37:50 请求结束
+22:37:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:50 origin before request body: 
+22:37:50 origin after request body: 
+22:37:50 path and query /static {'file': 'todo.js'}
+22:37:50 origin before request body: 
+22:37:50 origin after request body: 
+22:37:50 path and query /static {'file': 'gua.js'}
+22:37:50 完整请求
+22:37:50 请求结束
+22:37:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:50 origin before request body: 
+22:37:50 origin after request body: 
+22:37:50 path and query /api/todo/all {}
+22:37:54 完整请求
+22:37:54 请求结束
+22:37:54 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:54 origin before request body: 
+22:37:54 origin after request body: 
+22:37:54 path and query /api/todo/update {}
+22:37:55 完整请求
+22:37:55 请求结束
+22:37:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:55 完整请求
+22:37:55 origin before request body: 
+22:37:55 origin after request body: {"id":"8","title":"111"}
+22:37:55 请求结束
+22:37:55 path and query /api/todo/update {}
+22:37:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:55 origin before request body: 
+22:37:55 kwargs,  {'id': 8} <class 'dict'>
+22:37:55 origin after request body: {"id":"8","title":"111"}
+22:37:55 path and query /api/todo/update {}
+22:37:55 kwargs,  {'id': 8} <class 'dict'>
+22:37:55 debug 0
+22:37:55 完整请求
+22:37:55 请求结束
+22:37:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:55 origin before request body: 
+22:37:55 origin after request body: {"id":"8","title":"111"}
+22:37:55 path and query /api/todo/update {}
+22:37:55 kwargs,  {'id': 8} <class 'dict'>
+22:37:55 debug 0
+22:37:55 完整请求
+22:37:55 请求结束
+22:37:55 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:37:55 origin before request body: 
+22:37:55 origin after request body: 
+22:37:55 path and query /api/todo/update {}
+22:38:01 完整请求
+22:38:01 请求结束
+22:38:01 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:38:01 origin before request body: 
+22:38:01 origin after request body: {"id":"8","title":"111"}
+22:38:01 path and query /api/todo/update {}
+22:38:01 kwargs,  {'id': 8} <class 'dict'>
+22:38:01 debug 0
+22:39:41 完整请求
+22:39:41 请求结束
+22:39:41 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:39:41 origin before request body: 
+22:39:41 origin after request body: {"id":"8","title":"111"}
+22:39:41 path and query /api/todo/update {}
+22:39:41 kwargs,  {'id': 8} <class 'dict'>
+22:39:41 debug 0
+22:39:49 完整请求
+22:39:49 请求结束
+22:39:49 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:39:49 origin before request body: 
+22:39:49 origin after request body: 
+22:39:49 path and query /api/todo/update {}
+22:39:52 完整请求
+22:39:52 请求结束
+22:39:52 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:39:52 origin before request body: 
+22:39:52 origin after request body: 
+22:39:52 path and query /api/todo/update {}
+22:40:19 完整请求
+22:40:19 请求结束
+22:40:19 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:40:19 origin before request body: 
+22:40:19 origin after request body: 
+22:40:19 path and query /todo/index {}
+22:40:19 完整请求
+22:40:19 请求结束
+22:40:19 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:40:19 origin before request body: 
+22:40:19 origin after request body: 
+22:40:19 path and query /static {'file': 'gua.js'}
+22:40:19 完整请求
+22:40:19 请求结束
+22:40:19 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:40:19 origin before request body: 
+22:40:19 origin after request body: 
+22:40:19 path and query /static {'file': 'todo.js'}
+22:40:20 完整请求
+22:40:20 请求结束
+22:40:20 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:40:20 origin before request body: 
+22:40:20 origin after request body: 
+22:40:20 path and query /api/todo/all {}
+22:40:24 完整请求
+22:40:24 请求结束
+22:40:24 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:40:24 origin before request body: 
+22:40:24 origin after request body: 
+22:40:24 path and query /api/todo/update {}
+22:40:30 完整请求
+22:40:30 请求结束
+22:40:30 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:40:30 完整请求
+22:40:30 origin before request body: 
+22:40:30 请求结束
+22:40:30 origin after request body: {"id":"8","title":"123123123"}
+22:40:30 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:40:30 path and query /api/todo/update {}
+22:40:30 origin before request body: 
+22:40:30 origin after request body: {"id":"8","title":"123123123"}
+22:40:30 path and query /api/todo/update {}
+22:40:30 kwargs,  {'id': 8} <class 'dict'>
+22:40:30 kwargs,  {'id': 8} <class 'dict'>
+22:40:30 debug 0
+22:41:35 完整请求
+22:41:35 请求结束
+22:41:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:35 origin before request body: 
+22:41:35 origin after request body: 
+22:41:35 path and query /todo/index {}
+22:41:35 完整请求
+22:41:35 请求结束
+22:41:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:35 origin before request body: 
+22:41:35 origin after request body: 
+22:41:35 path and query /static {'file': 'gua.js'}
+22:41:35 完整请求
+22:41:35 请求结束
+22:41:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:35 origin before request body: 
+22:41:35 origin after request body: 
+22:41:35 path and query /static {'file': 'todo.js'}
+22:41:36 完整请求
+22:41:36 请求结束
+22:41:36 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:36 origin before request body: 
+22:41:36 origin after request body: 
+22:41:36 path and query /api/todo/all {}
+22:41:39 完整请求
+22:41:39 请求结束
+22:41:39 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:39 origin before request body: 
+22:41:39 origin after request body: 
+22:41:39 path and query /api/todo/update {}
+22:41:39 完整请求
+22:41:39 请求结束
+22:41:39 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:39 origin before request body: 
+22:41:39 origin after request body: 
+22:41:39 path and query /api/todo/update {}
+22:41:42 完整请求
+22:41:42 请求结束
+22:41:42 完整请求
+22:41:42 请求结束
+22:41:42 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:42 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:41:42 origin before request body: 
+22:41:42 origin before request body: 
+22:41:42 origin after request body: {"id":"8","title":"23"}
+22:41:42 origin after request body: {"id":"8","title":"23"}
+22:41:42 path and query /api/todo/update {}
+22:41:42 path and query /api/todo/update {}
+22:41:42 kwargs,  {'id': 8} <class 'dict'>
+22:41:42 kwargs,  {'id': 8} <class 'dict'>
+22:41:42 debug 0
+22:41:42 debug 0
+22:43:13 完整请求
+22:43:13 请求结束
+22:43:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:13 origin before request body: 
+22:43:13 origin after request body: 
+22:43:13 path and query /todo/index {}
+22:43:13 完整请求
+22:43:13 完整请求
+22:43:13 请求结束
+22:43:13 请求结束
+22:43:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:13 origin before request body: 
+22:43:13 origin before request body: 
+22:43:13 origin after request body: 
+22:43:13 path and query /static {'file': 'gua.js'}
+22:43:13 origin after request body: 
+22:43:13 path and query /static {'file': 'todo.js'}
+22:43:13 完整请求
+22:43:13 请求结束
+22:43:13 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:13 origin before request body: 
+22:43:13 origin after request body: 
+22:43:13 path and query /api/todo/all {}
+22:43:18 完整请求
+22:43:18 请求结束
+22:43:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:18 origin before request body: 
+22:43:18 origin after request body: 
+22:43:18 path and query /api/todo/update {}
+22:43:18 完整请求
+22:43:18 请求结束
+22:43:18 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:18 origin before request body: 
+22:43:18 origin after request body: 
+22:43:18 path and query /api/todo/update {}
+22:43:20 完整请求
+22:43:20 请求结束
+22:43:20 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:20 origin before request body: 
+22:43:20 origin after request body: {"id":"8","title":"234"}
+22:43:20 path and query /api/todo/update {}
+22:43:20 kwargs,  {'id': 8} <class 'dict'>
+22:43:20 debug 0
+22:43:20 完整请求
+22:43:20 请求结束
+22:43:20 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:20 origin before request body: 
+22:43:20 origin after request body: {"id":"8","title":"234"}
+22:43:20 path and query /api/todo/update {}
+22:43:20 kwargs,  {'id': 8} <class 'dict'>
+22:43:20 debug 0
+22:43:35 完整请求
+22:43:35 请求结束
+22:43:35 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:35 origin before request body: 
+22:43:35 origin after request body: 
+22:43:35 path and query /api/todo/update {}
+22:43:38 完整请求
+22:43:38 请求结束
+22:43:38 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:38 origin before request body: 
+22:43:38 origin after request body: {"id":"8","title":"234"}
+22:43:38 path and query /api/todo/update {}
+22:43:38 kwargs,  {'id': 8} <class 'dict'>
+22:43:38 debug 0
+22:43:40 完整请求
+22:43:40 请求结束
+22:43:40 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:43:40 origin before request body: 
+22:43:40 origin after request body: {"id":"8","title":"234"}
+22:43:40 path and query /api/todo/update {}
+22:43:40 kwargs,  {'id': 8} <class 'dict'>
+22:43:40 debug 0
+22:44:07 完整请求
+22:44:07 请求结束
+22:44:07 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:07 origin before request body: 
+22:44:07 origin after request body: 
+22:44:07 path and query /todo/index {}
+22:44:07 完整请求
+22:44:07 请求结束
+22:44:07 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:07 origin before request body: 
+22:44:07 origin after request body: 
+22:44:07 path and query /static {'file': 'todo.js'}
+22:44:07 完整请求
+22:44:07 请求结束
+22:44:07 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:07 origin before request body: 
+22:44:07 origin after request body: 
+22:44:07 path and query /static {'file': 'gua.js'}
+22:44:07 完整请求
+22:44:07 请求结束
+22:44:07 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:07 origin before request body: 
+22:44:07 origin after request body: 
+22:44:07 path and query /api/todo/all {}
+22:44:11 完整请求
+22:44:11 请求结束
+22:44:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:11 origin before request body: 
+22:44:11 origin after request body: 
+22:44:11 path and query /api/todo/update {}
+22:44:11 完整请求
+22:44:11 请求结束
+22:44:11 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:11 origin before request body: 
+22:44:11 origin after request body: 
+22:44:11 path and query /api/todo/update {}
+22:44:15 完整请求
+22:44:15 完整请求
+22:44:15 请求结束
+22:44:15 请求结束
+22:44:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:15 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:44:15 origin before request body: 
+22:44:15 origin before request body: 
+22:44:15 origin after request body: 
+22:44:15 origin after request body: {"id":"9","title":"222"}
+22:44:15 path and query /api/todo/update {}
+22:44:15 path and query /api/todo/update {}
+22:44:15 kwargs,  {'id': 9} <class 'dict'>
+22:44:15 debug 1
+22:45:45 完整请求
+22:45:45 请求结束
+22:45:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:45 origin before request body: 
+22:45:45 origin after request body: 
+22:45:45 path and query /todo/index {}
+22:45:45 完整请求
+22:45:45 请求结束
+22:45:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:45 origin before request body: 
+22:45:45 origin after request body: 
+22:45:45 path and query /static {'file': 'gua.js'}
+22:45:45 完整请求
+22:45:45 请求结束
+22:45:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:45 origin before request body: 
+22:45:45 origin after request body: 
+22:45:45 path and query /static {'file': 'todo.js'}
+22:45:45 完整请求
+22:45:45 请求结束
+22:45:45 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:45 origin before request body: 
+22:45:45 origin after request body: 
+22:45:45 path and query /api/todo/all {}
+22:45:48 完整请求
+22:45:48 请求结束
+22:45:48 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:48 origin before request body: 
+22:45:48 origin after request body: 
+22:45:48 path and query /api/todo/update {}
+22:45:48 完整请求
+22:45:48 请求结束
+22:45:48 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:48 origin before request body: 
+22:45:48 origin after request body: 
+22:45:48 path and query /api/todo/update {}
+22:45:50 完整请求
+22:45:50 请求结束
+22:45:50 完整请求
+22:45:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:50 origin before request body: 
+22:45:50 origin after request body: {"id":"8","title":"234"}
+22:45:50 path and query /api/todo/update {}
+22:45:50 kwargs,  {'id': 8} <class 'dict'>
+22:45:50 请求结束
+22:45:50 cookie ['Pycharm-9a03a904=60023bc1-4650-43f3-8872-c33ab4c840a9']
+22:45:50 origin before request body: 
+22:45:50 origin after request body: {"id":"8","title":"234111"}
+22:45:50 debug 0
+22:45:50 path and query /api/todo/update {}
+22:45:50 kwargs,  {'id': 8} <class 'dict'>
+22:45:50 debug 0

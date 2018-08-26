@@ -60,6 +60,7 @@ class Request(object):
         把 body 中的 json 格式字符串解析成 dict 或者 list 并返回
         """
         import json
+        print('json, body: {}'.format(self.body))
         return json.loads(self.body)
 
 
@@ -128,7 +129,6 @@ def process_request(connection):
     r = r.decode('utf-8')
     log('完整请求')
     log('请求结束')
-    # log('ip and request, {}\n{}'.format(address, r))
     # 因为 chrome 会发送空请求导致 split 得到空 list
     # 所以这里判断一下防止程序崩溃
     if len(r.split()) < 2:
@@ -139,16 +139,18 @@ def process_request(connection):
     request.method = r.split()[0]
     request.add_headers(r.split('\r\n\r\n', 1)[0].split('\r\n')[1:])
     # 把 body 放入 request 中
+    log('origin before request body: {}'.format(request.body))
     request.body = r.split('\r\n\r\n', 1)[1]
+    log('origin after request body: {}'.format(request.body))
     # 用 response_for_path 函数来得到 path 对应的响应内容
     response = response_for_path(path, request)
     # 把响应发送给客户端
     connection.sendall(response)
     print('完整响应')
-    try:
-        log(response.decode('utf-8').replace('\r\n', '\n'))
-    except Exception as e:
-        log('异常', e)
+    # try:
+    #     log(response.decode('utf-8').replace('\r\n', '\n'))
+    # except Exception as e:
+    #     log('异常', e)
     # 处理完请求, 关闭连接
     connection.close()
     print('关闭')

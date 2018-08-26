@@ -41,3 +41,15 @@ var apiTodoAdd = function(form, callback) {
     var path = '/api/todo/add'
     ajax('POST', path, form, callback)
 }
+
+// 删除一个 todo
+var apiTodoDelete = function(id, callback) {
+    var path = '/api/todo/delete?id=' + id
+    ajax('GET', path, '', callback)
+}
+
+// 更新一个 todo
+var apiTodoUpdate = function(form, callback){
+    var path = '/api/todo/update'
+    ajax('POST', path, form, callback)
+}

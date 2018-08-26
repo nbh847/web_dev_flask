@@ -5,13 +5,10 @@
     <title>TODO 程序</title>
 </head>
 <body>
-    <h1>TODO</h1>
-    <form action="/todo/add" method="post">
-        <input type="text" name="title" placeholder="请输入todo">
-        <br>
-        <button type="submit">添加</button>
-    </form>
-    <div>{{todos}}</div>
+    <input id='id-input-todo'>
+    <button id='id-button-add'>add</button>
+    <div class="todo-list">
+    </div>
     <!-- 这是我们处理静态文件的套路 -->
     <!-- gua.js 放了公共的函数 -->
     <!-- 按顺序引入 2 个 js 文件, 后面的 js 文件就能使用前面的文件中的函数了 -->

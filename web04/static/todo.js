@@ -1,8 +1,26 @@
-var todoTemplate = function(title) {
+var timeString = function(timestamp){
+    t = new Date(timestamp * 1000)
+    t = t.toLocaleTimeString()
+    return t
+}
+var todoTemplate = function(todo) {
+    var title = todo.title
+    log('insert todo title: ', title)
+    var id = todo.id
+    var ut = todo.ut
+    ut = timeString(ut)
+    //    var ut = todo.ut
+    // data-xx 是自定义标签的语法
+    // 假设d是这个div的引用
+    // 这样的自定义属性通过 d.dataset.xx 来获取
+    // 在这个例子里面,是d.dataset.id
+
     var t = `
-        <div class="todo-cell">
+        <div class="todo-cell" id='todo-${id}' data-id="${id}">
             <button class="todo-delete">删除</button>
-            <span>${title}</span>
+            <button class="todo-edit">编辑</button>
+            <span class="todo-title">${title}</span>
+            <time class='todo-ut'>${ut}</time>
         </div>
     `
     return t
@@ -18,11 +36,20 @@ var todoTemplate = function(title) {
 }
 
 var insertTodo = function(todo) {
-    var title = todo.title
-    var todoCell = todoTemplate(title)
+    var todoCell = todoTemplate(todo)
     // 插入 todo-list
     var todoList = e('.todo-list')
     todoList.insertAdjacentHTML('beforeend', todoCell)
+}
+
+var insertEditForm = function(cell){
+    var form = `
+        <div class='todo-edit-form'>
+            <input class="todo-edit-input">
+            <button class='todo-update'>更新</button>
+        </div>
+    `
+    cell.insertAdjacentHTML('beforeend', form)
 }
 
 var loadTodos = function() {
@@ -57,9 +84,76 @@ var bindEventTodoAdd = function() {
     })
 }
 
+var bindEventTodoDelete = function() {
+    var b = e('.todo-list')
+    // 注意, 第二个参数可以直接给出定义函数
+    b.addEventListener('click', function(event){
+        var self =event.target
+        if(self.classList.contains('todo-delete')){
+            // 删除这个TODO
+            var todoCell = self.parentElement
+            var todo_id = todoCell.dataset.id
+            apiTodoDelete(todo_id, function(r){
+                log('删除成功', todo_id)
+                todoCell.remove()
+            })
+        }
+    })
+}
+
+
+var bindEventTodoEdit = function() {
+    var b = e('.todo-list')
+    // 注意, 第二个参数可以直接给出定义函数
+    b.addEventListener('click', function(event){
+        var self =event.target
+        if(self.classList.contains('todo-edit')){
+            // 删除这个TODO
+            var todoCell = self.parentElement
+            insertEditForm(todoCell)
+        }
+    })
+}
+
+var bindEventTodoUpdate = function() {
+    var b = e('.todo-list')
+    // 注意, 第二个参数可以直接给出定义函数
+    b.addEventListener('click', function(event){
+        var self =event.target
+        if(self.classList.contains('todo-update')){
+            log('点击了update')
+            // 更新这个TODO
+            var editForm = self.parentElement
+            var input = editForm.querySelector('.todo-edit-input')
+            var todoCell = self.closest('.todo-cell')
+            var todo_id = todoCell.dataset.id
+            var title = input.value
+            var form = {
+                'id': todo_id,
+                'title': title,
+            }
+            apiTodoUpdate(form, function(r){
+                log('更新成功', todo_id)
+                var todo = JSON.parse(r)
+                var selector = '#todo-' + todo.id
+                log('selector', selector)
+                var todoCell = e(selector)
+                var titleSpan = todoCell.querySelector('.todo-title')
+                log('title span value', titleSpan.value)
+                titleSpan.innerText = todo.title
+            })
+
+        }
+    })
+}
+
 var bindEvents = function() {
     bindEventTodoAdd()
+    bindEventTodoDelete()
+    bindEventTodoEdit()
+    bindEventTodoUpdate()
 }
+
 
 var __main = function() {
     bindEvents()

@@ -173,3 +173,16 @@ class Model(object):
         l = [m.__dict__ for m in models]
         path = self.db_path()
         save(l, path)
+
+    @classmethod
+    def new(cls, form):
+        """
+        创建并保存一个 todo 并且返回它
+        Todo.new({'title': '吃饭'})
+        :param form: 一个字典 包含了 todo 的数据
+        :return: 创建的 todo 实例
+        """
+        # 下面一行相当于 t = Todo(form)
+        m = cls(form)
+        m.save()
+        return m

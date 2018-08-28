@@ -3,43 +3,55 @@ var timeString = function(timestamp){
     t = t.toLocaleTimeString()
     return t
 }
-var todoTemplate = function(todo) {
-    var title = todo.title
-    log('insert todo title: ', title)
-    var id = todo.id
-    var ut = todo.ut
-    ut = timeString(ut)
-    //    var ut = todo.ut
+
+
+var commentsTempalte = function(comments){
+    var html = ''
+    for (var i = 0; i< comments.length; i++){
+        var c = comments[i]
+        var t = `
+            <div>
+                ${c.content}
+            </div>
+        `
+        html += t
+    }
+    return html
+}
+
+var weiboTemplate = function(weibo) {
+    var content = weibo.content
+    var id = weibo.id
+    var comments = commentsTempalte(weibo.comments)
     // data-xx 是自定义标签的语法
     // 假设d是这个div的引用
     // 这样的自定义属性通过 d.dataset.xx 来获取
     // 在这个例子里面,是d.dataset.id
 
     var t = `
-        <div class="todo-cell" id='todo-${id}' data-id="${id}">
-            <button class="todo-delete">删除</button>
-            <button class="todo-edit">编辑</button>
-            <span class="todo-title">${title}</span>
-            <time class='todo-ut'>${ut}</time>
+        <div class= 'weibo-cell' data-id=${id}>
+            <div>
+                ${content}
+            </div>
+            <div class='comment-list'>
+                ${comments}
+            </div>
+            <div class="comment-form">
+                <input type="hidden" name="weibo_id" value="">
+                <input name="content">
+                <br>
+                <button class="comment-add">添加评论</button>
+            </div>
         </div>
     `
     return t
-    /*
-    上面的写法在 python 中是这样的
-    t = """
-    <div class="todo-cell">
-        <button class="todo-delete">删除</button>
-        <span>{}</span>
-    </div>
-    """.format(todo)
-    */
 }
 
-var insertWeibo = function(todo) {
-    var todoCell = todoTemplate(todo)
-    // 插入 todo-list
-    var todoList = e('.todo-list')
-    todoList.insertAdjacentHTML('beforeend', todoCell)
+var insertWeibo = function(weibo) {
+    var weiboCell = weiboTemplate(weibo)
+    // 插入 weibo-list
+    var weiboList = e('.weibo-list')
+    weiboList.insertAdjacentHTML('beforeend', weiboCell)
 }
 
 var insertEditForm = function(cell){
@@ -67,7 +79,7 @@ var loadWeibos = function() {
 }
 
 var bindEventWeiboAdd = function() {
-    var b = e('#id-button-add')
+    var b = e('.comment-add')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(){
         var input = e('#id-input-todo')
@@ -147,9 +159,9 @@ var bindEventWeiboUpdate = function() {
 
 var bindEvents = function() {
     bindEventWeiboAdd()
-    bindEventWeiboDelete()
-    bindEventWeiboEdit()
-    bindEventWeiboUpdate()
+//    bindEventWeiboDelete()
+//    bindEventWeiboEdit()
+//    bindEventWeiboUpdate()
 }
 
 

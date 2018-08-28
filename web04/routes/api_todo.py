@@ -85,6 +85,7 @@ route_dict = {
     '/api/todo/add': add,
     '/api/todo/delete': delete,
     '/api/todo/update': update,
+    # weibo
     '/api/weibo/all': all,
     '/api/weibo/add': add,
 }

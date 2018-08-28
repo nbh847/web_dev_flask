@@ -10,25 +10,22 @@
     </style>
 </head>
 <body>
-    <a href="/weibo/new">写新微博</a>
-    {% for w in weibos %}
-    <hr>
-    <p>
-        {{ w.content }} from {{ user.username }}
-        <a href="/weibo/delete?id={{ w.id }}">删除</a>
-        <a href="/weibo/edit?id={{ w.id }}">修改</a>
-        {% for c in w.comments() %}
+    <div>
+        <input id="id-input-weibo">
+        <button id="'id-button-add-weibo">发微博</button>
+    </div>
+    <div class="weibo-list">
         <div class="comment">
-            {{ c.user().username }} : {{ c.content }}
         </div>
-        {% endfor %}
-        <form action="/comment/add" method="post">
-            <input type="hidden" name="weibo_id" value="{{ w.id }}">
+        <div class="comment-form">
+            <input type="hidden" name="weibo_id" value="">
             <input name="content">
             <br>
-            <button type="submit">添加评论</button>
-        </form>
-    </p>
-    {% endfor %}
+            <button class="comment-add">添加评论</button>
+        </div>
+    </div>
+    <script src='/static?file=gua.js'></script>
+    <script src='/static?file=weibo.js'></script>
+
 </body>
 </html>

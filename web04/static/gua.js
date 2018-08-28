@@ -53,3 +53,15 @@ var apiTodoUpdate = function(form, callback){
     var path = '/api/todo/update'
     ajax('POST', path, form, callback)
 }
+
+// load weibo all
+var apiWeiboAll = function(callback) {
+    var path = '/api/weibo/all'
+    ajax('GET', path, '', callback)
+}
+
+// 增加一个 weibo
+var apiWeiboAdd = function(form, callback) {
+    var path = '/api/weibo/add'
+    ajax('POST', path, form, callback)
+}

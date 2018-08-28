@@ -35,7 +35,7 @@ var todoTemplate = function(todo) {
     */
 }
 
-var insertTodo = function(todo) {
+var insertWeibo = function(todo) {
     var todoCell = todoTemplate(todo)
     // 插入 todo-list
     var todoList = e('.todo-list')
@@ -52,21 +52,21 @@ var insertEditForm = function(cell){
     cell.insertAdjacentHTML('beforeend', form)
 }
 
-var loadTodos = function() {
+var loadWeibos = function() {
     // 调用 ajax api 来载入数据
-    apiTodoAll(function(r) {
+    apiWeiboAll(function(r) {
         // console.log('load all', r)
         // 解析为 数组
         var todos = JSON.parse(r)
         // 循环添加到页面中
         for(var i = 0; i < todos.length; i++) {
             var todo = todos[i]
-            insertTodo(todo)
+            insertWeibo(todo)
         }
     })
 }
 
-var bindEventTodoAdd = function() {
+var bindEventWeiboAdd = function() {
     var b = e('#id-button-add')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(){
@@ -76,15 +76,15 @@ var bindEventTodoAdd = function() {
         var form = {
             title: title,
         }
-        apiTodoAdd(form, function(r) {
+        apiWeiboAdd(form, function(r) {
             // 收到返回的数据, 插入到页面中
             var todo = JSON.parse(r)
-            insertTodo(todo)
+            insertWeibo(todo)
         })
     })
 }
 
-var bindEventTodoDelete = function() {
+var bindEventWeiboDelete = function() {
     var b = e('.todo-list')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(event){
@@ -93,7 +93,7 @@ var bindEventTodoDelete = function() {
             // 删除这个TODO
             var todoCell = self.parentElement
             var todo_id = todoCell.dataset.id
-            apiTodoDelete(todo_id, function(r){
+            apiWeiboDelete(todo_id, function(r){
                 log('删除成功', todo_id)
                 todoCell.remove()
             })
@@ -102,7 +102,7 @@ var bindEventTodoDelete = function() {
 }
 
 
-var bindEventTodoEdit = function() {
+var bindEventWeiboEdit = function() {
     var b = e('.todo-list')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(event){
@@ -115,7 +115,7 @@ var bindEventTodoEdit = function() {
     })
 }
 
-var bindEventTodoUpdate = function() {
+var bindEventWeiboUpdate = function() {
     var b = e('.todo-list')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(event){
@@ -132,7 +132,7 @@ var bindEventTodoUpdate = function() {
                 'id': todo_id,
                 'title': title,
             }
-            apiTodoUpdate(form, function(r){
+            apiWeiboUpdate(form, function(r){
                 log('更新成功', todo_id)
                 var todo = JSON.parse(r)
                 var selector = '#todo-' + todo.id
@@ -146,46 +146,16 @@ var bindEventTodoUpdate = function() {
 }
 
 var bindEvents = function() {
-    bindEventTodoAdd()
-    bindEventTodoDelete()
-    bindEventTodoEdit()
-    bindEventTodoUpdate()
+    bindEventWeiboAdd()
+    bindEventWeiboDelete()
+    bindEventWeiboEdit()
+    bindEventWeiboUpdate()
 }
 
 
 var __main = function() {
     bindEvents()
-    loadTodos()
+    loadWeibos()
 }
 
 __main()
-
-
-
-
-/*
-给 删除 按钮绑定删除的事件
-1, 绑定事件
-2, 删除整个 todo-cell 元素
-*/
-// var todoList = e('.todo-list')
-// // 事件响应函数会被传入一个参数, 就是事件本身
-// todoList.addEventListener('click', function(event){
-//     // log('click todolist', event)
-//     // 我们可以通过 event.target 来得到被点击的元素
-//     var self = event.target
-//     // log('被点击的元素是', self)
-//     // 通过比较被点击元素的 class 来判断元素是否是我们想要的
-//     // classList 属性保存了元素的所有 class
-//     // 在 HTML 中, 一个元素可以有多个 class, 用空格分开
-//     // log(self.classList)
-//     // 判断是否拥有某个 class 的方法如下
-//     if (self.classList.contains('todo-delete')) {
-//         log('点到了 删除按钮')
-//         // 删除 self 的父节点
-//         // parentElement 可以访问到元素的父节点
-//         self.parentElement.remove()
-//     } else {
-//         // log('点击的不是删除按钮******')
-//     }
-// })

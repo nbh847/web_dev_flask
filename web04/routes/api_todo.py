@@ -7,6 +7,32 @@ from utils import (
     json_response,
 )
 from models.todo import Todo
+from models.weibo import Weibo
+
+
+def all_weibo(request):
+    """
+    返回所有 weibo
+    """
+    ms = Weibo.all()
+    # 要转换为 dict 格式才行
+    data = [m.json() for m in ms]
+    return json_response(data)
+
+
+def add_weibo(request):
+    """
+    接受浏览器发过来的添加 weibo 请求
+    添加数据并返回给浏览器
+    """
+    # 得到浏览器发送的表单, 浏览器用 ajax 发送 json 格式的数据过来
+    # 所以这里我们用新增加的 json 函数来获取格式化后的 json 数据
+    form = request.json()
+    print('api add form', form)
+    # 创建一个 weibo
+    t = Weibo.new(form)
+    # 把创建好的 weibo 返回给浏览器
+    return json_response(t.json())
 
 
 # 本文件只返回 json 格式的数据
@@ -59,4 +85,6 @@ route_dict = {
     '/api/todo/add': add,
     '/api/todo/delete': delete,
     '/api/todo/update': update,
+    '/api/weibo/all': all,
+    '/api/weibo/add': add,
 }

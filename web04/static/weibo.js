@@ -1,10 +1,11 @@
+// 时间转换工具
 var timeString = function(timestamp){
     t = new Date(timestamp * 1000)
     t = t.toLocaleTimeString()
     return t
 }
 
-
+// 评论模版
 var commentsTempalte = function(comments){
     var html = ''
     for (var i = 0; i< comments.length; i++){
@@ -19,6 +20,7 @@ var commentsTempalte = function(comments){
     return html
 }
 
+// 微博模版
 var weiboTemplate = function(weibo) {
     var content = weibo.content
     var id = weibo.id
@@ -31,10 +33,10 @@ var weiboTemplate = function(weibo) {
     var t = `
         <div class= 'weibo-cell' data-id=${id}>
             <div>
-                ${content}
+                [微博内容] ${content}
             </div>
             <div class='comment-list'>
-                ${comments}
+                [微博评论] ${comments}
             </div>
             <div class="comment-form">
                 <input type="hidden" name="weibo_id" value="">
@@ -47,6 +49,7 @@ var weiboTemplate = function(weibo) {
     return t
 }
 
+// 插入微博
 var insertWeibo = function(weibo) {
     var weiboCell = weiboTemplate(weibo)
     // 插入 weibo-list
@@ -54,6 +57,7 @@ var insertWeibo = function(weibo) {
     weiboList.insertAdjacentHTML('beforeend', weiboCell)
 }
 
+// 插入输入框
 var insertEditForm = function(cell){
     var form = `
         <div class='todo-edit-form'>
@@ -64,20 +68,22 @@ var insertEditForm = function(cell){
     cell.insertAdjacentHTML('beforeend', form)
 }
 
+// 载入微博数据
 var loadWeibos = function() {
     // 调用 ajax api 来载入数据
     apiWeiboAll(function(r) {
-        // console.log('load all', r)
+         console.log('load all', r)
         // 解析为 数组
-        var todos = JSON.parse(r)
+        var weibos = JSON.parse(r)
         // 循环添加到页面中
-        for(var i = 0; i < todos.length; i++) {
-            var todo = todos[i]
-            insertWeibo(todo)
+        for(var i = 0; i < weibos.length; i++) {
+            var weibo = weibos[i]
+            insertWeibo(weibo)
         }
     })
 }
 
+// 绑定微博添加事件
 var bindEventWeiboAdd = function() {
     var b = e('.comment-add')
     // 注意, 第二个参数可以直接给出定义函数
@@ -96,6 +102,7 @@ var bindEventWeiboAdd = function() {
     })
 }
 
+// 绑定微博删除事件
 var bindEventWeiboDelete = function() {
     var b = e('.todo-list')
     // 注意, 第二个参数可以直接给出定义函数
@@ -113,7 +120,7 @@ var bindEventWeiboDelete = function() {
     })
 }
 
-
+// 绑定微博编辑事件
 var bindEventWeiboEdit = function() {
     var b = e('.todo-list')
     // 注意, 第二个参数可以直接给出定义函数
@@ -127,6 +134,7 @@ var bindEventWeiboEdit = function() {
     })
 }
 
+// 绑定微博更新事件
 var bindEventWeiboUpdate = function() {
     var b = e('.todo-list')
     // 注意, 第二个参数可以直接给出定义函数
@@ -157,6 +165,7 @@ var bindEventWeiboUpdate = function() {
     })
 }
 
+// 事件绑定区
 var bindEvents = function() {
     bindEventWeiboAdd()
 //    bindEventWeiboDelete()
@@ -164,10 +173,11 @@ var bindEvents = function() {
 //    bindEventWeiboUpdate()
 }
 
-
+// 程序的主入口
 var __main = function() {
     bindEvents()
     loadWeibos()
 }
 
+// 调用主入口
 __main()

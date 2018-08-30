@@ -54,6 +54,8 @@ var apiTodoUpdate = function(form, callback){
     ajax('POST', path, form, callback)
 }
 
+// ------微博区--------
+
 // load weibo all
 var apiWeiboAll = function(callback) {
     var path = '/api/weibo/all'

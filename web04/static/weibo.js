@@ -31,10 +31,13 @@ var weiboTemplate = function(weibo) {
     // 在这个例子里面,是d.dataset.id
 
     var t = `
-        <div class= 'weibo-cell' data-id=${id}>
+        <div class='weibo-cell' data-id=${id}>
+            <hr>
             <div>
                 [微博内容] ${content}
             </div>
+            <br>
+            <button class="weibo-delete">删除微博</button>
             <div class='comment-list'>
                 [微博评论] ${comments}
             </div>
@@ -47,6 +50,15 @@ var weiboTemplate = function(weibo) {
         </div>
     `
     return t
+}
+
+// 清空输入框
+var clearFrom = function(element) {
+    var form = e(element)
+    log('输入框的元素 ', element)
+    log('输入框的值 ', form.value)
+    form.innerHTML = ''
+    log('已清空输入框')
 }
 
 // 插入微博
@@ -80,41 +92,46 @@ var loadWeibos = function() {
             var weibo = weibos[i]
             insertWeibo(weibo)
         }
+        clearFrom('#id-input-weibo')
     })
 }
 
 // 绑定微博添加事件
 var bindEventWeiboAdd = function() {
-    var b = e('.comment-add')
+    var b = e('#id-button-add-weibo')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(){
-        var input = e('#id-input-todo')
-        var title = input.value
-        log('click add', title)
+        var input = e('#id-input-weibo')
+        var weibo_content = input.value
+        log('微博内容: ', weibo_content)
         var form = {
-            title: title,
+            content: weibo_content,
         }
         apiWeiboAdd(form, function(r) {
             // 收到返回的数据, 插入到页面中
-            var todo = JSON.parse(r)
-            insertWeibo(todo)
+            var weibo = JSON.parse(r)
+            insertWeibo(weibo)
         })
     })
 }
 
 // 绑定微博删除事件
 var bindEventWeiboDelete = function() {
-    var b = e('.todo-list')
+    var b = e('.weibo-list')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(event){
-        var self =event.target
-        if(self.classList.contains('todo-delete')){
+        var self = event.target
+        if(self.classList.contains('weibo-delete')){
             // 删除这个TODO
-            var todoCell = self.parentElement
-            var todo_id = todoCell.dataset.id
-            apiWeiboDelete(todo_id, function(r){
-                log('删除成功', todo_id)
-                todoCell.remove()
+            log('点击了删除按钮')
+            var weiboCell = self.parentElement
+            var weibo_id = weiboCell.dataset.id
+            form = {
+                'weibo_id': weibo_id
+            }
+            apiWeiboDelete(form, function(r){
+                log('删除成功', weibo_id)
+                weiboCell.remove()
             })
         }
     })
@@ -168,7 +185,7 @@ var bindEventWeiboUpdate = function() {
 // 事件绑定区
 var bindEvents = function() {
     bindEventWeiboAdd()
-//    bindEventWeiboDelete()
+    bindEventWeiboDelete()
 //    bindEventWeiboEdit()
 //    bindEventWeiboUpdate()
 }

@@ -35,6 +35,15 @@ def add_weibo(request):
     return json_response(t.json())
 
 
+def delete_weibo(request):
+    form = request.json()
+    print('delete weibo form: ', form)
+    weibo_id = form['weibo_id']
+    Weibo.delete(weibo_id)
+    print('已删除微博: ', weibo_id)
+    return
+
+
 # 本文件只返回 json 格式的数据
 # 而不是 html 格式的数据
 def all(request):
@@ -88,4 +97,5 @@ route_dict = {
     # weibo
     '/api/weibo/all': all_weibo,
     '/api/weibo/add': add_weibo,
+    '/api/weibo/delete': delete_weibo,
 }

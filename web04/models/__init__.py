@@ -113,7 +113,7 @@ class Model(object):
         # 判断是否找到了这个 id 的数据
         if index == -1:
             # 没找到
-            pass
+            log('没有找到要删除的ID: '.format(id))
         else:
             obj = models.pop(index)
             l = [m.__dict__ for m in models]

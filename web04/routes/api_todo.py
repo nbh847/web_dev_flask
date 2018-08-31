@@ -44,6 +44,25 @@ def delete_weibo(request):
     return
 
 
+def update_weibo(request):
+    """
+    接受浏览器发过来的更新 weibo 请求
+    添加数据并返回给浏览器
+    """
+    # 得到浏览器发送的表单, 浏览器用 ajax 发送 json 格式的数据过来
+    # 所以这里我们用新增加的 json 函数来获取格式化后的 json 数据
+    form = request.json()
+    print('api update form', form)
+    weibo_id = form['id']
+    weibo_content = form['content']
+    # 创建一个 weibo
+    w = Weibo.find_by(id=weibo_id)
+    w.content = weibo_content
+    w.save()
+    # 把创建好的 weibo 返回给浏览器
+    return ''
+
+
 # 本文件只返回 json 格式的数据
 # 而不是 html 格式的数据
 def all(request):
@@ -98,4 +117,5 @@ route_dict = {
     '/api/weibo/all': all_weibo,
     '/api/weibo/add': add_weibo,
     '/api/weibo/delete': delete_weibo,
+    '/api/weibo/update': update_weibo,
 }

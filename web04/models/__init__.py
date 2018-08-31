@@ -107,15 +107,16 @@ class Model(object):
         models = cls.all()
         index = -1
         for i, e in enumerate(models):
-            if e.id == id:
+            if e.id == int(id):
                 index = i
                 break
         # 判断是否找到了这个 id 的数据
         if index == -1:
             # 没找到
-            log('没有找到要删除的ID: '.format(id))
+            log('没有找到要删 除的ID: '.format(id))
         else:
             obj = models.pop(index)
+            log('删除ID: '.format(id))
             l = [m.__dict__ for m in models]
             path = cls.db_path()
             save(l, path)

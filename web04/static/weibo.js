@@ -33,11 +33,11 @@ var weiboTemplate = function(weibo) {
     var t = `
         <div class='weibo-cell' data-id=${id}>
             <hr>
-            <div>
+            <div class='weibo-content'>
                 [微博内容] ${content}
             </div>
-            <br>
             <button class="weibo-delete">删除微博</button>
+            <button class="weibo-edit">编辑微博</button>
             <div class='comment-list'>
                 [微博评论] ${comments}
             </div>
@@ -72,12 +72,12 @@ var insertWeibo = function(weibo) {
 // 插入输入框
 var insertEditForm = function(cell){
     var form = `
-        <div class='todo-edit-form'>
-            <input class="todo-edit-input">
-            <button class='todo-update'>更新</button>
+        <div class='weibo-edit-form'>
+            <input class="weibo-edit-input">
+            <button class='weibo-update'>更新</button>
         </div>
     `
-    cell.insertAdjacentHTML('beforeend', form)
+    cell.insertAdjacentHTML('afterend', form)
 }
 
 // 载入微博数据
@@ -139,43 +139,49 @@ var bindEventWeiboDelete = function() {
 
 // 绑定微博编辑事件
 var bindEventWeiboEdit = function() {
-    var b = e('.todo-list')
+    var b = e('.weibo-list')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(event){
         var self =event.target
-        if(self.classList.contains('todo-edit')){
-            // 删除这个TODO
-            var todoCell = self.parentElement
-            insertEditForm(todoCell)
+        if(self.classList.contains('weibo-edit')){
+            // 编辑这个weibo
+            var weiboCell = self.parentElement
+            // 获取微博内容的element, 删除后插入一个表单，里面有 weibo 内容和 update 按钮
+            var weiboConent = weiboCell.children[1]
+//            log('weiboConent', weiboConent)
+//            log('weiboCell', weiboCell)
+            insertEditForm(weiboConent)
+            weiboConent.remove()
         }
     })
 }
 
 // 绑定微博更新事件
 var bindEventWeiboUpdate = function() {
-    var b = e('.todo-list')
+    var b = e('.weibo-list')
     // 注意, 第二个参数可以直接给出定义函数
     b.addEventListener('click', function(event){
         var self =event.target
-        if(self.classList.contains('todo-update')){
+        if(self.classList.contains("weibo-update")){
             log('点击了update')
             // 更新这个TODO
             var editForm = self.parentElement
-            var input = editForm.querySelector('.todo-edit-input')
-            var todoCell = self.closest('.todo-cell')
-            var todo_id = todoCell.dataset.id
-            var title = input.value
+            var input = editForm.querySelector('.weibo-edit-input')
+            var weiboCell = self.closest('.weibo-cell')
+            var weibo_id = weiboCell.dataset.id
+            var weibo_content = input.value
             var form = {
-                'id': todo_id,
-                'title': title,
+                'id': weibo_id,
+                'content': weibo_content,
             }
             apiWeiboUpdate(form, function(r){
-                log('更新成功', todo_id)
-                var todo = JSON.parse(r)
-                var selector = '#todo-' + todo.id
-                var todoCell = e(selector)
-                var titleSpan = todoCell.querySelector('.todo-title')
-                titleSpan.innerHTML = todo.title
+                log('更新成功', weibo_id)
+                loadWeibos()
+//                var weibo = JSON.parse(r)
+//                var selector = '#weibo-' + weibo.id
+//                var weiboCell = e(selector)
+//                var titleSpan = todoCell.querySelector('.todo-title')
+//                titleSpan.innerHTML = todo.title
             })
 
         }
@@ -186,8 +192,8 @@ var bindEventWeiboUpdate = function() {
 var bindEvents = function() {
     bindEventWeiboAdd()
     bindEventWeiboDelete()
-//    bindEventWeiboEdit()
-//    bindEventWeiboUpdate()
+    bindEventWeiboEdit()
+    bindEventWeiboUpdate()
 }
 
 // 程序的主入口

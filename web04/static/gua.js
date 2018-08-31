@@ -75,3 +75,9 @@ var apiWeiboDelete = function(form, callback) {
     var path = '/api/weibo/delete'
     ajax('POST', path, form, callback)
 }
+
+// 更新一个 weibo
+var apiWeiboUpdate = function(form, callback) {
+    var path = '/api/weibo/update'
+    ajax('POST', path, form, callback)
+}

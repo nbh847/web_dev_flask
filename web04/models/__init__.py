@@ -94,7 +94,7 @@ class Model(object):
         all = cls.all()
         for m in all:
             # 也可以用 getattr(m, k) 取值
-            if v == m.__dict__[k]:
+            if int(v) == m.__dict__[k]:
                 return m
         return None
 

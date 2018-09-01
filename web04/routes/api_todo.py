@@ -8,6 +8,7 @@ from utils import (
 )
 from models.todo import Todo
 from models.weibo import Weibo
+from models.weibo import Comment
 
 
 def all_weibo(request):
@@ -61,6 +62,21 @@ def update_weibo(request):
     w.save()
     # 把创建好的 weibo 返回给浏览器
     return ''
+
+
+def add_comment(request):
+    """
+    接受浏览器发过来的添加 comment 请求
+    添加数据并返回给浏览器
+    """
+    # 得到浏览器发送的表单, 浏览器用 ajax 发送 json 格式的数据过来
+    # 所以这里我们用新增加的 json 函数来获取格式化后的 json 数据
+    form = request.json()
+    print('api add comment form', form)
+    # 创建一个 comment
+    c = Comment.new(form)
+    # 把创建好的 weibo 返回给浏览器
+    return json_response(c.json())
 
 
 # 本文件只返回 json 格式的数据
@@ -118,4 +134,6 @@ route_dict = {
     '/api/weibo/add': add_weibo,
     '/api/weibo/delete': delete_weibo,
     '/api/weibo/update': update_weibo,
+    # comment
+    '/api/comment/add': add_comment,
 }

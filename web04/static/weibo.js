@@ -11,8 +11,9 @@ var commentsTempalte = function(comments){
     for (var i = 0; i< comments.length; i++){
         var c = comments[i]
         var t = `
-            <div>
+            <div class='comment-content'>
                 ${c.content}
+                <button class='comment-delete'>删除此评论</button>
             </div>
         `
         html += t
@@ -43,7 +44,7 @@ var weiboTemplate = function(weibo) {
             </div>
             <div class="comment-form">
                 <input type="hidden" name="weibo_id" value="">
-                <input name="content">
+                <input class="comment-input" name="content">
                 <br>
                 <button class="comment-add">添加评论</button>
             </div>
@@ -52,13 +53,14 @@ var weiboTemplate = function(weibo) {
     return t
 }
 
-// 清空输入框
-var clearFrom = function(element) {
-    var form = e(element)
-    log('输入框的元素 ', element)
-    log('输入框的值 ', form.value)
-    form.innerHTML = ''
-    log('已清空输入框')
+// 清空所有的微博,方便重载更新后的微博
+var clearWeibo = function(element) {
+    var form = document.querySelectorAll(element)
+    log('待清空的元素 ', element)
+    for (i=0;i<form.length;i++) {
+        form[i].remove()
+    }
+    log('已清空微博元素')
 }
 
 // 插入微博
@@ -92,7 +94,6 @@ var loadWeibos = function() {
             var weibo = weibos[i]
             insertWeibo(weibo)
         }
-        clearFrom('#id-input-weibo')
     })
 }
 
@@ -176,24 +177,86 @@ var bindEventWeiboUpdate = function() {
             }
             apiWeiboUpdate(form, function(r){
                 log('更新成功', weibo_id)
-                loadWeibos()
+                // 清空所有的微博内容
+                clearWeibo('.weibo-cell')
 //                var weibo = JSON.parse(r)
 //                var selector = '#weibo-' + weibo.id
 //                var weiboCell = e(selector)
 //                var titleSpan = todoCell.querySelector('.todo-title')
 //                titleSpan.innerHTML = todo.title
             })
+            // 载入更新后的微博
+            loadWeibos()
 
+        }
+    })
+}
+
+// 增加评论
+var bindEventCommentAdd = function() {
+    var b = e('.weibo-list')
+    // 注意, 第二个参数可以直接给出定义函数
+    b.addEventListener('click', function(){
+        var self =event.target
+        if(self.classList.contains("comment-add")){
+            log('点击了微博评论add')
+            // 发送评论
+            var commentForm = self.parentElement
+            var input = commentForm.querySelector('.comment-input')
+            // 评论的内容
+            input_value = input.value
+            // 评论对应的微博ID
+            var weiboCell = self.closest('.weibo-cell')
+            var weibo_id = weiboCell.dataset.id
+            // 用ajax发送评论
+            var form = {
+                'weibo_id': weibo_id,
+                'content': input_value,
+            }
+            apiCommentAdd(form, function(r){
+                log('add 成功', weibo_id)
+                // 清空所有的微博内容
+                clearWeibo('.weibo-cell')
+            })
+            // 载入更新后的微博
+            loadWeibos()
+        }
+    })
+}
+
+// 绑定评论删除事件
+var bindEventCommentDelete = function() {
+    var b = e('.weibo-list')
+    // 注意, 第二个参数可以直接给出定义函数
+    b.addEventListener('click', function(event){
+        var self = event.target
+        if(self.classList.contains('comment-delete')){
+            // 删除这个 comment
+            log('点击了删除按钮')
+            var commentCell = self.parentElement
+            commentCell.remove()
+//            var weibo_id = weiboCell.dataset.id
+//            form = {
+//                'weibo_id': weibo_id
+//            }
+//            apiWeiboDelete(form, function(r){
+//                log('删除成功', weibo_id)
+//                weiboCell.remove()
+//            })
         }
     })
 }
 
 // 事件绑定区
 var bindEvents = function() {
+    // 绑定微博事件
     bindEventWeiboAdd()
     bindEventWeiboDelete()
     bindEventWeiboEdit()
     bindEventWeiboUpdate()
+    // 绑定评论事件
+    bindEventCommentAdd()
+    bindEventCommentDelete()
 }
 
 // 程序的主入口

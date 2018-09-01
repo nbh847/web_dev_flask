@@ -81,3 +81,9 @@ var apiWeiboUpdate = function(form, callback) {
     var path = '/api/weibo/update'
     ajax('POST', path, form, callback)
 }
+
+// 添加一个微博的评论
+var apiCommentAdd = function(form, callback) {
+    var path = '/api/comment/add'
+    ajax('POST', path, form, callback)
+}

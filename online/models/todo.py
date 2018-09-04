@@ -1,7 +1,6 @@
 import time
 from models import Model
 
-
 # 针对我们的数据 TODO
 # 我们要做 4 件事情
 """
@@ -12,6 +11,8 @@ D delete 删除数据
 
 Todo.new() 来创建一个 todo
 """
+
+
 class Todo(Model):
     @classmethod
     def new(cls, form):

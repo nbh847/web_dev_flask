@@ -12,7 +12,6 @@ from flask import (
 
 from models.todo import Todo
 
-
 # 创建一个 蓝图对象 并且路由定义在蓝图对象中
 # 然后在 flask 主代码中「注册蓝图」来使用
 # 第一个参数是蓝图的名字, 以后会有用(add函数里面就用到了)
@@ -29,11 +28,13 @@ def index():
     return render_template('todo_index.html', todos=todo_list)
 
 
-@main.route('/add', methods=['POST'])
+@main.route('/add', methods=['POST', 'GET'])
 def add():
+    if request.method == 'GET':
+        return redirect(url_for('todo.index'))
     form = request.form
     t = Todo.new(form)
-    t.save()
+    # t.save()
     # 蓝图中的 url_for 需要加上蓝图的名字，这里是 todo
     return redirect(url_for('todo.index'))
 

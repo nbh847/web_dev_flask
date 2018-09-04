@@ -1,19 +1,19 @@
-from flask import Flask
-from flask import render_template
-from flask import request
-from flask import flash
-from flask import redirect
-from flask import url_for
-from flask import Blueprint
+from flask import (
+    Flask,
+    render_template,
+    request,
+    flash,
+    redirect,
+    url_for,
+    Blueprint,
+)
 
 from routes.todo import main as todo_routes
-
 
 app = Flask(__name__)
 # 设置 secret_key 来使用 flask 自带的 session
 # 这个字符串随便你设置什么内容都可以
 app.secret_key = 'random string'
-
 
 """
 在 flask 中，模块化路由的功能由 蓝图（Blueprints）提供
@@ -23,7 +23,6 @@ app.secret_key = 'random string'
 # 注册蓝图
 # 有一个 url_prefix 可以用来给蓝图中的每个路由加一个前缀
 app.register_blueprint(todo_routes, url_prefix='/todo')
-
 
 # 运行代码
 if __name__ == '__main__':

@@ -94,7 +94,7 @@ class Model(object):
         all = cls.all()
         for m in all:
             # 也可以用 getattr(m, k) 取值
-            if int(v) == m.__dict__[k]:
+            if v == m.__dict__[k]:
                 return m
         return None
 
@@ -107,16 +107,15 @@ class Model(object):
         models = cls.all()
         index = -1
         for i, e in enumerate(models):
-            if e.id == int(id):
+            if e.id == id:
                 index = i
                 break
         # 判断是否找到了这个 id 的数据
         if index == -1:
             # 没找到
-            log('没有找到要删 除的ID: '.format(id))
+            pass
         else:
             obj = models.pop(index)
-            log('删除ID: '.format(id))
             l = [m.__dict__ for m in models]
             path = cls.db_path()
             save(l, path)
@@ -174,16 +173,3 @@ class Model(object):
         l = [m.__dict__ for m in models]
         path = self.db_path()
         save(l, path)
-
-    @classmethod
-    def new(cls, form):
-        """
-        创建并保存一个 todo 并且返回它
-        Todo.new({'title': '吃饭'})
-        :param form: 一个字典 包含了 todo 的数据
-        :return: 创建的 todo 实例
-        """
-        # 下面一行相当于 t = Todo(form)
-        m = cls(form)
-        m.save()
-        return m

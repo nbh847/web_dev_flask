@@ -7,6 +7,76 @@ from utils import (
     json_response,
 )
 from models.todo import Todo
+from models.weibo import Weibo
+from models.weibo import Comment
+
+
+def all_weibo(request):
+    """
+    返回所有 weibo
+    """
+    ms = Weibo.all()
+    # 要转换为 dict 格式才行
+    data = [m.json() for m in ms]
+    return json_response(data)
+
+
+def add_weibo(request):
+    """
+    接受浏览器发过来的添加 weibo 请求
+    添加数据并返回给浏览器
+    """
+    # 得到浏览器发送的表单, 浏览器用 ajax 发送 json 格式的数据过来
+    # 所以这里我们用新增加的 json 函数来获取格式化后的 json 数据
+    form = request.json()
+    print('api add form', form)
+    # 创建一个 weibo
+    t = Weibo.new(form)
+    # 把创建好的 weibo 返回给浏览器
+    return json_response(t.json())
+
+
+def delete_weibo(request):
+    form = request.json()
+    print('delete weibo form: ', form)
+    weibo_id = form['weibo_id']
+    Weibo.delete(weibo_id)
+    print('已删除微博: ', weibo_id)
+    return
+
+
+def update_weibo(request):
+    """
+    接受浏览器发过来的更新 weibo 请求
+    添加数据并返回给浏览器
+    """
+    # 得到浏览器发送的表单, 浏览器用 ajax 发送 json 格式的数据过来
+    # 所以这里我们用新增加的 json 函数来获取格式化后的 json 数据
+    form = request.json()
+    print('api update form', form)
+    weibo_id = form['id']
+    weibo_content = form['content']
+    # 创建一个 weibo
+    w = Weibo.find_by(id=weibo_id)
+    w.content = weibo_content
+    w.save()
+    # 把创建好的 weibo 返回给浏览器
+    return ''
+
+
+def add_comment(request):
+    """
+    接受浏览器发过来的添加 comment 请求
+    添加数据并返回给浏览器
+    """
+    # 得到浏览器发送的表单, 浏览器用 ajax 发送 json 格式的数据过来
+    # 所以这里我们用新增加的 json 函数来获取格式化后的 json 数据
+    form = request.json()
+    print('api add comment form', form)
+    # 创建一个 comment
+    c = Comment.new(form)
+    # 把创建好的 weibo 返回给浏览器
+    return json_response(c.json())
 
 
 # 本文件只返回 json 格式的数据
@@ -59,4 +129,11 @@ route_dict = {
     '/api/todo/add': add,
     '/api/todo/delete': delete,
     '/api/todo/update': update,
+    # weibo
+    '/api/weibo/all': all_weibo,
+    '/api/weibo/add': add_weibo,
+    '/api/weibo/delete': delete_weibo,
+    '/api/weibo/update': update_weibo,
+    # comment
+    '/api/comment/add': add_comment,
 }

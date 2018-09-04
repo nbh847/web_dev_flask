@@ -1,22 +1,12 @@
 [
   {
-    "id": 1,
-    "content": "adsfgdfg",
-    "user_id": 1
-  },
-  {
-    "id": 4,
-    "content": "新微博",
-    "user_id": 2
-  },
-  {
     "id": 5,
-    "content": "爬虫攻略",
+    "content": "11111111111111111111",
     "user_id": 2
   },
   {
     "id": 6,
-    "content": "今天天气不错",
+    "content": "辣味大人",
     "user_id": 2
   }
 ]

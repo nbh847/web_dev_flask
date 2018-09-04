@@ -136,11 +136,9 @@ var bindEventTodoUpdate = function() {
                 log('更新成功', todo_id)
                 var todo = JSON.parse(r)
                 var selector = '#todo-' + todo.id
-                log('selector', selector)
                 var todoCell = e(selector)
                 var titleSpan = todoCell.querySelector('.todo-title')
-                log('title span value', titleSpan.value)
-                titleSpan.innerText = todo.title
+                titleSpan.innerHTML = todo.title
             })
 
         }

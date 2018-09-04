@@ -15,6 +15,7 @@ var ajax = function(method, path, data, responseCallback) {
     r.open(method, path, true)
     // 设置发送的数据的格式为 application/json
     // 这个不是必须的
+     data = JSON.stringify(data)
     r.setRequestHeader('Content-Type', 'application/json')
     // 注册响应函数
     r.onreadystatechange = function() {
@@ -24,7 +25,8 @@ var ajax = function(method, path, data, responseCallback) {
         }
     }
     // 把数据转换为 json 格式字符串
-    data = JSON.stringify(data)
+
+    log('ajax data ', data)
     // 发送请求
     r.send(data)
 }
@@ -51,5 +53,37 @@ var apiTodoDelete = function(id, callback) {
 // 更新一个 todo
 var apiTodoUpdate = function(form, callback){
     var path = '/api/todo/update'
+    ajax('POST', path, form, callback)
+}
+
+// ------微博区--------
+
+// load weibo all
+var apiWeiboAll = function(callback) {
+    var path = '/api/weibo/all'
+    ajax('GET', path, '', callback)
+}
+
+// 增加一个 weibo
+var apiWeiboAdd = function(form, callback) {
+    var path = '/api/weibo/add'
+    ajax('POST', path, form, callback)
+}
+
+// 删除一个 weibo
+var apiWeiboDelete = function(form, callback) {
+    var path = '/api/weibo/delete'
+    ajax('POST', path, form, callback)
+}
+
+// 更新一个 weibo
+var apiWeiboUpdate = function(form, callback) {
+    var path = '/api/weibo/update'
+    ajax('POST', path, form, callback)
+}
+
+// 添加一个微博的评论
+var apiCommentAdd = function(form, callback) {
+    var path = '/api/comment/add'
     ajax('POST', path, form, callback)
 }

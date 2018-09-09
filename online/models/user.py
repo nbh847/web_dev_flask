@@ -29,27 +29,23 @@ class User(Model):
         # 返回摘要字符串
         return s.hexdigest()
 
-    def validate_register(self):
-        pwd = self.password
-        self.password = self.salted_password(pwd)
-        if User.find_by(username=self.username) is None:
-            self.save()
-            return self
+    @classmethod
+    def register(cls, form):
+        name = form.get('username', '')
+        pwd = form.get('password', '')
+        if len(name) > 2 and User.find_by(username=name) is None:
+            u = User.new(form)
+            u.password = u.salted_password(pwd)
+            u.save()
+            return u
         else:
             return None
 
-    def validate_login(self):
-        u = User.find_by(username=self.username)
-        if u is not None:
-            return u.password == self.salted_password(self.password)
+    @classmethod
+    def validate_login(cls, form):
+        u = User(form)
+        user = User.find_by(username=u.username)
+        if user is not None and user.password == u.salted_password(u.password):
+            return user
         else:
-            return False
-
-    def todos(self):
-        # 列表推倒和过滤
-        # return [t for t in Todo.all() if t.user_id == self.id]
-        ts = []
-        for t in Todo.all():
-            if t.user_id == self.id:
-                ts.append(t)
-        return ts
+            return None

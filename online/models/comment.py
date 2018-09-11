@@ -22,6 +22,6 @@ class Comment(Model):
 
     def __init__(self, form):
         self.id = None
-        self.author = form.get("author", "")
-        self.content = form.get("content", "")
+        self.author = form.get('author', '')
+        self.content = form.get('content', '')
         self.create_time = int(time.time())

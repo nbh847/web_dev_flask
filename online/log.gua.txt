@@ -1,1 +1,5 @@
 16:04:52 kwargs,  {'id': -1} <class 'dict'>
+20:28:35 kwargs,  {'id': -1} <class 'dict'>
+20:56:39 kwargs,  {'id': -1} <class 'dict'>
+22:10:32 kwargs,  {'blog_id': 1} <class 'dict'>
+22:10:32 kwargs,  {'id': 1} <class 'dict'>

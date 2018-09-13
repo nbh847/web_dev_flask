@@ -92,7 +92,7 @@ def new():
 def view(blog_id):
     comments = BlogComment.find_all(blog_id=blog_id)
     blog = Blog.find(blog_id)
-    return render_template("blog_view.html", blog=blog, comments=comments)
+    return render_template("blog_view, blog=blog, comments=comments")
 
 
 @main.route("/comment/new", methods=["POST"])

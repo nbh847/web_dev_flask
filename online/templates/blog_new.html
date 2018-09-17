@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>博客主页</title>
+    <title>发表新博文</title>
 </head>
 <body>
-<a href={{ url_for(".new") }}>新建博客</a>
-<div>
-    {% for b in blogs %}
-        <div>
-        <a href= {{ url_for(".view", blog_id=b.id) }}>
-        {{ b.title }} @ {{ b.create_time }} by {{ b.author }}
-        </a>
-        </div>
-    {% endfor %}
-</div>
+<form method="POST" action={{ url_for(".add") }}>
+    <input type="text" name="author" placeholder="author">
+    <input type="text" name="title" placeholder="title">
+    <br>
+    <textarea name = "content" placeholder="content">
+    </textarea>
+    <br>
+    <button type="submit">发布</button>
+</form>
 
 </body>
 </html>

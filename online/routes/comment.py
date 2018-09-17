@@ -1,6 +1,7 @@
 from flask import (
     render_template,
     request,
+    session,
     redirect,
     url_for,
     Blueprint,
@@ -52,7 +53,7 @@ comment 的数据上的方法
 2. http 严格要求了， request response // 发送给web framework什么？
     in： 已经parse过的request
     out: response writer
-2.* 对于web framework 我看起来像是一个http server
+2.* (中间件) 对于web framework 我看起来像是一个http server
     对于http server，我看起来像是一个web framework
 
     1. session sessionmiddlewareinterface

@@ -55,6 +55,14 @@ class Model(object):
         return m
 
     @classmethod
+    def new(cls, form):
+        """
+        """
+        m = cls(form)
+        m.save()
+        return m
+
+    @classmethod
     def all(cls):
         """
         all 方法(类里面的函数叫方法)使用 load 函数得到所有的 models
